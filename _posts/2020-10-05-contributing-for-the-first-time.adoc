@@ -40,12 +40,12 @@ Before being able to contribute, you must fork the link:https://github.com/quark
 Clone the repository : `git clone https://github.com/<your-fork-repo>/quarkus.git` then build Quarkus via `mvn clean install -Dquickly`.
 The Maven command will launch a minimal build of Quarkus and install the dependencies locally.
 
-If it didn't work follow the link:https://github.com/quarkusio/quarkus/blob/master/CONTRIBUTING.md#setup[CONTRIBUTING - Setup] page to setup your environment, anyway at some point you may need to read this page!
+If it didn't work follow the link:https://github.com/quarkusio/quarkus/blob/main/CONTRIBUTING.md#setup[CONTRIBUTING - Setup] page to setup your environment, anyway at some point you may need to read this page!
 
 If you're new to Quarkus: read the guides in the link:https://quarkus.io/get-started[getting started page], you can skip the native and reactive ones if you don't plan to contribute on these areas,
 and as a new contributor I'll advise you to avoid them!
 
-You can read the link:https://github.com/quarkusio/quarkus/blob/master/CONTRIBUTING.md[CONTRIBUTING] page for general guidelines, if you don't understand everything don't panic ;), or you can refer to it if needed as it can be hard to read for newcomers.
+You can read the link:https://github.com/quarkusio/quarkus/blob/main/CONTRIBUTING.md[CONTRIBUTING] page for general guidelines, if you don't understand everything don't panic ;), or you can refer to it if needed as it can be hard to read for newcomers.
 
 Then, the hardest part will begin, you will need to find what you plan to do as a contributor, you can make contributions in the following areas:
 
@@ -55,7 +55,7 @@ Then, the hardest part will begin, you will need to find what you plan to do as 
 - quickstart
 - website
 
-Or just tell us your story with Quarkus, we love to hear user stories, and have a link:https://github.com/quarkusio/quarkus/blob/master/ADOPTERS.md[dedicated page],
+Or just tell us your story with Quarkus, we love to hear user stories, and have a link:https://github.com/quarkusio/quarkus/blob/main/ADOPTERS.md[dedicated page],
 and blog category link:https://quarkus.io/blog/tag/user-story[#user-story] for them.
 
 We make our best to offer link:https://github.com/quarkusio/quarkus/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22[good first issue],
@@ -64,7 +64,7 @@ We even setup a dedicated channel for Hacktoberfest: link:https://quarkusio.zuli
 
 == Working on something
 
-When you're decided to work on something, you can find help on Zulip or Github by pinging area link:https://github.com/quarkusio/quarkus/blob/master/MAINTAINERS.adoc[maintainers].
+When you're decided to work on something, you can find help on Zulip or Github by pinging area link:https://github.com/quarkusio/quarkus/blob/main/MAINTAINERS.adoc[maintainers].
 
 If there is an issue already opened, ask that someone assign it to you (you can add a comment for this on the issue).
 

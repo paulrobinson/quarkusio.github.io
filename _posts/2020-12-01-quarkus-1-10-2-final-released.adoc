@@ -122,7 +122,7 @@ You can get the full changelogs of https://github.com/quarkusio/quarkus/releases
 
 == ADOPTERS.md
 
-To share stories about Quarkus usage, we added https://github.com/quarkusio/quarkus/blob/master/ADOPTERS.md[an `ADOPTERS.md` file] at the root of the repository.
+To share stories about Quarkus usage, we added https://github.com/quarkusio/quarkus/blob/main/ADOPTERS.md[an `ADOPTERS.md` file] at the root of the repository.
 
 If you are using Quarkus and would like to be interviewed on our blog or simply added to this file, please contact us and we will be happy to oblige.
 

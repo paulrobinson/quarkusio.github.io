@@ -104,7 +104,7 @@ So please give it a try and report any bug you may find :-)
 
 If you have an extension and would like to provide a codestart for it:
 
-- Doc: https://github.com/quarkusio/quarkus/blob/master/independent-projects/tools/codestarts/codestarts.adoc
+- Doc: https://github.com/quarkusio/quarkus/blob/main/independent-projects/tools/codestarts/codestarts.adoc
 
 - Example codestarts dir: https://github.com/quarkusio/quarkus/tree/main/devtools/platform-descriptor-json/src/main/resources/codestarts
 

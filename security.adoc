@@ -5,7 +5,7 @@ permalink: /security/
 ---
 
 ////
-    Content copied from https://github.com/quarkusio/quarkus/blob/master/SECURITY.md 
+    Content copied from https://github.com/quarkusio/quarkus/blob/main/SECURITY.md
     Edit there too
 ////
 
