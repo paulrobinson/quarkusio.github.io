@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -254,8 +258,7 @@ The <code>quarkus-micro-image:2.0</code> image is:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-dockerfile hljs" data-lang="dockerfile">FROM quay.io/quarkus/quarkus-micro-image:2.0
 WORKDIR /work/
-COPY target/*-runner /work/application
-RUN chmod 775 /work
+COPY --chmod=0755 target/*-runner /work/application
 EXPOSE 8080
 CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]</code></pre>
 </div>
@@ -285,8 +288,7 @@ COPY --from=BUILD \
    /lib64/
 
 WORKDIR /work/
-COPY target/*-runner /work/application
-RUN chmod 775 /work
+COPY --chmod=0755 target/*-runner /work/application
 EXPOSE 8080
 CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]</code></pre>
 </div>
@@ -330,8 +332,7 @@ COPY --from=BUILD \
      /etc/fonts /etc/fonts
 
 WORKDIR /work/
-COPY target/*-runner /work/application
-RUN chmod 775 /work
+COPY --chmod=0755 target/*-runner /work/application
 EXPOSE 8080
 CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]</code></pre>
 </div>
@@ -356,7 +357,7 @@ WORKDIR /work/
 RUN chown 1001 /work \
     &amp;&amp; chmod "g+rwX" /work \
     &amp;&amp; chown 1001:root /work
-COPY --chown=1001:root target/*-runner /work/application
+COPY --chown=1001:root --chmod=0755 target/*-runner /work/application
 
 EXPOSE 8080
 USER 1001

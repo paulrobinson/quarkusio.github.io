@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -1271,7 +1275,7 @@ application behaviour at runtime.</p>
 <p>Additional config locations to be loaded with the Config. The configuration support multiple locations separated by a comma and each must represent a valid <code>java.net.URI</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-11884">QUARKUS_CONFIG_LOCATIONS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-11884" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-11996">QUARKUS_CONFIG_LOCATIONS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-11996" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1291,7 +1295,7 @@ application behaviour at runtime.</p>
 <p>Accepts a single configuration profile name. If a configuration property cannot be found in the current active profile, the config performs the same lookup in the profile set by this configuration.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-11885">QUARKUS_CONFIG_PROFILE_PARENT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-11885" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-11997">QUARKUS_CONFIG_PROFILE_PARENT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-11997" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1311,7 +1315,7 @@ application behaviour at runtime.</p>
 <p>A property that allows accessing a generated UUID. It generates that UUID at startup time. So it changes between two starts including in dev mode. Access this generated UUID using expressions: <code>${quarkus.uuid}</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-11886">QUARKUS_UUID</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-11886" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-11998">QUARKUS_UUID</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-11998" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

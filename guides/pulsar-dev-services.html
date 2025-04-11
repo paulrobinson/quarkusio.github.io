@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" selected>3.19.3 - Latest</option>
+        <option value="latest" selected>3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -359,7 +363,7 @@ quarkus.pulsar.devservices.broker-config.system-topic-enabled=true</code></pre>
 <p>If Dev Services for Pulsar has been explicitly enabled or disabled. Dev Services are generally enabled by default, unless there is an existing configuration present. For Pulsar, Dev Services starts a broker unless <code>pulsar.client.serviceUrl</code> is set or if all the Reactive Messaging Pulsar channel are configured with <code>serviceUrl</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7255">QUARKUS_PULSAR_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7255" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7363">QUARKUS_PULSAR_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7363" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -383,7 +387,7 @@ quarkus.pulsar.devservices.broker-config.system-topic-enabled=true</code></pre>
 <p>If not defined, the port will be chosen randomly.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7256">QUARKUS_PULSAR_DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7256" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7364">QUARKUS_PULSAR_DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7364" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -404,7 +408,7 @@ quarkus.pulsar.devservices.broker-config.system-topic-enabled=true</code></pre>
 <p>The image to use. Note that only Apache Pulsar images are supported. Specifically, the image repository must end with <code>apachepulsar/pulsar</code>. Check <a href="https://hub.docker.com/r/apachepulsar/pulsar" class="bare">https://hub.docker.com/r/apachepulsar/pulsar</a> to find the available versions.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7257">QUARKUS_PULSAR_DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7257" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7365">QUARKUS_PULSAR_DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7365" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -431,7 +435,7 @@ quarkus.pulsar.devservices.broker-config.system-topic-enabled=true</code></pre>
 <p>Container sharing is only used in dev mode.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7258">QUARKUS_PULSAR_DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7258" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7366">QUARKUS_PULSAR_DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7366" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -455,7 +459,7 @@ quarkus.pulsar.devservices.broker-config.system-topic-enabled=true</code></pre>
 <p>This property is used when you need multiple shared Pulsar brokers.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7259">QUARKUS_PULSAR_DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7259" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7367">QUARKUS_PULSAR_DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7367" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -476,7 +480,7 @@ quarkus.pulsar.devservices.broker-config.system-topic-enabled=true</code></pre>
 <p>Broker config to set on the Pulsar instance</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7260">QUARKUS_PULSAR_DEVSERVICES_BROKER_CONFIG__ENVIRONMENT_VARIABLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7260" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7368">QUARKUS_PULSAR_DEVSERVICES_BROKER_CONFIG__ENVIRONMENT_VARIABLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7368" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

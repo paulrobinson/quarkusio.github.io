@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,9 @@
     
       <option value="main" >Main - SNAPSHOT</option>
     
-      <option value="latest" >3.19.3 - Latest</option>
+      <option value="latest" >3.21.2 - Latest</option>
+    
+      <option value="3.20" >3.20</option>
     
       <option value="3.15" selected>3.15</option>
     
@@ -16438,6 +16440,12 @@ Consumers will be called in priority order (lowest to highest) after VertxConfig
 <p><em>No Javadoc found</em></p>
 </div>
 <div class="paragraph">
+<p><code>java.lang.String absolutePath</code></p>
+</div>
+<div class="paragraph">
+<p><em>No Javadoc found</em></p>
+</div>
+<div class="paragraph">
 <p><code>io.quarkus.vertx.http.deployment.devmode.ConfiguredPathInfo configuredPathInfo</code></p>
 </div>
 <div class="paragraph">
@@ -16913,7 +16921,7 @@ Consumers will be called in priority order (lowest to highest) after VertxConfig
 <p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>java.util.List&lt;String&gt; endpoints</code></p>
+<p><code>java.util.Set&lt;String&gt; endpoints</code></p>
 </div>
 <div class="paragraph">
 <p><em>No Javadoc found</em></p>

@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -440,7 +444,7 @@ stork_service_discovery_instances_count_total{service_name="hello-service",} 26.
 <p>Configures the service discovery type, e.g. "consul". ServiceDiscoveryProvider for the type has to be available</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47359">QUARKUS_STORK__SERVICE_NAME__SERVICE_DISCOVERY_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47359" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-56059">QUARKUS_STORK__SERVICE_NAME__SERVICE_DISCOVERY_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56059" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -460,7 +464,7 @@ stork_service_discovery_instances_count_total{service_name="hello-service",} 26.
 <p>ServiceDiscovery parameters. Check the documentation of the selected service discovery type for available parameters.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47360">QUARKUS_STORK__SERVICE_NAME__SERVICE_DISCOVERY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47360" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-56060">QUARKUS_STORK__SERVICE_NAME__SERVICE_DISCOVERY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56060" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -480,7 +484,7 @@ stork_service_discovery_instances_count_total{service_name="hello-service",} 26.
 <p>Configures load balancer type, e.g. "round-robin". A LoadBalancerProvider for the type has to be available</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47361">QUARKUS_STORK__SERVICE_NAME__LOAD_BALANCER_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47361" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-56061">QUARKUS_STORK__SERVICE_NAME__LOAD_BALANCER_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56061" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -500,7 +504,7 @@ stork_service_discovery_instances_count_total{service_name="hello-service",} 26.
 <p>Load Balancer parameters. Check the documentation of the selected load balancer type for available parameters</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47362">QUARKUS_STORK__SERVICE_NAME__LOAD_BALANCER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47362" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-56062">QUARKUS_STORK__SERVICE_NAME__LOAD_BALANCER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56062" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -526,7 +530,7 @@ This configuration section is optional</p></th>
 <p>Configures service registrar type, e.g. "consul". A ServiceRegistrarProvider for the type has to be available</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47363">QUARKUS_STORK__SERVICE_NAME__SERVICE_REGISTRAR_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47363" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-56063">QUARKUS_STORK__SERVICE_NAME__SERVICE_REGISTRAR_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56063" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -546,7 +550,7 @@ This configuration section is optional</p></th>
 <p>Service Registrar parameters. Check the documentation of the selected registrar type for available parameters</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47364">QUARKUS_STORK__SERVICE_NAME__SERVICE_REGISTRAR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47364" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-56064">QUARKUS_STORK__SERVICE_NAME__SERVICE_REGISTRAR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56064" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -401,7 +405,7 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
 <p>If Dev Services for Kubernetes should be used. (default to true) If this is true and kubernetes client is not configured then a kubernetes cluster will be started and will be used.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54150">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54150" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62921">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62921" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -422,7 +426,7 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
 <p>The kubernetes api server version to use. If not set, Dev Services for Kubernetes will use the latest supported version of the given flavor. see <a href="https://github.com/dajudge/kindcontainer/blob/master/k8s-versions.json" class="bare">https://github.com/dajudge/kindcontainer/blob/master/k8s-versions.json</a></p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54151">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_API_VERSION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54151" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62922">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_API_VERSION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62922" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -443,7 +447,7 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
 <p>The flavor to use (kind, k3s or api-only). If not set, Dev Services for Kubernetes will set it to: api-only.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54152">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_FLAVOR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54152" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62923">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_FLAVOR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62923" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -466,7 +470,7 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
 <p>By default, if a kubeconfig is found, Dev Services for Kubernetes will not start. Set this to true to override the kubeconfig config.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54153">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_OVERRIDE_KUBECONFIG</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54153" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62924">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_OVERRIDE_KUBECONFIG</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62924" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -493,7 +497,7 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
 <p>Container sharing is only used in dev mode.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54154">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54154" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62925">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62925" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -517,7 +521,7 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
 <p>This property is used when you need multiple shared Kubernetes clusters.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54155">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54155" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62926">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62926" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -538,7 +542,7 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
 <p>Environment variables that are passed to the container.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54156">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_CONTAINER_ENV__ENVIRONMENT_VARIABLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54156" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62927">QUARKUS_KUBERNETES_CLIENT_DEVSERVICES_CONTAINER_ENV__ENVIRONMENT_VARIABLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62927" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -576,6 +580,9 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
     <div class="grid__item width-6-12 width-12-12-m">
       <h3>On the same topics</h3>
       <ul class="related-content">
+      
+        
+        <li class="guide"><a href="/version/main/guides/compose-dev-services">Compose Dev Services</a></li>
       
         
         <li class="howto"><a href="/version/main/guides/security-openid-connect-dev-services">Dev Services and Dev UI for OpenID Connect (OIDC)</a></li>
@@ -617,7 +624,13 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
         <li class="guide"><a href="/version/main/guides/continuous-testing">Continuous Testing</a></li>
       
         
-        <li class="guide"><a href="/version/main/guides/deploying-to-openshift">Deploying Quarkus applications to {openshift}</a></li>
+        <li class="howto"><a href="/version/main/guides/deploying-to-openshift-howto">Deploy Quarkus applications to OpenShift in a single step</a></li>
+      
+        
+        <li class="howto"><a href="/version/main/guides/deploying-to-openshift-docker-howto">Deploy Quarkus Java applications to OpenShift by using a Docker build strategy</a></li>
+      
+        
+        <li class="guide"><a href="/version/main/guides/deploying-to-openshift">Deploying Quarkus applications to OpenShift</a></li>
       
         
         <li class="guide"><a href="/version/main/guides/grpc-kubernetes">Deploying your gRPC Service in Kubernetes</a></li>
@@ -627,15 +640,6 @@ quarkus.kubernetes-client.devservices.api-version=1.22</code></pre>
       
         
         <li class="guide"><a href="/version/main/guides/dev-mode-differences">How dev mode differs from a production application</a></li>
-      
-        
-        <li class="guide"><a href="/version/main/guides/init-tasks">Initialization tasks</a></li>
-      
-        
-        <li class="guide"><a href="/version/main/guides/kafka-dev-ui">Kafka Dev UI</a></li>
-      
-        
-        <li class="guide"><a href="/version/main/guides/kubernetes-client">Kubernetes Client</a></li>
       </ul>
     </div>
     </div>

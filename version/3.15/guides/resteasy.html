@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -298,7 +302,7 @@ cd rest-json-quickstart</code></pre>
 <div class="title">Maven</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.15.3.1:create \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.15.4:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=rest-json-quickstart \
     -Dextensions='resteasy-jackson' \
@@ -384,7 +388,7 @@ cd rest-json-quickstart</code></pre>
 <div class="title">Maven</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.15.3.1:create \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.15.4:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=rest-json-quickstart \
     -Dextensions='resteasy-jsonb' \
@@ -1368,7 +1372,7 @@ If enabled, a response body is compressed if the <code>Content-Type</code> HTTP 
 <p>Note that the default value is UTF-8 which is different from RESTEasy&#8217;s default value US-ASCII.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-30348">QUARKUS_RESTEASY_MULTIPART_INPUT_PART_DEFAULT_CHARSET</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-30348" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-30460">QUARKUS_RESTEASY_MULTIPART_INPUT_PART_DEFAULT_CHARSET</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-30460" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1388,7 +1392,7 @@ If enabled, a response body is compressed if the <code>Content-Type</code> HTTP 
 <p>The default content-type.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-30349">QUARKUS_RESTEASY_MULTIPART_INPUT_PART_DEFAULT_CONTENT_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-30349" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-30461">QUARKUS_RESTEASY_MULTIPART_INPUT_PART_DEFAULT_CONTENT_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-30461" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

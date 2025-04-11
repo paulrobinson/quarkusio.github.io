@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -620,7 +624,7 @@ public class BookService {
 </div>
 </div>
 <div class="paragraph">
-<p>Calling the service in your rest end point triggers the <code>Book</code> validation automatically:</p>
+<p>Calling such service method, e.g. in your rest end point, triggers the <code>Book</code> validation automatically:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -640,11 +644,31 @@ public Result tryMeServiceMethodValidation(Book book) {
 </div>
 <div class="paragraph">
 <p>Note that, if you want to push the validation errors to the frontend, you have to catch the exception and push the information yourselves
-as they will not be automatically pushed to the JSON output.</p>
+as they will not be automatically pushed to the JSON output and will be treated as any other internal server errors.</p>
 </div>
 <div class="paragraph">
-<p>Keep in mind that you usually don&#8217;t want to expose to the public the internals of your services
-- and especially not the validated value contained in the violation object.</p>
+<p>Keep in mind that you usually don&#8217;t want to expose to the public the internals of your services&#8201;&#8212;&#8201;and especially not the validated value contained in the violation object.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>By default, only failing the validation of the constraints defined for the parameters of the REST endpoints
+will result in bad request responses with a validation report as a part of the response body.
+In any other case, e.g. validation of service methods (be it parameters or return values),
+validation of the return value of a REST endpoint, etc., will result in an internal server error (response status code <code>5xx</code>),
+unless the application code explicitly catches and handles the <code>ConstraintViolationException</code> (or a custom <code>ExceptionMapper</code> is implemented).
+The reasoning behind such behaviour is that only REST endpoint parameters are considered as the user input
+and hence can be treated as a bad request (response status code <code>4xx</code>),
+At the same time, constraint violations in other places result from the application logic execution and, hence, are treated as internal errors.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1179,7 +1203,7 @@ is called.</p>
 <p>Enable the fail fast mode. When fail fast is enabled the validation will stop on the first constraint violation detected.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-56051">QUARKUS_HIBERNATE_VALIDATOR_FAIL_FAST</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56051" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64828">QUARKUS_HIBERNATE_VALIDATOR_FAIL_FAST</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64828" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1215,7 +1239,7 @@ is called.</p>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-56052">QUARKUS_HIBERNATE_VALIDATOR_METHOD_VALIDATION_ALLOW_OVERRIDING_PARAMETER_CONSTRAINTS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56052" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64829">QUARKUS_HIBERNATE_VALIDATOR_METHOD_VALIDATION_ALLOW_OVERRIDING_PARAMETER_CONSTRAINTS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64829" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1246,7 +1270,7 @@ is called.</p>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-56053">QUARKUS_HIBERNATE_VALIDATOR_METHOD_VALIDATION_ALLOW_PARAMETER_CONSTRAINTS_ON_PARALLEL_METHODS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56053" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64830">QUARKUS_HIBERNATE_VALIDATOR_METHOD_VALIDATION_ALLOW_PARAMETER_CONSTRAINTS_ON_PARALLEL_METHODS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64830" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1277,7 +1301,7 @@ is called.</p>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-56054">QUARKUS_HIBERNATE_VALIDATOR_METHOD_VALIDATION_ALLOW_MULTIPLE_CASCADED_VALIDATION_ON_RETURN_VALUES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56054" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64831">QUARKUS_HIBERNATE_VALIDATOR_METHOD_VALIDATION_ALLOW_MULTIPLE_CASCADED_VALIDATION_ON_RETURN_VALUES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64831" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1309,7 +1333,7 @@ is called.</p>
 <p>In particular, it doesn&#8217;t affect the default EL feature level for custom violations created programmatically in validator implementations. The feature level for those can only be configured directly in the validator implementation.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-56055">QUARKUS_HIBERNATE_VALIDATOR_EXPRESSION_LANGUAGE_CONSTRAINT_EXPRESSION_FEATURE_LEVEL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-56055" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64832">QUARKUS_HIBERNATE_VALIDATOR_EXPRESSION_LANGUAGE_CONSTRAINT_EXPRESSION_FEATURE_LEVEL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64832" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -236,7 +240,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Logging</strong>, classical local or distributed logs</p>
+<p><strong>Logging</strong>, classical local or centralised logs</p>
 </li>
 <li>
 <p><strong>Metrics</strong>, metrics calculated in each Quarkus application instance</p>
@@ -245,7 +249,7 @@
 <p><strong>Tracing</strong>, distributed tracing across applications</p>
 </li>
 <li>
-<p><strong>Profiling</strong>, to analize and monitor the application&#8217;s performance, resource usage, and runtime behavior</p>
+<p><strong>Profiling</strong>, to analyze and monitor the application&#8217;s performance, resource usage, and runtime behavior</p>
 </li>
 <li>
 <p><strong>Events</strong>, the most generic signal. It&#8217;s a representation of something significant happening during the execution of a program.</p>

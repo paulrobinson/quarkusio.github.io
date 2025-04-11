@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" selected>3.19.3 - Latest</option>
+        <option value="latest" selected>3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -352,7 +356,7 @@ cd security-openid-connect-multi-tenancy-quickstart</code></pre>
 <div class="title">Maven</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.19.3:create \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.21.2:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=security-openid-connect-multi-tenancy-quickstart \
     -Dextensions='oidc,rest-jackson' \
@@ -1207,6 +1211,22 @@ quarkus.http.auth.permission.authenticated.applies-to=JAXRS <i class="conum" dat
 <td>Tell Quarkus to run the HTTP permission check after the tenant has been selected with the <code>@Tenant</code> annotation.</td>
 </tr>
 </table>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>io.quarkus.oidc.Tenant</code> annotation can be used to select tenant for a WebSockets Next server endpoint.
+The annotation must be placed on the endpoint class, because the <code>SecurityIdentity</code> is created before the HTTP connection is upgraded to a WebSocket connection.
+For more information about the HTTP upgrade security, see the <a href="websockets-next-reference#secure-http-upgrade">Secure HTTP upgrade</a> section of the Quarkus "WebSockets Next reference" guide.</p>
 </div>
 </td>
 </tr>

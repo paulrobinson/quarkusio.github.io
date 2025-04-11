@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -574,7 +578,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>Whether or not the Jacoco extension is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55959">QUARKUS_JACOCO_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55959" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64736">QUARKUS_JACOCO_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64736" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -595,7 +599,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>The Jacoco data file. The path can be relative (to the module) or absolute.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55960">QUARKUS_JACOCO_DATA_FILE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55960" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64737">QUARKUS_JACOCO_DATA_FILE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64737" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -616,7 +620,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>Whether to reuse (<code>true</code>) or delete (<code>false</code>) the Jacoco data file on each run.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55961">QUARKUS_JACOCO_REUSE_DATA_FILE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55961" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64738">QUARKUS_JACOCO_REUSE_DATA_FILE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64738" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -637,7 +641,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>If Quarkus should generate the Jacoco report</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55962">QUARKUS_JACOCO_REPORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55962" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64739">QUARKUS_JACOCO_REPORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64739" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -658,7 +662,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>Encoding of the generated reports.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55963">QUARKUS_JACOCO_OUTPUT_ENCODING</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55963" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64740">QUARKUS_JACOCO_OUTPUT_ENCODING</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64740" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -679,7 +683,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>Name of the root node HTML report pages.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55964">QUARKUS_JACOCO_TITLE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55964" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64741">QUARKUS_JACOCO_TITLE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64741" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -700,7 +704,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>Footer text used in HTML report pages.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55965">QUARKUS_JACOCO_FOOTER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55965" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64742">QUARKUS_JACOCO_FOOTER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64742" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -721,7 +725,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>Encoding of the source files.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55966">QUARKUS_JACOCO_SOURCE_ENCODING</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55966" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64743">QUARKUS_JACOCO_SOURCE_ENCODING</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64743" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -758,7 +762,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 </ul>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55967">QUARKUS_JACOCO_INCLUDES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55967" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64744">QUARKUS_JACOCO_INCLUDES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64744" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -795,7 +799,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 </ul>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55968">QUARKUS_JACOCO_EXCLUDES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55968" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64745">QUARKUS_JACOCO_EXCLUDES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64745" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -816,7 +820,7 @@ the <code>quarkus-jacoco</code> extension allows JaCoCo to just work out of the 
 <p>The location of the report files. The path can be relative (to the module) or absolute.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55969">QUARKUS_JACOCO_REPORT_LOCATION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55969" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64746">QUARKUS_JACOCO_REPORT_LOCATION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64746" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1256,6 +1260,9 @@ But remember, some code that is not covered is certainly not well tested. But so
         <li class="guide"><a href="/version/main/guides/cli-tooling">Building Quarkus apps with Quarkus Command Line Interface (CLI)</a></li>
       
         
+        <li class="guide"><a href="/version/main/guides/compose-dev-services">Compose Dev Services</a></li>
+      
+        
         <li class="guide"><a href="/version/main/guides/upx">Compressing native executables using UPX</a></li>
       
         
@@ -1299,9 +1306,6 @@ But remember, some code that is not covered is certainly not well tested. But so
       
         
         <li class="guide"><a href="/version/main/guides/jreleaser">Packaging And Releasing With JReleaser</a></li>
-      
-        
-        <li class="guide"><a href="/version/main/guides/gradle-tooling">Quarkus and Gradle</a></li>
       </ul>
     </div>
     </div>

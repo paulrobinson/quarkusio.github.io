@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -412,7 +416,13 @@ More information about the health extension can be found in <a href="smallrye-he
         <li class="guide"><a href="/version/main/guides/grpc-service-consumption">Consuming a gRPC Service</a></li>
       
         
-        <li class="guide"><a href="/version/main/guides/deploying-to-openshift">Deploying Quarkus applications to {openshift}</a></li>
+        <li class="howto"><a href="/version/main/guides/deploying-to-openshift-howto">Deploy Quarkus applications to OpenShift in a single step</a></li>
+      
+        
+        <li class="howto"><a href="/version/main/guides/deploying-to-openshift-docker-howto">Deploy Quarkus Java applications to OpenShift by using a Docker build strategy</a></li>
+      
+        
+        <li class="guide"><a href="/version/main/guides/deploying-to-openshift">Deploying Quarkus applications to OpenShift</a></li>
       
         
         <li class="guide"><a href="/version/main/guides/kubernetes-dev-services">Dev Services for Kubernetes</a></li>
@@ -449,6 +459,9 @@ More information about the health extension can be found in <a href="smallrye-he
       
         
         <li class="guide"><a href="/version/main/guides/grpc-cli">Using gRPC CLI</a></li>
+      
+        
+        <li class="howto"><a href="/version/main/guides/deploying-to-openshift-s2i-howto">Using S2I to deploy Quarkus applications to OpenShift</a></li>
       
         
         <li class="guide"><a href="/version/main/guides/stork-kubernetes">Using Stork with Kubernetes</a></li>

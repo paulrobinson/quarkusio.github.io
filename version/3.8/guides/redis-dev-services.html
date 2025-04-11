@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -258,7 +262,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>When DevServices is enabled Quarkus will attempt to automatically configure and start a database when running in Dev or Test mode and when Docker is running.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46624">QUARKUS_REDIS_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46624" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55324">QUARKUS_REDIS_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55324" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -278,7 +282,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>The container image name to use, for container based DevServices providers. If you want to use Redis Stack modules (bloom, graph, search&#8230;&#8203;), use: <code>redis/redis-stack:latest</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46625">QUARKUS_REDIS_DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46625" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55325">QUARKUS_REDIS_DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55325" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -301,7 +305,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>If not defined, the port will be chosen randomly.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46626">QUARKUS_REDIS_DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46626" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55326">QUARKUS_REDIS_DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55326" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -327,7 +331,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>Container sharing is only used in dev mode.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46627">QUARKUS_REDIS_DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46627" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55327">QUARKUS_REDIS_DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55327" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -350,7 +354,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>This property is used when you need multiple shared Redis servers.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46628">QUARKUS_REDIS_DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46628" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55328">QUARKUS_REDIS_DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55328" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -370,7 +374,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>Environment variables that are passed to the container.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46629">QUARKUS_REDIS_DEVSERVICES_CONTAINER_ENV</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46629" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55329">QUARKUS_REDIS_DEVSERVICES_CONTAINER_ENV</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55329" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -393,7 +397,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>When DevServices is enabled Quarkus will attempt to automatically configure and start a database when running in Dev or Test mode and when Docker is running.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46630">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46630" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55330">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55330" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -413,7 +417,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>The container image name to use, for container based DevServices providers. If you want to use Redis Stack modules (bloom, graph, search&#8230;&#8203;), use: <code>redis/redis-stack:latest</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46631">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46631" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55331">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55331" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -436,7 +440,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>If not defined, the port will be chosen randomly.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46632">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46632" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55332">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55332" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -462,7 +466,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>Container sharing is only used in dev mode.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46633">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46633" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55333">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55333" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -485,7 +489,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>This property is used when you need multiple shared Redis servers.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46634">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46634" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55334">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55334" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -505,7 +509,7 @@ Quarkus will automatically start a Redis container when running tests or dev mod
 <p>Environment variables that are passed to the container.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-46635">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_CONTAINER_ENV</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-46635" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-55335">QUARKUS_REDIS__ADDITIONAL_REDIS_CLIENTS__DEVSERVICES_CONTAINER_ENV</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55335" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

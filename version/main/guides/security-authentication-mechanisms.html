@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -553,7 +557,7 @@ public Response logout() {
 <p>By default, if the permission set is defined, it is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55314">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55314" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64088">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64088" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -577,7 +581,7 @@ public Response logout() {
 <p>There are three built-in policies: permit, deny and authenticated. Role based policies can be defined, and extensions can add their own policies.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55315">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__POLICY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55315" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64089">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__POLICY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64089" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -607,7 +611,7 @@ public Response logout() {
 <p>This means that for example if Quarkus is configured to allow GET and POST requests to /admin to and no other permissions are configured PUT requests to /admin will be denied.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55316">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__METHODS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55316" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64090">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__METHODS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64090" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -634,7 +638,7 @@ public Response logout() {
 <p>If multiple permission sets match the same path then explicit methods matches take precedence over matches without methods set, otherwise the most restrictive permissions are applied.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55317">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__PATHS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55317" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64091">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__PATHS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64091" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -655,7 +659,7 @@ public Response logout() {
 <p>Path specific authentication mechanism which must be used to authenticate a user. It needs to match <code>io.quarkus.vertx.http.runtime.security.HttpCredentialTransport</code> authentication scheme such as 'basic', 'bearer', 'form', etc.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55318">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__AUTH_MECHANISM</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55318" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64092">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__AUTH_MECHANISM</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64092" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -676,7 +680,7 @@ public Response logout() {
 <p>Indicates that this policy always applies to the matched paths in addition to the policy with a winning path. Avoid creating more than one shared policy to minimize the performance impact.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55319">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55319" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64093">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64093" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -697,7 +701,7 @@ public Response logout() {
 <p>Whether permission check should be applied on all matching paths, or paths specific for the Jakarta REST resources.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55320">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__APPLIES_TO</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55320" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64094">QUARKUS_HTTP_AUTH_PERMISSION__PERMISSIONS__APPLIES_TO</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64094" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -720,7 +724,7 @@ public Response logout() {
 <p>The roles that are allowed to access resources protected by this policy. By default, access is allowed to any authenticated user.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55321">QUARKUS_HTTP_AUTH_POLICY__ROLE_POLICY__ROLES_ALLOWED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55321" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64095">QUARKUS_HTTP_AUTH_POLICY__ROLE_POLICY__ROLES_ALLOWED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64095" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -741,7 +745,7 @@ public Response logout() {
 <p>Add roles granted to the <code>SecurityIdentity</code> based on the roles that the <code>SecurityIdentity</code> already have. For example, the Quarkus OIDC extension can map roles from the verified JWT access token, and you may want to remap them to a deployment specific roles.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55322">QUARKUS_HTTP_AUTH_POLICY__ROLE_POLICY__ROLES__ROLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55322" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64096">QUARKUS_HTTP_AUTH_POLICY__ROLE_POLICY__ROLES__ROLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64096" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -762,7 +766,7 @@ public Response logout() {
 <p>Permissions granted to the <code>SecurityIdentity</code> if this policy is applied successfully (the policy allows request to proceed) and the authenticated request has required role. For example, you can map permission <code>perm1</code> with actions <code>action1</code> and <code>action2</code> to role <code>admin</code> by setting <code>quarkus.http.auth.policy.role-policy1.permissions.admin=perm1:action1,perm1:action2</code> configuration property. Granted permissions are used for authorization with the <code>@PermissionsAllowed</code> annotation.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55323">QUARKUS_HTTP_AUTH_POLICY__ROLE_POLICY__PERMISSIONS__ROLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55323" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64097">QUARKUS_HTTP_AUTH_POLICY__ROLE_POLICY__PERMISSIONS__ROLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64097" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -783,7 +787,7 @@ public Response logout() {
 <p>Permissions granted by this policy will be created with a <code>java.security.Permission</code> implementation specified by this configuration property. The permission class must declare exactly one constructor that accepts permission name (<code>String</code>) or permission name and actions (<code>String</code>, <code>String[]</code>). Permission class must be registered for reflection if you run your application in a native mode.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55324">QUARKUS_HTTP_AUTH_POLICY__ROLE_POLICY__PERMISSION_CLASS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55324" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64098">QUARKUS_HTTP_AUTH_POLICY__ROLE_POLICY__PERMISSION_CLASS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64098" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -807,7 +811,7 @@ public Response logout() {
 <p>For example, if <code>SecurityIdentity</code> has a <code>user</code> role and the endpoint is secured with a 'UserRole' role, use this property to map the <code>user</code> role to the <code>UserRole</code> role, and have <code>SecurityIdentity</code> to have both <code>user</code> and <code>UserRole</code> roles.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55325">QUARKUS_HTTP_AUTH_ROLES_MAPPING__ROLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55325" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64099">QUARKUS_HTTP_AUTH_ROLES_MAPPING__ROLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64099" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -844,7 +848,7 @@ public Response logout() {
 </ul>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55326">QUARKUS_HTTP_AUTH_CERTIFICATE_ROLE_ATTRIBUTE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55326" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64100">QUARKUS_HTTP_AUTH_CERTIFICATE_ROLE_ATTRIBUTE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64100" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -868,7 +872,7 @@ public Response logout() {
 <p>Properties file is expected to have the <code>CN_VALUE=role1,role,&#8230;&#8203;,roleN</code> format and should be encoded using UTF-8.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55327">QUARKUS_HTTP_AUTH_CERTIFICATE_ROLE_PROPERTIES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55327" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64101">QUARKUS_HTTP_AUTH_CERTIFICATE_ROLE_PROPERTIES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64101" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -889,7 +893,7 @@ public Response logout() {
 <p>The authentication realm</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55328">QUARKUS_HTTP_AUTH_REALM</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55328" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64102">QUARKUS_HTTP_AUTH_REALM</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64102" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -910,7 +914,7 @@ public Response logout() {
 <p>The login page. Redirect to login page can be disabled by setting <code>quarkus.http.auth.form.login-page=</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55329">QUARKUS_HTTP_AUTH_FORM_LOGIN_PAGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55329" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64103">QUARKUS_HTTP_AUTH_FORM_LOGIN_PAGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64103" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -931,7 +935,7 @@ public Response logout() {
 <p>The username field name.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55330">QUARKUS_HTTP_AUTH_FORM_USERNAME_PARAMETER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55330" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64104">QUARKUS_HTTP_AUTH_FORM_USERNAME_PARAMETER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64104" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -952,7 +956,7 @@ public Response logout() {
 <p>The password field name.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55331">QUARKUS_HTTP_AUTH_FORM_PASSWORD_PARAMETER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55331" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64105">QUARKUS_HTTP_AUTH_FORM_PASSWORD_PARAMETER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64105" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -973,7 +977,7 @@ public Response logout() {
 <p>The error page. Redirect to error page can be disabled by setting <code>quarkus.http.auth.form.error-page=</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55332">QUARKUS_HTTP_AUTH_FORM_ERROR_PAGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55332" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64106">QUARKUS_HTTP_AUTH_FORM_ERROR_PAGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64106" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -994,7 +998,7 @@ public Response logout() {
 <p>The landing page to redirect to if there is no saved page to redirect back to. Redirect to landing page can be disabled by setting <code>quarkus.http.auth.form.landing-page=</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55333">QUARKUS_HTTP_AUTH_FORM_LANDING_PAGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55333" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64107">QUARKUS_HTTP_AUTH_FORM_LANDING_PAGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64107" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1015,7 +1019,7 @@ public Response logout() {
 <p>Option to control the name of the cookie used to redirect the user back to the location they want to access.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55334">QUARKUS_HTTP_AUTH_FORM_LOCATION_COOKIE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55334" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64108">QUARKUS_HTTP_AUTH_FORM_LOCATION_COOKIE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64108" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1039,7 +1043,7 @@ public Response logout() {
 <p>When inactivity timeout is reached, cookie is not renewed and a new login is enforced.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55335">QUARKUS_HTTP_AUTH_FORM_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55335" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64109">QUARKUS_HTTP_AUTH_FORM_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64109" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1069,7 +1073,7 @@ public Response logout() {
 <p>That is, no timeout is tracked on the server side; the timestamp is encoded and encrypted in the cookie itself, and it is decrypted and parsed with each request.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55336">QUARKUS_HTTP_AUTH_FORM_NEW_COOKIE_INTERVAL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55336" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64110">QUARKUS_HTTP_AUTH_FORM_NEW_COOKIE_INTERVAL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64110" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1090,7 +1094,7 @@ public Response logout() {
 <p>The cookie that is used to store the persistent session</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55337">QUARKUS_HTTP_AUTH_FORM_COOKIE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55337" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64111">QUARKUS_HTTP_AUTH_FORM_COOKIE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64111" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1111,7 +1115,7 @@ public Response logout() {
 <p>The cookie path for the session and location cookies.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55338">QUARKUS_HTTP_AUTH_FORM_COOKIE_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55338" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64112">QUARKUS_HTTP_AUTH_FORM_COOKIE_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64112" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1132,7 +1136,7 @@ public Response logout() {
 <p>Set the HttpOnly attribute to prevent access to the cookie via JavaScript.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55339">QUARKUS_HTTP_AUTH_FORM_HTTP_ONLY_COOKIE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55339" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64113">QUARKUS_HTTP_AUTH_FORM_HTTP_ONLY_COOKIE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64113" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1153,7 +1157,7 @@ public Response logout() {
 <p>SameSite attribute for the session and location cookies.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55340">QUARKUS_HTTP_AUTH_FORM_COOKIE_SAME_SITE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55340" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64114">QUARKUS_HTTP_AUTH_FORM_COOKIE_SAME_SITE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64114" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1179,7 +1183,7 @@ public Response logout() {
 <p>The default value is empty, which means the cookie will be kept until the browser is closed.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55341">QUARKUS_HTTP_AUTH_FORM_COOKIE_MAX_AGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55341" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64115">QUARKUS_HTTP_AUTH_FORM_COOKIE_MAX_AGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64115" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1220,7 +1224,7 @@ public Response logout() {
 <p>This property will be ignored if the path specific authentication is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55342">QUARKUS_HTTP_AUTH_INCLUSIVE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55342" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64116">QUARKUS_HTTP_AUTH_INCLUSIVE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64116" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1241,7 +1245,7 @@ public Response logout() {
 <p>Inclusive authentication mode.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55343">QUARKUS_HTTP_AUTH_INCLUSIVE_MODE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55343" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64117">QUARKUS_HTTP_AUTH_INCLUSIVE_MODE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64117" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

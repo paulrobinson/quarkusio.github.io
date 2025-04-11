@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -353,7 +357,7 @@ The ports 5672 and 8161 (web console) are exposed.
 <p>If Dev Services for AMQP has been explicitly enabled or disabled. Dev Services are generally enabled by default, unless there is an existing configuration present. For AMQP, Dev Services starts a broker unless <code>amqp-host</code> or <code>amqp-port</code> are set or if all the Reactive Messaging AMQP channel are configured with <code>host</code> or <code>port</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-51645">QUARKUS_AMQP_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-51645" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-60379">QUARKUS_AMQP_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-60379" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -377,7 +381,7 @@ The ports 5672 and 8161 (web console) are exposed.
 <p>If not defined, the port will be chosen randomly.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-51646">QUARKUS_AMQP_DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-51646" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-60380">QUARKUS_AMQP_DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-60380" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -401,7 +405,7 @@ The ports 5672 and 8161 (web console) are exposed.
 <p>Check the <a href="https://quay.io/repository/artemiscloud/activemq-artemis-broker">activemq-artemis-broker on Quay page</a> to find the available versions.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-51647">QUARKUS_AMQP_DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-51647" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-60381">QUARKUS_AMQP_DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-60381" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -422,7 +426,7 @@ The ports 5672 and 8161 (web console) are exposed.
 <p>The value of the <code>AMQ_EXTRA_ARGS</code> environment variable to pass to the container. For ActiveMQ Artemis Broker &#8656; 1.0.21, set this property to <code>--no-autotune --mapped --no-fsync --relax-jolokia --http-host 0.0.0.0</code></p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-51648">QUARKUS_AMQP_DEVSERVICES_EXTRA_ARGS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-51648" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-60382">QUARKUS_AMQP_DEVSERVICES_EXTRA_ARGS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-60382" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -449,7 +453,7 @@ The ports 5672 and 8161 (web console) are exposed.
 <p>Container sharing is only used in dev mode.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-51649">QUARKUS_AMQP_DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-51649" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-60383">QUARKUS_AMQP_DEVSERVICES_SHARED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-60383" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -473,7 +477,7 @@ The ports 5672 and 8161 (web console) are exposed.
 <p>This property is used when you need multiple shared AMQP brokers.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-51650">QUARKUS_AMQP_DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-51650" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-60384">QUARKUS_AMQP_DEVSERVICES_SERVICE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-60384" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -494,7 +498,7 @@ The ports 5672 and 8161 (web console) are exposed.
 <p>Environment variables that are passed to the container.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-51651">QUARKUS_AMQP_DEVSERVICES_CONTAINER_ENV__ENVIRONMENT_VARIABLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-51651" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-60385">QUARKUS_AMQP_DEVSERVICES_CONTAINER_ENV__ENVIRONMENT_VARIABLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-60385" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -552,6 +556,9 @@ The ports 5672 and 8161 (web console) are exposed.
         <li class="reference"><a href="/version/main/guides/rabbitmq-reference">Reactive Messaging RabbitMQ Connector Reference Documentation</a></li>
       
         
+        <li class="guide"><a href="/version/main/guides/compose-dev-services">Compose Dev Services</a></li>
+      
+        
         <li class="howto"><a href="/version/main/guides/security-openid-connect-dev-services">Dev Services and Dev UI for OpenID Connect (OIDC)</a></li>
       
         
@@ -592,9 +599,6 @@ The ports 5672 and 8161 (web console) are exposed.
       
         
         <li class="guide"><a href="/version/main/guides/dev-ui">Dev UI for extension developers</a></li>
-      
-        
-        <li class="guide"><a href="/version/main/guides/kafka-getting-started">Getting Started to Quarkus Messaging with Apache Kafka</a></li>
       </ul>
     </div>
     </div>

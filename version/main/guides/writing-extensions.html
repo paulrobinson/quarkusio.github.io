@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -666,7 +670,7 @@ In this chapter, we will cover a use case that can be used to initialize extensi
 @Record(STATIC_INIT)
 SyntheticBeanBuildItem syntheticBean(TestRecorder recorder) {
    return SyntheticBeanBuildItem.configure(Foo.class).scope(Singleton.class)
-                .runtimeValue(recorder.createFoo("parameters are recorder in the bytecode")) <i class="conum" data-value="1"></i><b>(1)</b>
+                .runtimeValue(recorder.createFoo("parameters are recorded in the bytecode")) <i class="conum" data-value="1"></i><b>(1)</b>
                 .done();
 }</code></pre>
 </div>
@@ -686,7 +690,7 @@ SyntheticBeanBuildItem syntheticBean(TestRecorder recorder) {
 @Record(STATIC_INIT)
 SyntheticBeanBuildItem syntheticBean(TestRecorder recorder) {
    return SyntheticBeanBuildItem.configure(TestContext.class).scope(Singleton.class)
-                .runtimeValue(recorder.createContext("parameters are recorder in the bytecode")) <i class="conum" data-value="1"></i><b>(1)</b>
+                .runtimeValue(recorder.createContext("parameters are recorded in the bytecode")) <i class="conum" data-value="1"></i><b>(1)</b>
                 .done();
 }</code></pre>
 </div>

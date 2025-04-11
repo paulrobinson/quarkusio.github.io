@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" selected>3.19.3 - Latest</option>
+        <option value="latest" selected>3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -605,6 +609,20 @@ Let&#8217;s check again with SSL support entirely disabled:</p>
 <div class="sect1">
 <h2 id="the-truststore-path"><a class="anchor" href="#the-truststore-path"></a>The TrustStore path</h2>
 <div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This section explains how to configure the default trust store when building a native executable.
+However, it is <strong>strongly recommended</strong> to use the <a href="./tls-registry-reference">TLS registry</a> instead.
+The TLS registry ensures a consistent experience and feature set across both JVM and native modes.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>

@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -692,7 +696,7 @@ If you prefer an OpenMetrics export rather than the JSON format, remove the <cod
 <p>The path to the metrics handler.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-15346">QUARKUS_SMALLRYE_METRICS_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-15346" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-15458">QUARKUS_SMALLRYE_METRICS_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-15458" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -712,7 +716,7 @@ If you prefer an OpenMetrics export rather than the JSON format, remove the <cod
 <p>Whether metrics published by Quarkus extensions should be enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-15347">QUARKUS_SMALLRYE_METRICS_EXTENSIONS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-15347" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-15459">QUARKUS_SMALLRYE_METRICS_EXTENSIONS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-15459" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -732,7 +736,7 @@ If you prefer an OpenMetrics export rather than the JSON format, remove the <cod
 <p>Apply Micrometer compatibility mode, where instead of regular 'base' and 'vendor' metrics, Quarkus exposes the same 'jvm' metrics that Micrometer does. Application metrics are unaffected by this mode. The use case is to facilitate migration from Micrometer-based metrics, because original dashboards for JVM metrics will continue working without having to rewrite them.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-15348">QUARKUS_SMALLRYE_METRICS_MICROMETER_COMPATIBILITY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-15348" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-15460">QUARKUS_SMALLRYE_METRICS_MICROMETER_COMPATIBILITY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-15460" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -753,7 +757,7 @@ If you prefer an OpenMetrics export rather than the JSON format, remove the <cod
 See <a href="https://github.com/eclipse/microprofile-metrics/blob/2.3.x/spec/src/main/asciidoc/required-metrics.adoc#optional-rest">MicroProfile Metrics: Optional REST metrics</a>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-15349">QUARKUS_SMALLRYE_METRICS_JAXRS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-15349" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-15461">QUARKUS_SMALLRYE_METRICS_JAXRS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-15461" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

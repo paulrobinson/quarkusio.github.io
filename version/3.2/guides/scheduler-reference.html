@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -921,7 +925,7 @@ You can even disable the scheduler for particular <a href="getting-started-testi
 <p>The syntax used in CRON expressions.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-38758">QUARKUS_SCHEDULER_CRON_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38758" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-38870">QUARKUS_SCHEDULER_CRON_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38870" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -943,7 +947,7 @@ You can even disable the scheduler for particular <a href="getting-started-testi
 <p>Scheduled task metrics will be enabled if a metrics extension is present and this value is true.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-38759">QUARKUS_SCHEDULER_METRICS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38759" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-38871">QUARKUS_SCHEDULER_METRICS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38871" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -963,7 +967,7 @@ You can even disable the scheduler for particular <a href="getting-started-testi
 <p>Tracing will be enabled if the OpenTelemetry extension is present and this value is true.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-38760">QUARKUS_SCHEDULER_TRACING_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38760" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-38872">QUARKUS_SCHEDULER_TRACING_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38872" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -983,7 +987,7 @@ You can even disable the scheduler for particular <a href="getting-started-testi
 <p>If schedulers are enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-38761">QUARKUS_SCHEDULER_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38761" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-38873">QUARKUS_SCHEDULER_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38873" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1003,7 +1007,7 @@ You can even disable the scheduler for particular <a href="getting-started-testi
 <p>Scheduled task will be flagged as overdue if next execution time is exceeded by this period.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-38762">QUARKUS_SCHEDULER_OVERDUE_GRACE_PERIOD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38762" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-38874">QUARKUS_SCHEDULER_OVERDUE_GRACE_PERIOD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38874" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1024,7 +1028,7 @@ You can even disable the scheduler for particular <a href="getting-started-testi
 <p>Scheduler can be started in different modes. By default, the scheduler is not started unless a <code>io.quarkus.scheduler.Scheduled</code> business method is found.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-38763">QUARKUS_SCHEDULER_START_MODE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38763" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-38875">QUARKUS_SCHEDULER_START_MODE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-38875" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

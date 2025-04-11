@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -1439,9 +1443,9 @@ this.logControl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@BuildStep(onlyIf = IsDevelopment.class)<i class="conum" data-value="1"></i><b>(1)</b>
-JsonRPCProvidersBuildItem createJsonRPCServiceForCache() {<i class="conum" data-value="2"></i><b>(2)</b>
-    return new JsonRPCProvidersBuildItem(CacheJsonRPCService.class);<i class="conum" data-value="3"></i><b>(3)</b>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@BuildStep
+JsonRPCProvidersBuildItem createJsonRPCServiceForCache() {<i class="conum" data-value="1"></i><b>(1)</b>
+    return new JsonRPCProvidersBuildItem(CacheJsonRPCService.class);<i class="conum" data-value="2"></i><b>(2)</b>
 }</code></pre>
 </div>
 </div>
@@ -1449,14 +1453,10 @@ JsonRPCProvidersBuildItem createJsonRPCServiceForCache() {<i class="conum" data-
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Always only do this in Dev Mode</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Produce or return a <code>JsonRPCProvidersBuildItem</code></td>
 </tr>
 <tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Define the class in your runtime module that will contain methods that make data available in the UI</td>
 </tr>
 </table>
@@ -2139,6 +2139,9 @@ menuProducer.produce(menuPageBuildItem);</code></pre>
         <li class="guide"><a href="/version/main/guides/continuous-testing">Continuous Testing</a></li>
       
         
+        <li class="guide"><a href="/version/main/guides/compose-dev-services">Compose Dev Services</a></li>
+      
+        
         <li class="howto"><a href="/version/main/guides/security-openid-connect-dev-services">Dev Services and Dev UI for OpenID Connect (OIDC)</a></li>
       
         
@@ -2191,9 +2194,6 @@ menuProducer.produce(menuPageBuildItem);</code></pre>
       
         
         <li class="guide"><a href="/version/main/guides/getting-started-testing">Testing Your Application</a></li>
-      
-        
-        <li class="guide"><a href="/version/main/guides/openapi-swaggerui">Using OpenAPI and Swagger UI</a></li>
       </ul>
     </div>
     </div>

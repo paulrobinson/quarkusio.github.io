@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -429,7 +433,7 @@ Improvements may be necessary.</p>
 <p>Whether load shedding should be enabled. Currently, this only applies to incoming HTTP requests.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54191">QUARKUS_LOAD_SHEDDING_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54191" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62963">QUARKUS_LOAD_SHEDDING_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62963" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -450,7 +454,7 @@ Improvements may be necessary.</p>
 <p>The maximum number of concurrent requests allowed.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54192">QUARKUS_LOAD_SHEDDING_MAX_LIMIT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54192" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62964">QUARKUS_LOAD_SHEDDING_MAX_LIMIT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62964" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -471,7 +475,7 @@ Improvements may be necessary.</p>
 <p>The <code>alpha</code> factor of the Vegas overload detection algorithm.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54193">QUARKUS_LOAD_SHEDDING_ALPHA_FACTOR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54193" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62965">QUARKUS_LOAD_SHEDDING_ALPHA_FACTOR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62965" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -492,7 +496,7 @@ Improvements may be necessary.</p>
 <p>The <code>beta</code> factor of the Vegas overload detection algorithm.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54194">QUARKUS_LOAD_SHEDDING_BETA_FACTOR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54194" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62966">QUARKUS_LOAD_SHEDDING_BETA_FACTOR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62966" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -513,7 +517,7 @@ Improvements may be necessary.</p>
 <p>The probe factor of the Vegas overload detection algorithm.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54195">QUARKUS_LOAD_SHEDDING_PROBE_FACTOR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54195" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62967">QUARKUS_LOAD_SHEDDING_PROBE_FACTOR</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62967" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -534,7 +538,7 @@ Improvements may be necessary.</p>
 <p>The initial limit of concurrent requests allowed.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54196">QUARKUS_LOAD_SHEDDING_INITIAL_LIMIT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54196" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62968">QUARKUS_LOAD_SHEDDING_INITIAL_LIMIT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62968" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -555,7 +559,7 @@ Improvements may be necessary.</p>
 <p>Whether priority load shedding should be enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-54197">QUARKUS_LOAD_SHEDDING_PRIORITY_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-54197" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-62969">QUARKUS_LOAD_SHEDDING_PRIORITY_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-62969" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

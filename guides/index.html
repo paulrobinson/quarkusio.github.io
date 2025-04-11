@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -200,8 +200,11 @@
             <option value="main" >Main - SNAPSHOT
             </option>
             
-            <option value="latest" selected>3.19.3 -
+            <option value="latest" selected>3.21.2 -
               Latest
+            </option>
+            
+            <option value="3.20" >3.20
             </option>
             
             <option value="3.15" >3.15
@@ -618,6 +621,63 @@
           
 
 <qs-guide type="howto"
+          title="Deploy Quarkus Java applications to OpenShift by using a Docker build strategy"
+          url="/guides/deploying-to-openshift-docker-howto"
+          summary="<p>This guide describes how to build and deploy a Quarkus application on OpenShift by using the Docker build strategy.</p>
+"
+          keywords=""
+          categories="cloud, native"
+          origin=""
+>
+  <!-- WE KEEP PART OF THE CONTENT FOR SEO -->
+  <h4><a href="/guides/deploying-to-openshift-docker-howto" >Deploy Quarkus Java applications to OpenShift by using a Docker build strategy</a></h4>
+  <div class="description"><p>This guide describes how to build and deploy a Quarkus application on OpenShift by using the Docker build strategy.</p>
+</div>
+</qs-guide>
+
+
+          
+          
+
+<qs-guide type="howto"
+          title="Deploy Quarkus applications to OpenShift in a single step"
+          url="/guides/deploying-to-openshift-howto"
+          summary="<p>This guide describes how to build and deploy a Quarkus application to OpenShift in a single step.</p>
+"
+          keywords=""
+          categories="cloud, native"
+          origin=""
+>
+  <!-- WE KEEP PART OF THE CONTENT FOR SEO -->
+  <h4><a href="/guides/deploying-to-openshift-howto" >Deploy Quarkus applications to OpenShift in a single step</a></h4>
+  <div class="description"><p>This guide describes how to build and deploy a Quarkus application to OpenShift in a single step.</p>
+</div>
+</qs-guide>
+
+
+          
+          
+
+<qs-guide type="howto"
+          title="Deploy {project-name} applications compiled to native executables"
+          url="/guides/deploying-to-openshift-native-howto"
+          summary="<p>You can deploy your native {project-name} applications to {openshift} compiled to native executables by using the Docker build strategy.</p>
+"
+          keywords=""
+          categories=""
+          origin=""
+>
+  <!-- WE KEEP PART OF THE CONTENT FOR SEO -->
+  <h4><a href="/guides/deploying-to-openshift-native-howto" >Deploy {project-name} applications compiled to native executables</a></h4>
+  <div class="description"><p>You can deploy your native {project-name} applications to {openshift} compiled to native executables by using the Docker build strategy.</p>
+</div>
+</qs-guide>
+
+
+          
+          
+
+<qs-guide type="howto"
           title="Dev Services and Dev UI for OpenID Connect (OIDC)"
           url="/guides/security-openid-connect-dev-services"
           summary="<p>You can use Dev Services for Keycloak and the Dev UI for the OpenID Connect (OIDC) Keycloak provider and adapt these services for other OpenID Connect providers.</p>
@@ -762,6 +822,25 @@
   <!-- WE KEEP PART OF THE CONTENT FOR SEO -->
   <h4><a href="/guides/security-openid-connect-multitenancy" >Using OpenID Connect (OIDC) multitenancy</a></h4>
   <div class="description"><p>This guide demonstrates how your OpenID Connect (OIDC) application can support multitenancy to serve multiple tenants from a single application.</p>
+</div>
+</qs-guide>
+
+
+          
+          
+
+<qs-guide type="howto"
+          title="Using S2I to deploy Quarkus applications to OpenShift"
+          url="/guides/deploying-to-openshift-s2i-howto"
+          summary="<p>This guide describes how to build and deploy a Quarkus application on OpenShift by using Source-to-Image (S2I).</p>
+"
+          keywords=""
+          categories="cloud, native"
+          origin=""
+>
+  <!-- WE KEEP PART OF THE CONTENT FOR SEO -->
+  <h4><a href="/guides/deploying-to-openshift-s2i-howto" >Using S2I to deploy Quarkus applications to OpenShift</a></h4>
+  <div class="description"><p>This guide describes how to build and deploy a Quarkus application on OpenShift by using Source-to-Image (S2I).</p>
 </div>
 </qs-guide>
 
@@ -2427,17 +2506,17 @@
           
 
 <qs-guide type="guides"
-          title="Deploying on OpenShift"
+          title="Deploying Quarkus applications to OpenShift"
           url="/guides/deploying-to-openshift"
-          summary="<p>This guide covers how to deploy a native application on OpenShift.</p>
+          summary="<p>This guide describes the deployment of Quarkus applications to OpenShift.</p>
 "
           keywords=""
           categories="cloud, native"
           origin=""
 >
   <!-- WE KEEP PART OF THE CONTENT FOR SEO -->
-  <h4><a href="/guides/deploying-to-openshift" >Deploying on OpenShift</a></h4>
-  <div class="description"><p>This guide covers how to deploy a native application on OpenShift.</p>
+  <h4><a href="/guides/deploying-to-openshift" >Deploying Quarkus applications to OpenShift</a></h4>
+  <div class="description"><p>This guide describes the deployment of Quarkus applications to OpenShift.</p>
 </div>
 </qs-guide>
 
@@ -4671,7 +4750,7 @@
 <qs-guide type="guides"
           title="Using OpenTelemetry Logging"
           url="/guides/opentelemetry-logging"
-          summary="<p>This guide explains how your Quarkus application can utilize OpenTelemetry Logging to provide distributed logging for interactive web applications.</p>
+          summary="<p>This guide explains how your Quarkus application can utilize OpenTelemetry Logging to provide centralised logging for interactive web applications.</p>
 "
           keywords=""
           categories="observability"
@@ -4679,7 +4758,7 @@
 >
   <!-- WE KEEP PART OF THE CONTENT FOR SEO -->
   <h4><a href="/guides/opentelemetry-logging" >Using OpenTelemetry Logging</a></h4>
-  <div class="description"><p>This guide explains how your Quarkus application can utilize OpenTelemetry Logging to provide distributed logging for interactive web applications.</p>
+  <div class="description"><p>This guide explains how your Quarkus application can utilize OpenTelemetry Logging to provide centralised logging for interactive web applications.</p>
 </div>
 </qs-guide>
 

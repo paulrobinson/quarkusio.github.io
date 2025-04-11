@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" selected>3.19.3 - Latest</option>
+        <option value="latest" selected>3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -343,7 +347,7 @@ cd security-ldap-quickstart</code></pre>
 <div class="title">Maven</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.19.3:create \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.21.2:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=security-ldap-quickstart \
     -Dextensions='elytron-security-ldap,rest' \
@@ -503,16 +507,15 @@ public class UserResource {
 
 quarkus.security.ldap.dir-context.principal=uid=admin,ou=system
 quarkus.security.ldap.dir-context.url=ldaps://ldap.server.local <i class="conum" data-value="1"></i><b>(1)</b>
+%test.quarkus.security.ldap.dir-context.url=ldap://127.0.0.1:10389 <i class="conum" data-value="2"></i><b>(2)</b>
 quarkus.security.ldap.dir-context.password=secret
 
 quarkus.security.ldap.identity-mapping.rdn-identifier=uid
 quarkus.security.ldap.identity-mapping.search-base-dn=ou=Users,dc=quarkus,dc=io
 
 quarkus.security.ldap.identity-mapping.attribute-mappings."0".from=cn
-quarkus.security.ldap.identity-mapping.attribute-mappings."0".filter=(member=uid={0},ou=Users,dc=quarkus,dc=io) <i class="conum" data-value="2"></i><b>(2)</b>
-quarkus.security.ldap.identity-mapping.attribute-mappings."0".filter-base-dn=ou=Roles,dc=quarkus,dc=io
-
-%test.quarkus.security.ldap.dir-context.url=ldap://127.0.0.1:10389 <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+quarkus.security.ldap.identity-mapping.attribute-mappings."0".filter=(member=uid={0},ou=Users,dc=quarkus,dc=io) <i class="conum" data-value="3"></i><b>(3)</b>
+quarkus.security.ldap.identity-mapping.attribute-mappings."0".filter-base-dn=ou=Roles,dc=quarkus,dc=io</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -523,16 +526,44 @@ quarkus.security.ldap.identity-mapping.attribute-mappings."0".filter-base-dn=ou=
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>{0}</code> is substituted by the <code>uid</code>.</td>
+<td>The URL used by our test resource. Tests may leverage <code>LdapServerTestResource</code> provided by Quarkus as <a href="https://github.com/quarkusio/quarkus-quickstarts/blob/main/security-ldap-quickstart/src/test/java/org/acme/elytron/security/ldap/ElytronLdapExtensionTestResources.java">we do</a> in the test coverage of the example application.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The URL used by our test resource. Tests may leverage <code>LdapServerTestResource</code> provided by Quarkus as <a href="https://github.com/quarkusio/quarkus-quickstarts/blob/main/security-ldap-quickstart/src/test/java/org/acme/elytron/security/ldap/ElytronLdapExtensionTestResources.java">we do</a> in the test coverage of the example application.</td>
+<td><code>{0}</code> is substituted by the <code>uid</code>.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>elytron-security-ldap</code> extension requires a dir-context and an identity-mapping with at least one attribute-mapping to authenticate the user and its identity.</p>
+<p>The <code>quarkus-elytron-security-ldap</code> extension requires a dir-context and an identity-mapping with at least one attribute-mapping to authenticate the user and its identity.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>By default, Quarkus doesn&#8217;t cache the credentials obtained from the LDAP directory.
+Every request to your service will cause an additional roundtrip to the LDAP server.</p>
+</div>
+<div class="paragraph">
+<p>It is a common practice to cache these results to improve performance, but the tradeoff is that there will be a delay before the changes in the LDAP get effective in your service.</p>
+</div>
+<div class="paragraph">
+<p>To enable the cache, set <code>quarkus.security.ldap.cache.enabled=true</code> in your configuration file.</p>
+</div>
+<div class="paragraph">
+<p>The default cache max-age is <code>60s</code>.
+It can be configured by setting <code>quarkus.security.ldap.cache.max-age</code>.</p>
+</div>
+<div class="paragraph">
+<p>The number of cache entries is limited by <code>quarkus.security.ldap.cache.size</code>, which defaults to <code>100</code>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -683,7 +714,7 @@ user%</code></pre>
 <p>The option to enable the ldap elytron module</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7875">QUARKUS_SECURITY_LDAP_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7875" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7987">QUARKUS_SECURITY_LDAP_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7987" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -704,7 +735,7 @@ user%</code></pre>
 <p>The elytron realm name</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7876">QUARKUS_SECURITY_LDAP_REALM_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7876" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7988">QUARKUS_SECURITY_LDAP_REALM_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7988" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -725,7 +756,7 @@ user%</code></pre>
 <p>Provided credentials are verified against ldap?</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7877">QUARKUS_SECURITY_LDAP_DIRECT_VERIFICATION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7877" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7989">QUARKUS_SECURITY_LDAP_DIRECT_VERIFICATION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7989" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -746,7 +777,7 @@ user%</code></pre>
 <p>The url of the ldap server</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7878">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_URL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7878" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7990">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_URL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7990" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -767,7 +798,7 @@ user%</code></pre>
 <p>The principal: user which is used to connect to ldap server (also named "bindDn")</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7879">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_PRINCIPAL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7879" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7991">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_PRINCIPAL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7991" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -788,7 +819,7 @@ user%</code></pre>
 <p>The password which belongs to the principal (also named "bindCredential")</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7880">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7880" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7992">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7992" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -809,7 +840,7 @@ user%</code></pre>
 <p>how ldap redirects are handled</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7881">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_REFERRAL_MODE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7881" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7993">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_REFERRAL_MODE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7993" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -832,7 +863,7 @@ user%</code></pre>
 <p>The connect timeout</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7882">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_CONNECT_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7882" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7994">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_CONNECT_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7994" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -853,7 +884,7 @@ user%</code></pre>
 <p>The read timeout</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7883">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_READ_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7883" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7995">QUARKUS_SECURITY_LDAP_DIR_CONTEXT_READ_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7995" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -874,7 +905,7 @@ user%</code></pre>
 <p>If set to true, request to the LDAP server are cached</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7884">QUARKUS_SECURITY_LDAP_CACHE_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7884" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7996">QUARKUS_SECURITY_LDAP_CACHE_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7996" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -895,7 +926,7 @@ user%</code></pre>
 <p>The duration that an entry can stay in the cache</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7885">QUARKUS_SECURITY_LDAP_CACHE_MAX_AGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7885" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7997">QUARKUS_SECURITY_LDAP_CACHE_MAX_AGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7997" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -916,7 +947,7 @@ user%</code></pre>
 <p>The maximum number of entries to keep in the cache</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7886">QUARKUS_SECURITY_LDAP_CACHE_SIZE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7886" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7998">QUARKUS_SECURITY_LDAP_CACHE_SIZE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7998" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -937,7 +968,7 @@ user%</code></pre>
 <p>The identifier which correlates to the provided user (also named "baseFilter")</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7887">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_RDN_IDENTIFIER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7887" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-7999">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_RDN_IDENTIFIER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7999" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -958,7 +989,7 @@ user%</code></pre>
 <p>The dn where we look for users</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7888">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_SEARCH_BASE_DN</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7888" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8000">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_SEARCH_BASE_DN</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8000" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -979,7 +1010,7 @@ user%</code></pre>
 <p>If the child nodes are also searched for identities</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7889">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_SEARCH_RECURSIVE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7889" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8001">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_SEARCH_RECURSIVE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8001" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1000,7 +1031,7 @@ user%</code></pre>
 <p>The roleAttributeId from which is mapped (e.g. "cn")</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7890">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_ATTRIBUTE_MAPPINGS__ATTRIBUTE_MAPPINGS__FROM</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7890" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8002">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_ATTRIBUTE_MAPPINGS__ATTRIBUTE_MAPPINGS__FROM</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8002" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1021,7 +1052,7 @@ user%</code></pre>
 <p>The identifier whom the attribute is mapped to (in Quarkus: "groups", in WildFly this is "Roles")</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7891">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_ATTRIBUTE_MAPPINGS__ATTRIBUTE_MAPPINGS__TO</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7891" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8003">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_ATTRIBUTE_MAPPINGS__ATTRIBUTE_MAPPINGS__TO</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8003" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1042,7 +1073,7 @@ user%</code></pre>
 <p>The filter (also named "roleFilter")</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7892">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_ATTRIBUTE_MAPPINGS__ATTRIBUTE_MAPPINGS__FILTER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7892" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8004">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_ATTRIBUTE_MAPPINGS__ATTRIBUTE_MAPPINGS__FILTER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8004" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1063,7 +1094,7 @@ user%</code></pre>
 <p>The filter base dn (also named "rolesContextDn")</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-7893">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_ATTRIBUTE_MAPPINGS__ATTRIBUTE_MAPPINGS__FILTER_BASE_DN</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-7893" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8005">QUARKUS_SECURITY_LDAP_IDENTITY_MAPPING_ATTRIBUTE_MAPPINGS__ATTRIBUTE_MAPPINGS__FILTER_BASE_DN</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8005" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

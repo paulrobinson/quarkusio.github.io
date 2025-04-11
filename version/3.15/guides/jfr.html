@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -298,7 +302,7 @@ cd jfr-quickstart</code></pre>
 <div class="title">Maven</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.15.3.1:create \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.15.4:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=jfr-quickstart \
     -Dextensions='quarkus-rest,quarkus-jfr' \
@@ -917,7 +921,7 @@ public class NewInterceptor {
 <p>If false, only quarkus-jfr events are not recorded even if JFR is enabled. In this case, Java standard API and virtual machine information will be recorded according to the setting. Default value is <code>true</code></p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29315">QUARKUS_JFR_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29315" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29427">QUARKUS_JFR_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29427" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -937,7 +941,7 @@ public class NewInterceptor {
 <p>If false, only REST events in quarkus-jfr are not recorded even if JFR is enabled. In this case, other quarkus-jfr, Java standard API and virtual machine information will be recorded according to the setting. Default value is <code>true</code></p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29316">QUARKUS_JFR_REST_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29316" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29428">QUARKUS_JFR_REST_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29428" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

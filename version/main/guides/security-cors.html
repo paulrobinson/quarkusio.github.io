@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -281,7 +285,7 @@ For regular CORS requests, the filter denies access with an HTTP 403 status if t
 <p>A comma-separated list of valid URLs, such as <code><a href="http://www.quarkus.io,http://localhost:3000" class="bare">http://www.quarkus.io,http://localhost:3000</a></code>. URLs enclosed in forward slashes are interpreted as regular expressions.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55344">QUARKUS_HTTP_CORS_ORIGINS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55344" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64118">QUARKUS_HTTP_CORS_ORIGINS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64118" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -308,7 +312,7 @@ For regular CORS requests, the filter denies access with an HTTP 403 status if t
 <p>Default: Any HTTP request method is allowed.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55345">QUARKUS_HTTP_CORS_METHODS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55345" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64119">QUARKUS_HTTP_CORS_METHODS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64119" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -335,7 +339,7 @@ For regular CORS requests, the filter denies access with an HTTP 403 status if t
 <p>Default: Any HTTP request header is allowed.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55346">QUARKUS_HTTP_CORS_HEADERS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55346" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64120">QUARKUS_HTTP_CORS_HEADERS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64120" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -362,7 +366,7 @@ For regular CORS requests, the filter denies access with an HTTP 403 status if t
 <p>Default: No headers are exposed.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55347">QUARKUS_HTTP_CORS_EXPOSED_HEADERS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55347" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64121">QUARKUS_HTTP_CORS_EXPOSED_HEADERS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64121" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -386,7 +390,7 @@ For regular CORS requests, the filter denies access with an HTTP 403 status if t
 <p>Informs the browser how long it can cache the results of a preflight request.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55348">QUARKUS_HTTP_CORS_ACCESS_CONTROL_MAX_AGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55348" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64122">QUARKUS_HTTP_CORS_ACCESS_CONTROL_MAX_AGE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64122" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -413,7 +417,7 @@ For regular CORS requests, the filter denies access with an HTTP 403 status if t
 <p>Default: <code>true</code> if the <code>quarkus.http.cors.origins</code> property is set and matches the precise <code>Origin</code> header value.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-55349">QUARKUS_HTTP_CORS_ACCESS_CONTROL_ALLOW_CREDENTIALS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-55349" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-64123">QUARKUS_HTTP_CORS_ACCESS_CONTROL_ALLOW_CREDENTIALS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-64123" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>

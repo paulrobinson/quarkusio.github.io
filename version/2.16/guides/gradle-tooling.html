@@ -33,7 +33,7 @@
   style-src 'self' https://fonts.googleapis.com https://use.fontawesome.com; 
   img-src 'self' * data:; 
   media-src 'self'; 
-  frame-src https://redhat.demdex.net https://www.youtube.com https://embed.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
+  frame-src https://redhat.demdex.net https://www.youtube.com https://player.restream.io https://app.mailjet.com http://xy0p2.mjt.lu https://mj.quarkus.io https://giscus.app; 
   base-uri 'none'; 
   object-src 'none'; 
   form-action 'none'; 
@@ -189,7 +189,11 @@
         
         
         
-        <option value="latest" >3.19.3 - Latest</option>
+        <option value="latest" >3.21.2 - Latest</option>
+        
+        
+        
+        <option value="3.20" >3.20</option>
         
         
         
@@ -708,7 +712,7 @@ app.</p>
 <p>Whether Quarkus should enable its ability to not do a full restart when changes to classes are compatible with JVM instrumentation. If this is set to true, Quarkus will perform class redefinition when possible.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-20364">QUARKUS_LIVE_RELOAD_INSTRUMENTATION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20364" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-20476">QUARKUS_LIVE_RELOAD_INSTRUMENTATION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20476" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -728,7 +732,7 @@ app.</p>
 <p>The names of additional resource files to watch for changes, triggering a reload on change. Directories are <em>not</em> supported.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-20365">QUARKUS_LIVE_RELOAD_WATCHED_RESOURCES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20365" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-20477">QUARKUS_LIVE_RELOAD_WATCHED_RESOURCES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20477" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -748,7 +752,7 @@ app.</p>
 <p>Password used to use to connect to the remote dev-mode application</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-20366">QUARKUS_LIVE_RELOAD_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20366" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-20478">QUARKUS_LIVE_RELOAD_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20478" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -768,7 +772,7 @@ app.</p>
 <p>URL used to use to connect to the remote dev-mode application</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-20367">QUARKUS_LIVE_RELOAD_URL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20367" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-20479">QUARKUS_LIVE_RELOAD_URL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20479" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -788,7 +792,7 @@ app.</p>
 <p>The amount of time to wait for a remote dev connect or reconnect</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-20368">QUARKUS_LIVE_RELOAD_CONNECT_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20368" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-20480">QUARKUS_LIVE_RELOAD_CONNECT_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20480" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -809,7 +813,7 @@ app.</p>
 <p>The amount of time to wait between attempts when connecting to the server side of remote dev</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-20369">QUARKUS_LIVE_RELOAD_RETRY_INTERVAL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20369" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-20481">QUARKUS_LIVE_RELOAD_RETRY_INTERVAL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20481" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -830,7 +834,7 @@ app.</p>
 <p>The maximum number of attempts when connecting to the server side of remote dev</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-20370">QUARKUS_LIVE_RELOAD_RETRY_MAX_ATTEMPTS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20370" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-20482">QUARKUS_LIVE_RELOAD_RETRY_MAX_ATTEMPTS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-20482" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
