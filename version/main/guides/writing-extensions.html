@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
-  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com; 
+  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com https://ajax.googleapis.com; 
   script-src 'self' 'unsafe-inline' 'unsafe-eval'
       
       https://assets.adobedtm.com
@@ -38,6 +38,7 @@
   object-src 'none'; 
   form-action 'none'; 
   font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com;" />
+
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlight.pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
@@ -97,7 +98,7 @@
     </label>
     <ul id="menu" class="menu">
       <li class="dropdown">
-        <span href="/about/">Why<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Why<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/about" class="">WHAT IS QUARKUS?</a></li>
           <li><a href="/developer-joy" class="">DEVELOPER JOY</a></li>
@@ -105,11 +106,21 @@
           <li><a href="/kubernetes-native" class="">KUBERNETES NATIVE</a></li>
           <li><a href="/standards" class="">STANDARDS</a></li>
           <li><a href="/versatility" class="">VERSATILITY</a></li>
-          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>          
+          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>
+          <li><a href="/spring" class="">USING SPRING?</a></li>
+          <li class="tertiarydropdown">
+            <span href="#">AI<i class="fas fa-chevron-down"></i></span>
+            <ul class="tertiarymenu">
+              <li><a href="/ai" class="">AI OVERVIEW</a></li>
+              <li><a href="/java-for-ai" class="">JAVA FOR AI</a></li>
+              <li><a href="/quarkus-for-ai" class="">WHY QUARKUS FOR AI</a></li>
+              <li><a href="/ai-blueprints" class="">AI BLUEPRINTS</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/learn/">Learn<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Learn<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/get-started" class="">GET STARTED</a></li>
           <li><a href="/guides" class="active">DOCUMENTATION</a></li>
@@ -119,7 +130,7 @@
           </ul>
       </li>
       <li class="dropdown">
-        <span href="https://quarkus.io/extensions/">Extensions<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Extensions<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <!-- Note that quarkus.io is hardcoded here, because it is the only url which supports extensions -->
           <li><a href="https://quarkus.io/extensions/" class="">BROWSE EXTENSIONS</a></li>
@@ -129,7 +140,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/community/">Community<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Community<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/support/" class="">SUPPORT</a></li>
           <li><a href="/blog" class="">BLOG</a></li>
@@ -139,6 +150,7 @@
           <li><a href="/events" class="">EVENTS</a></li>
           <li><a href="/newsletter" class="">NEWSLETTER</a></li>
           <li><a href="https://github.com/orgs/quarkusio/projects/13/views/1" class="">ROADMAP</a></li>
+          <li><a href="/benefactors" class="">BENEFACTORS</a></li>
           </ul>
       </li>
       <li>
@@ -189,7 +201,11 @@
         
         
         
-        <option value="latest" >3.21.2 - Latest</option>
+        <option value="latest" >3.31.2 - Latest</option>
+        
+        
+        
+        <option value="3.27" >3.27</option>
         
         
         
@@ -202,18 +218,6 @@
         
         
         <option value="3.8" >3.8</option>
-        
-        
-        
-        <option value="3.2" >3.2</option>
-        
-        
-        
-        <option value="2.16" >2.16</option>
-        
-        
-        
-        <option value="2.13" >2.13</option>
         </select>
     </div>
   </div>
@@ -1939,7 +1943,7 @@ public interface LogConfiguration {
          * Enable logging to a file.
          */
         @WithDefault("true")
-        boolean enable();
+        boolean enabled();
 
         /**
          * The log format.
@@ -1976,7 +1980,7 @@ public interface LogConfiguration {
 </div>
 <div class="paragraph">
 <p>A configuration property name can be split into segments. For example, a property name like
-<code>quarkus.log.file.enable</code> can be split into the following segments:</p>
+<code>quarkus.log.file.enabled</code> can be split into the following segments:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1990,7 +1994,7 @@ public interface LogConfiguration {
 <p><code>file</code> - a name segment which corresponds to the <code>file</code> field in this class,</p>
 </li>
 <li>
-<p><code>enable</code> - a name segment which corresponds to <code>enable</code> field in <code>FileConfig</code>.</p>
+<p><code>enabled</code> - a name segment which corresponds to <code>enabled</code> field in <code>FileConfig</code>.</p>
 </li>
 </ul>
 </div>
@@ -2017,7 +2021,7 @@ annotation.</td>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-properties hljs" data-lang="properties">quarkus.log.file.enable=true
+<pre class="highlightjs highlight nowrap"><code class="language-properties hljs" data-lang="properties">quarkus.log.file.enabled=true
 quarkus.log.file.level=DEBUG
 quarkus.log.file.path=/tmp/debug.log</code></pre>
 </div>
@@ -2070,7 +2074,7 @@ suitable for tips, source code extracts, lists and more:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">/**
  * Class name of the Hibernate ORM dialect. The complete list of bundled dialects is available in the
- * https://docs.jboss.org/hibernate/stable/orm/javadocs/org/hibernate/dialect/package-summary.html[Hibernate ORM JavaDoc].
+ * https://docs.hibernate.org/stable/orm/javadocs/org/hibernate/dialect/package-summary.html[Hibernate ORM JavaDoc].
  *
  * [NOTE]
  * ====
@@ -2524,10 +2528,48 @@ control the order that generated bytecode is run. In the example above we know t
 <h4 id="injecting-configuration-into-recorders"><a class="anchor" href="#injecting-configuration-into-recorders"></a>2.6.2. Injecting Configuration into Recorders</h4>
 <div class="paragraph">
 <p>Configuration objects with phase <code>RUNTIME</code> or <code>BUILD_AND_RUNTIME_FIXED</code> can be injected into recorders via constructor
-injection. Just create a constructor that takes the configuration objects the recorder needs. If the recorder has multiple
-constructors you can annotate the one you want Quarkus to use with <code>@Inject</code>. If the recorder wants to inject runtime config
-but is also used at static init time then it needs to inject a <code>RuntimeValue&lt;ConfigObject&gt;</code>, this value will only be set
-when the runtime methods are being invoked.</p>
+injection. The constructor requires a parameter for each configuration object type. If the Configuration object type is
+declared to be in the <code>RUNTIME</code> phase, it must be wrapped in a <code>RuntimeValue&lt;&gt;</code> type.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@ConfigMapping(prefix = "quarkus.btrt")
+@ConfigRoot(phase = ConfigPhase.BUILD_AND_RUNTIME_FIXED)
+public interface BuildAndRuntimeFixedConfig {
+
+}
+
+@ConfigMapping(prefix = "quarkus.rt")
+@ConfigRoot(phase = ConfigPhase.RUN_TIME)
+public interface RuntimeConfig {
+
+}
+
+@Recorder
+class ExtensionRecorder {
+    private final BuildAndRuntimeFixedConfig buildAndRuntimeFixedConfig;
+    private final RuntimeValue&lt;RuntimeConfig&gt; runtimeConfig;
+
+    public ExtensionRecorder(
+            BuildAndRuntimeFixedConfig buildAndRuntimeFixedConfig,
+            RuntimeValue&lt;RuntimeConfig&gt; runtimeConfig) {
+        this.buildAndRuntimeFixedConfig = buildAndRuntimeFixedConfig;
+        this.runtimeConfig = runtimeConfig;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the recorder has multiple constructors you can annotate the one you want Quarkus to use with <code>@Inject</code>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -2832,7 +2874,7 @@ HealthBuildItem addHealthCheck(AgroalBuildTimeConfig agroalBuildTimeConfig) {
 <div class="sect2">
 <h3 id="extension-metrics"><a class="anchor" href="#extension-metrics"></a>2.12. Extension Metrics</h3>
 <div class="paragraph">
-<p>The <code>quarkus-micrometer</code> extension and the <code>quarkus-smallrye-metrics</code> extension provide support for collecting metrics.
+<p>The <code>quarkus-micrometer</code> extension provide support for collecting metrics.
 As a compatibility note, the <code>quarkus-micrometer</code> extension adapts the MP Metrics API to Micrometer library primitives, so the <code>quarkus-micrometer</code> extension can be enabled without breaking code that relies on the MP Metrics API.
 Note that the metrics emitted by Micrometer are different, see the <code>quarkus-micrometer</code> extension documentation for more information.</p>
 </div>
@@ -2857,7 +2899,7 @@ The compatibility layer for MP Metrics APIs will move to a different extension i
 <p>Consumer pattern: An extension declares a <code>MetricsFactoryConsumerBuildItem</code> and uses that to provide a bytecode recorder to the metrics extension. When the metrics extension has initialized, it will iterate over registered consumers to initialize them with a <code>MetricsFactory</code>. This factory can be used to declare API-agnostic metrics, which can be a good fit for extensions that provide an instrumentable object for gathering statistics (e.g. Hibernate&#8217;s <code>Statistics</code> class).</p>
 </li>
 <li>
-<p>Binder pattern: An extension can opt to use completely different gathering implementations depending on the metrics system. An <code>Optional&lt;MetricsCapabilityBuildItem&gt; metricsCapability</code> build step parameter can be used to declare or otherwise initialize API-specific metrics based on the active metrics extension (e.g. "smallrye-metrics" or "micrometer"). This pattern can be combined with the consumer pattern by using <code>MetricsFactory::metricsSystemSupported()</code> to test the active metrics extension within the recorder.</p>
+<p>Binder pattern: An extension can opt to use completely different gathering implementations depending on the metrics system. An <code>Optional&lt;MetricsCapabilityBuildItem&gt; metricsCapability</code> build step parameter can be used to declare or otherwise initialize API-specific metrics based on the active metrics extension (e.g. "micrometer"). This pattern can be combined with the consumer pattern by using <code>MetricsFactory::metricsSystemSupported()</code> to test the active metrics extension within the recorder.</p>
 </li>
 </ul>
 </div>
@@ -2888,10 +2930,10 @@ The compatibility layer for MP Metrics APIs will move to a different extension i
 <div class="ulist">
 <ul>
 <li>
-<p>Use an <code>Optional&lt;MetricsCapabilityBuildItem&gt; metricsCapability</code> parameter to test which metrics API is supported (e.g. "smallrye-metrics" or "micrometer") in your build step, and use that to selectively declare or initialize API-specific beans or build items.</p>
+<p>Use an <code>Optional&lt;MetricsCapabilityBuildItem&gt; metricsCapability</code> parameter to test which metrics API is supported (e.g. "micrometer") in your build step, and use that to selectively declare or initialize API-specific beans or build items.</p>
 </li>
 <li>
-<p>Create a separate build step that consumes a <code>MetricsFactory</code>, and use the <code>MetricsFactory::metricsSystemSupported()</code> method within the bytecode recorder to initialize required resources if the desired metrics API is supported (e.g. "smallrye-metrics" or "micrometer").</p>
+<p>Create a separate build step that consumes a <code>MetricsFactory</code>, and use the <code>MetricsFactory::metricsSystemSupported()</code> method within the bytecode recorder to initialize required resources if the desired metrics API is supported (e.g. "micrometer").</p>
 </li>
 </ul>
 </div>
@@ -3299,7 +3341,7 @@ See <a href="extension-writing-dev-service">how to write a Dev Service</a> for m
 <div class="sect2">
 <h3 id="testing-extensions"><a class="anchor" href="#testing-extensions"></a>2.15. Testing Extensions</h3>
 <div class="paragraph">
-<p>Testing of Quarkus extensions should be done with the <code>io.quarkus.test.QuarkusUnitTest</code> JUnit 5 extension.
+<p>Testing of Quarkus extensions should be done with the <code>io.quarkus.test.QuarkusUnitTest</code> JUnit extension.
 This extension allows for Arquillian-style tests that test specific functionalities.
 It is not intended for testing user applications, as this should be done via <code>io.quarkus.test.junit.QuarkusTest</code>.
 The main difference is that <code>QuarkusTest</code> simply boots the application once at the start of the run, while <code>QuarkusUnitTest</code> deploys a custom
@@ -3310,7 +3352,7 @@ Quarkus application for each test class.</p>
 their deployment modules should also be added as test scoped dependencies.</p>
 </div>
 <div class="paragraph">
-<p>Note that <code>QuarkusUnitTest</code> is in the <code>quarkus-junit5-internal</code> module.</p>
+<p>Note that <code>QuarkusUnitTest</code> is in the <code>quarkus-junit-internal</code> module.</p>
 </div>
 <div class="paragraph">
 <p>An example test class may look like:</p>
@@ -3434,6 +3476,77 @@ public class PersistenceAndQuarkusConfigTest {
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>This tells JUnit that the Quarkus deployment should fail with a specific exception</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Test coverage and <code>QuarkusUnitTest</code></div>
+<div class="paragraph">
+<p>If you want to measure the test coverage of the runtime submodule, then a specific JaCoCo configuration is needed in the deployment module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;id&gt;test-coverage&lt;/id&gt;
+        &lt;activation&gt;
+            &lt;property&gt;
+                &lt;name&gt;jacoco&lt;/name&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+            &lt;/property&gt;
+        &lt;/activation&gt;
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;io.quarkus&lt;/groupId&gt;
+                &lt;artifactId&gt;quarkus-jacoco-deployment&lt;/artifactId&gt; <i class="conum" data-value="2"></i><b>(2)</b>
+                &lt;scope&gt;test&lt;/scope&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+        &lt;build&gt;
+            &lt;plugins&gt;
+                &lt;plugin&gt;
+                    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+                    &lt;configuration&gt;
+                        &lt;systemPropertyVariables&gt;
+                            &lt;quarkus.jacoco.instrument-artifacts.runtime.group-id&gt;io.quarkus&lt;/quarkus.jacoco.instrument-artifacts.runtime.group-id&gt; <i class="conum" data-value="3"></i><b>(3)</b>
+                            &lt;quarkus.jacoco.instrument-artifacts.runtime.artifact-id&gt;quarkus-runtime-module-name&lt;/quarkus.jacoco.instrument-artifacts.runtime.artifact-id&gt;
+                        &lt;/systemPropertyVariables&gt;
+                    &lt;/configuration&gt;
+                &lt;/plugin&gt;
+            &lt;/plugins&gt;
+        &lt;/build&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This profile is activated with the <code>jacoco</code> property.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Add the <code>quarkus-jacoco-deployment</code> dependency with the <code>test</code> scope.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Instruct the JaCoCo plugin to instrument the <code>io.quarkus:quarkus-runtime-module-name</code> artifact.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>By default, JaCoCo will save the collected data in <code>target/jacoco-quarkus.exec</code> and the generated report is located in <code>target/jacoco-report</code>.
+For multi-module projects, more config properties will be needed.
+Typically, <code>quarkus.jacoco.data-file=/path/to/shared/data-file</code>, <code>quarkus.jacoco.reuse-data-file=true</code> and <code>quarkus.jacoco.aggregate-report-data=true</code>.
+See <a href="tests-with-coverage">Measuring the coverage of your tests</a> for more information.</p>
+</div>
+</td>
 </tr>
 </table>
 </div>
@@ -4917,7 +5030,7 @@ When your repository contains multiple extensions, you need to create a separate
     </div>
   </div>
   <div class="grid-wrapper">
-    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license.<br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
+    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license. <i class='fab fa-creative-commons'></i><i class='fab fa-creative-commons-by'></i> <a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC by 3.0</a><br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
 
     
       <div class="width-1-12 project-links">
@@ -4965,11 +5078,15 @@ When your repository contains multiple extensions, you need to create a separate
           
           
           
-            <li><a href="/brand" target="_blank">Brand</a></li>
+            <li><a href="https://github.com/commonhaus/artwork/tree/main/projects/quarkus" target="_blank">Brand</a></li>
           
           
           
             <li><a href="/desktopwallpapers" target="_blank">Wallpapers</a></li>
+          
+          
+          
+            <li><a href="https://www.redhat.com/en/about/privacy-policy" target="_blank">Privacy Policy</a></li>
           
           
         </ul>
@@ -4990,6 +5107,10 @@ When your repository contains multiple extensions, you need to create a separate
           
             <li><a rel="me" href="https://fosstodon.org/@quarkusio" target="_blank">Mastodon</a></li>
             
+          
+          
+            <li><a href="https://www.threads.com/@quarkusio" target="_blank">Threads</a></li>
+          
           
           
             <li><a href="https://www.facebook.com/quarkusio" target="_blank">Facebook</a></li>
@@ -5040,6 +5161,10 @@ When your repository contains multiple extensions, you need to create a separate
           
           
             <li><a href="https://groups.google.com/forum/#!forum/quarkus-dev" target="_blank">Development mailing list</a></li>
+          
+          
+          
+            <li><a href="https://stats.uptimerobot.com/ze1PfweT2p" target="_blank">Quarkus Service Status</a></li>
           
           
         </ul>
@@ -5100,17 +5225,14 @@ When your repository contains multiple extensions, you need to create a separate
   </div>
 </div>
 
-  <div class="content redhat-footer">
-  <div class="grid-wrapper">
-    <span class="licence">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC by 3.0</a> | <a href="https://www.redhat.com/en/about/privacy-policy">Privacy Policy</a>
-    </span>
-    <span class="redhat">
-      Sponsored by
-    </span>
-    <span class="redhat-logo">
-      <a href="https://www.redhat.com/" target="_blank"><img src="/assets/images/redhat_reversed.svg"></a>
-    </span>
+  <div class="content cf-footer">
+  <div class="flexcontainer">
+    <div class="cf-logo">
+      <a class="cf-logo" href="https://www.commonhaus.org/" target="_blank"><img src="https://raw.githubusercontent.com/commonhaus/artwork/main/foundation/brand/svg/CF_logo_horizontal_single_reverse.svg"/></a>
+    </div>
+    <div class="license">
+      Copyright © Quarkus. All rights reserved. For details on our trademarks, please visit our <a href="https://www.commonhaus.org/policies/trademark-policy/">Trademark Policy</a> and <a href="https://www.commonhaus.org/trademarks/">Trademark List</a>. Trademarks of third parties are owned by their respective holders and their mention here does not suggest any endorsement or association.
+    </div>
   </div>
 </div>
 
@@ -5126,6 +5248,8 @@ When your repository contains multiple extensions, you need to create a separate
   <script src="/assets/javascript/copy.js" type="text/javascript"></script>
   <script src="/assets/javascript/asciidoc-tabs.js" type="text/javascript"></script>
   <script src="/assets/javascript/future-date.js" type="text/javascript"></script>
+  <script src="/assets/javascript/randomize.js" type="text/javascript"></script>
+  <script src="/assets/javascript/time.js" type="text/javascript"></script>
 </body>
 
 </html>

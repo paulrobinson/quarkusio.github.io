@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
-  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com; 
+  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com https://ajax.googleapis.com; 
   script-src 'self' 'unsafe-inline' 'unsafe-eval'
       
       https://assets.adobedtm.com
@@ -38,6 +38,7 @@
   object-src 'none'; 
   form-action 'none'; 
   font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com;" />
+
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlight.pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
@@ -97,7 +98,7 @@
     </label>
     <ul id="menu" class="menu">
       <li class="dropdown">
-        <span href="/about/">Why<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Why<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/about" class="">WHAT IS QUARKUS?</a></li>
           <li><a href="/developer-joy" class="">DEVELOPER JOY</a></li>
@@ -105,11 +106,21 @@
           <li><a href="/kubernetes-native" class="">KUBERNETES NATIVE</a></li>
           <li><a href="/standards" class="">STANDARDS</a></li>
           <li><a href="/versatility" class="">VERSATILITY</a></li>
-          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>          
+          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>
+          <li><a href="/spring" class="">USING SPRING?</a></li>
+          <li class="tertiarydropdown">
+            <span href="#">AI<i class="fas fa-chevron-down"></i></span>
+            <ul class="tertiarymenu">
+              <li><a href="/ai" class="">AI OVERVIEW</a></li>
+              <li><a href="/java-for-ai" class="">JAVA FOR AI</a></li>
+              <li><a href="/quarkus-for-ai" class="">WHY QUARKUS FOR AI</a></li>
+              <li><a href="/ai-blueprints" class="">AI BLUEPRINTS</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/learn/">Learn<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Learn<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/get-started" class="">GET STARTED</a></li>
           <li><a href="/guides" class="active">DOCUMENTATION</a></li>
@@ -119,7 +130,7 @@
           </ul>
       </li>
       <li class="dropdown">
-        <span href="https://quarkus.io/extensions/">Extensions<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Extensions<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <!-- Note that quarkus.io is hardcoded here, because it is the only url which supports extensions -->
           <li><a href="https://quarkus.io/extensions/" class="">BROWSE EXTENSIONS</a></li>
@@ -129,7 +140,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/community/">Community<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Community<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/support/" class="">SUPPORT</a></li>
           <li><a href="/blog" class="">BLOG</a></li>
@@ -139,6 +150,7 @@
           <li><a href="/events" class="">EVENTS</a></li>
           <li><a href="/newsletter" class="">NEWSLETTER</a></li>
           <li><a href="https://github.com/orgs/quarkusio/projects/13/views/1" class="">ROADMAP</a></li>
+          <li><a href="/benefactors" class="">BENEFACTORS</a></li>
           </ul>
       </li>
       <li>
@@ -189,20 +201,15 @@
         
         
         
-        <option value="latest" >3.21.2 - Latest</option>
+        <option value="latest" >3.31.2 - Latest</option>
+        
+        
+        
+        <option value="3.27" >3.27</option>
         
         
         
         <option value="3.20" selected>3.20</option>
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -219,7 +226,8 @@
     <div class="grid__item width-8-12 width-12-12-m">
       
       <h1 class="text-caps">OpenID Connect (OIDC) and OAuth2 dynamic client registration </h1>
-      <div id="preamble">
+      <a class="status-label status-experimental" title="This extension requests early feedback to mature the idea" href="#extension-status-note">experimental</a>
+<div id="preamble">
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -968,7 +976,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>If the OIDC client registration extension is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47626">QUARKUS_OIDC_CLIENT_REGISTRATION_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47626" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47966">QUARKUS_OIDC_CLIENT_REGISTRATION_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47966" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -993,7 +1001,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>The base URL of the OpenID Connect (OIDC) server, for example, <code><a href="https://host:port/auth" class="bare">https://host:port/auth</a></code>. Do not set this property if you use 'quarkus-oidc' and the public key verification (<code>public-key</code>) or certificate chain verification only (<code>certificate-chain</code>) is required. The OIDC discovery endpoint is called by default by appending a <code>.well-known/openid-configuration</code> path to this URL. For Keycloak, use <code><a href="https://host:port/realms/{realm}" class="bare">https://host:port/realms/{realm}</a></code>, replacing <code>{realm}</code> with the Keycloak realm name.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47627">QUARKUS_OIDC_CLIENT_REGISTRATION_AUTH_SERVER_URL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47627" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47967">QUARKUS_OIDC_CLIENT_REGISTRATION_AUTH_SERVER_URL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47967" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1018,7 +1026,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>Discovery of the OIDC endpoints. If not enabled, you must configure the OIDC endpoint URLs individually.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47628">QUARKUS_OIDC_CLIENT_REGISTRATION_DISCOVERY_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47628" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47968">QUARKUS_OIDC_CLIENT_REGISTRATION_DISCOVERY_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47968" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1043,7 +1051,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>The relative path or absolute URL of the OIDC dynamic client registration endpoint. Set if <code>discovery-enabled</code> is <code>false</code> or a discovered token endpoint path must be customized.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47629">QUARKUS_OIDC_CLIENT_REGISTRATION_REGISTRATION_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47629" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47969">QUARKUS_OIDC_CLIENT_REGISTRATION_REGISTRATION_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47969" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1068,7 +1076,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>The duration to attempt the initial connection to an OIDC server. For example, setting the duration to <code>20S</code> allows 10 retries, each 2 seconds apart. This property is only effective when the initial OIDC connection is created. For dropped connections, use the <code>connection-retry-count</code> property instead.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47630">QUARKUS_OIDC_CLIENT_REGISTRATION_CONNECTION_DELAY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47630" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47970">QUARKUS_OIDC_CLIENT_REGISTRATION_CONNECTION_DELAY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47970" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1093,7 +1101,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>The number of times to retry re-establishing an existing OIDC connection if it is temporarily lost. Different from <code>connection-delay</code>, which applies only to initial connection attempts. For instance, if a request to the OIDC token endpoint fails due to a connection issue, it will be retried as per this setting.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47631">QUARKUS_OIDC_CLIENT_REGISTRATION_CONNECTION_RETRY_COUNT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47631" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47971">QUARKUS_OIDC_CLIENT_REGISTRATION_CONNECTION_RETRY_COUNT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47971" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1118,7 +1126,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>The number of seconds after which the current OIDC connection request times out.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47632">QUARKUS_OIDC_CLIENT_REGISTRATION_CONNECTION_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47632" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47972">QUARKUS_OIDC_CLIENT_REGISTRATION_CONNECTION_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47972" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1143,7 +1151,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>Whether DNS lookup should be performed on the worker thread. Use this option when you can see logged warnings about blocked Vert.x event loop by HTTP requests to OIDC server.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47633">QUARKUS_OIDC_CLIENT_REGISTRATION_USE_BLOCKING_DNS_LOOKUP</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47633" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47973">QUARKUS_OIDC_CLIENT_REGISTRATION_USE_BLOCKING_DNS_LOOKUP</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47973" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1168,7 +1176,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>The maximum size of the connection pool used by the WebClient.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47634">QUARKUS_OIDC_CLIENT_REGISTRATION_MAX_POOL_SIZE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47634" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47974">QUARKUS_OIDC_CLIENT_REGISTRATION_MAX_POOL_SIZE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47974" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1193,7 +1201,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>Follow redirects automatically when WebClient gets HTTP 302. When this property is disabled only a single redirect to exactly the same original URI is allowed but only if one or more cookies were set during the redirect request.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47635">QUARKUS_OIDC_CLIENT_REGISTRATION_FOLLOW_REDIRECTS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47635" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47975">QUARKUS_OIDC_CLIENT_REGISTRATION_FOLLOW_REDIRECTS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47975" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1218,7 +1226,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>OIDC Client Registration id</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47636">QUARKUS_OIDC_CLIENT_REGISTRATION_ID</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47636" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47976">QUARKUS_OIDC_CLIENT_REGISTRATION_ID</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47976" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1243,7 +1251,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>If this client registration configuration is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47637">QUARKUS_OIDC_CLIENT_REGISTRATION_REGISTRATION_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47637" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47977">QUARKUS_OIDC_CLIENT_REGISTRATION_REGISTRATION_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47977" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1268,7 +1276,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>If the client configured with <code>metadata</code> must be registered at startup.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47638">QUARKUS_OIDC_CLIENT_REGISTRATION_REGISTER_EARLY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47638" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47978">QUARKUS_OIDC_CLIENT_REGISTRATION_REGISTER_EARLY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47978" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1293,7 +1301,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>Initial access token</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47639">QUARKUS_OIDC_CLIENT_REGISTRATION_INITIAL_TOKEN</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47639" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47979">QUARKUS_OIDC_CLIENT_REGISTRATION_INITIAL_TOKEN</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47979" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1318,7 +1326,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>Client name</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47640">QUARKUS_OIDC_CLIENT_REGISTRATION_METADATA_CLIENT_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47640" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47980">QUARKUS_OIDC_CLIENT_REGISTRATION_METADATA_CLIENT_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47980" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1343,7 +1351,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>Redirect URI</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47641">QUARKUS_OIDC_CLIENT_REGISTRATION_METADATA_REDIRECT_URI</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47641" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47981">QUARKUS_OIDC_CLIENT_REGISTRATION_METADATA_REDIRECT_URI</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47981" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1368,7 +1376,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>Post Logout URI</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47642">QUARKUS_OIDC_CLIENT_REGISTRATION_METADATA_POST_LOGOUT_URI</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47642" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47982">QUARKUS_OIDC_CLIENT_REGISTRATION_METADATA_POST_LOGOUT_URI</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47982" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1393,7 +1401,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 <p>Additional metadata properties</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47643">QUARKUS_OIDC_CLIENT_REGISTRATION_METADATA_EXTRA_PROPS__EXTRA_PROPS_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47643" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47983">QUARKUS_OIDC_CLIENT_REGISTRATION_METADATA_EXTRA_PROPS__EXTRA_PROPS_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47983" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1424,7 +1432,7 @@ public class RegisteredClientResponseFilter implements OidcResponseFilter {
 Note: If the OIDC adapter requires a Proxy to talk with the OIDC server (Provider), set this value to enable the usage of a Proxy.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47644">QUARKUS_OIDC_CLIENT_REGISTRATION_PROXY_HOST</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47644" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47984">QUARKUS_OIDC_CLIENT_REGISTRATION_PROXY_HOST</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47984" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1449,7 +1457,7 @@ Note: If the OIDC adapter requires a Proxy to talk with the OIDC server (Provide
 <p>The port number of the Proxy. The default value is <code>80</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47645">QUARKUS_OIDC_CLIENT_REGISTRATION_PROXY_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47645" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47985">QUARKUS_OIDC_CLIENT_REGISTRATION_PROXY_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47985" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1474,7 +1482,7 @@ Note: If the OIDC adapter requires a Proxy to talk with the OIDC server (Provide
 <p>The username, if the Proxy needs authentication.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47646">QUARKUS_OIDC_CLIENT_REGISTRATION_PROXY_USERNAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47646" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47986">QUARKUS_OIDC_CLIENT_REGISTRATION_PROXY_USERNAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47986" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1499,7 +1507,7 @@ Note: If the OIDC adapter requires a Proxy to talk with the OIDC server (Provide
 <p>The password, if the Proxy needs authentication.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47647">QUARKUS_OIDC_CLIENT_REGISTRATION_PROXY_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47647" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47987">QUARKUS_OIDC_CLIENT_REGISTRATION_PROXY_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47987" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1535,7 +1543,7 @@ Note: If the OIDC adapter requires a Proxy to talk with the OIDC server (Provide
 <p>The default TLS configuration is <strong>not</strong> used by default.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-47648">QUARKUS_OIDC_CLIENT_REGISTRATION_TLS_TLS_CONFIGURATION_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47648" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-47988">QUARKUS_OIDC_CLIENT_REGISTRATION_TLS_TLS_CONFIGURATION_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-47988" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1715,7 +1723,7 @@ See the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
     </div>
   </div>
   <div class="grid-wrapper">
-    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license.<br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
+    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license. <i class='fab fa-creative-commons'></i><i class='fab fa-creative-commons-by'></i> <a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC by 3.0</a><br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
 
     
       <div class="width-1-12 project-links">
@@ -1763,11 +1771,15 @@ See the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
           
           
           
-            <li><a href="/brand" target="_blank">Brand</a></li>
+            <li><a href="https://github.com/commonhaus/artwork/tree/main/projects/quarkus" target="_blank">Brand</a></li>
           
           
           
             <li><a href="/desktopwallpapers" target="_blank">Wallpapers</a></li>
+          
+          
+          
+            <li><a href="https://www.redhat.com/en/about/privacy-policy" target="_blank">Privacy Policy</a></li>
           
           
         </ul>
@@ -1788,6 +1800,10 @@ See the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
           
             <li><a rel="me" href="https://fosstodon.org/@quarkusio" target="_blank">Mastodon</a></li>
             
+          
+          
+            <li><a href="https://www.threads.com/@quarkusio" target="_blank">Threads</a></li>
+          
           
           
             <li><a href="https://www.facebook.com/quarkusio" target="_blank">Facebook</a></li>
@@ -1838,6 +1854,10 @@ See the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
           
           
             <li><a href="https://groups.google.com/forum/#!forum/quarkus-dev" target="_blank">Development mailing list</a></li>
+          
+          
+          
+            <li><a href="https://stats.uptimerobot.com/ze1PfweT2p" target="_blank">Quarkus Service Status</a></li>
           
           
         </ul>
@@ -1898,17 +1918,14 @@ See the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
   </div>
 </div>
 
-  <div class="content redhat-footer">
-  <div class="grid-wrapper">
-    <span class="licence">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC by 3.0</a> | <a href="https://www.redhat.com/en/about/privacy-policy">Privacy Policy</a>
-    </span>
-    <span class="redhat">
-      Sponsored by
-    </span>
-    <span class="redhat-logo">
-      <a href="https://www.redhat.com/" target="_blank"><img src="/assets/images/redhat_reversed.svg"></a>
-    </span>
+  <div class="content cf-footer">
+  <div class="flexcontainer">
+    <div class="cf-logo">
+      <a class="cf-logo" href="https://www.commonhaus.org/" target="_blank"><img src="https://raw.githubusercontent.com/commonhaus/artwork/main/foundation/brand/svg/CF_logo_horizontal_single_reverse.svg"/></a>
+    </div>
+    <div class="license">
+      Copyright © Quarkus. All rights reserved. For details on our trademarks, please visit our <a href="https://www.commonhaus.org/policies/trademark-policy/">Trademark Policy</a> and <a href="https://www.commonhaus.org/trademarks/">Trademark List</a>. Trademarks of third parties are owned by their respective holders and their mention here does not suggest any endorsement or association.
+    </div>
   </div>
 </div>
 
@@ -1924,6 +1941,8 @@ See the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
   <script src="/assets/javascript/copy.js" type="text/javascript"></script>
   <script src="/assets/javascript/asciidoc-tabs.js" type="text/javascript"></script>
   <script src="/assets/javascript/future-date.js" type="text/javascript"></script>
+  <script src="/assets/javascript/randomize.js" type="text/javascript"></script>
+  <script src="/assets/javascript/time.js" type="text/javascript"></script>
 </body>
 
 </html>

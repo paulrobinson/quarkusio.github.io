@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
-  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com; 
+  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com https://ajax.googleapis.com; 
   script-src 'self' 'unsafe-inline' 'unsafe-eval'
       
       https://assets.adobedtm.com
@@ -38,6 +38,7 @@
   object-src 'none'; 
   form-action 'none'; 
   font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com;" />
+
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlight.pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
@@ -97,7 +98,7 @@
     </label>
     <ul id="menu" class="menu">
       <li class="dropdown">
-        <span href="/about/">Why<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Why<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/about" class="">WHAT IS QUARKUS?</a></li>
           <li><a href="/developer-joy" class="">DEVELOPER JOY</a></li>
@@ -105,11 +106,21 @@
           <li><a href="/kubernetes-native" class="">KUBERNETES NATIVE</a></li>
           <li><a href="/standards" class="">STANDARDS</a></li>
           <li><a href="/versatility" class="">VERSATILITY</a></li>
-          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>          
+          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>
+          <li><a href="/spring" class="">USING SPRING?</a></li>
+          <li class="tertiarydropdown">
+            <span href="#">AI<i class="fas fa-chevron-down"></i></span>
+            <ul class="tertiarymenu">
+              <li><a href="/ai" class="">AI OVERVIEW</a></li>
+              <li><a href="/java-for-ai" class="">JAVA FOR AI</a></li>
+              <li><a href="/quarkus-for-ai" class="">WHY QUARKUS FOR AI</a></li>
+              <li><a href="/ai-blueprints" class="">AI BLUEPRINTS</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/learn/">Learn<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Learn<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/get-started" class="">GET STARTED</a></li>
           <li><a href="/guides" class="active">DOCUMENTATION</a></li>
@@ -119,7 +130,7 @@
           </ul>
       </li>
       <li class="dropdown">
-        <span href="https://quarkus.io/extensions/">Extensions<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Extensions<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <!-- Note that quarkus.io is hardcoded here, because it is the only url which supports extensions -->
           <li><a href="https://quarkus.io/extensions/" class="">BROWSE EXTENSIONS</a></li>
@@ -129,7 +140,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/community/">Community<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Community<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/support/" class="">SUPPORT</a></li>
           <li><a href="/blog" class="">BLOG</a></li>
@@ -139,6 +150,7 @@
           <li><a href="/events" class="">EVENTS</a></li>
           <li><a href="/newsletter" class="">NEWSLETTER</a></li>
           <li><a href="https://github.com/orgs/quarkusio/projects/13/views/1" class="">ROADMAP</a></li>
+          <li><a href="/benefactors" class="">BENEFACTORS</a></li>
           </ul>
       </li>
       <li>
@@ -189,7 +201,11 @@
         
         
         
-        <option value="latest" selected>3.21.2 - Latest</option>
+        <option value="latest" selected>3.31.2 - Latest</option>
+        
+        
+        
+        <option value="3.27" >3.27</option>
         
         
         
@@ -202,18 +218,6 @@
         
         
         <option value="3.8" >3.8</option>
-        
-        
-        
-        <option value="3.2" >3.2</option>
-        
-        
-        
-        <option value="2.16" >2.16</option>
-        
-        
-        
-        <option value="2.13" >2.13</option>
         </select>
     </div>
   </div>
@@ -290,7 +294,7 @@ cd security-oauth2-quickstart</code></pre>
 <div class="title">Maven</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.21.2:create \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:3.31.3:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=security-oauth2-quickstart \
     -Dextensions='rest-jackson,security-oauth2' \
@@ -675,7 +679,7 @@ hello + client_id isSecure: false, authScheme: OAuth2</code></pre>
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">[INFO] Scanning for projects...
 ...
 $ java -jar target/quarkus-app/quarkus-run.jar
-2019-03-28 14:27:48,839 INFO  [io.quarkus] (main) Quarkus 3.21.2 started in 0.796s. Listening on: http://[::]:8080
+2019-03-28 14:27:48,839 INFO  [io.quarkus] (main) Quarkus 3.31.3 started in 0.796s. Listening on: http://[::]:8080
 2019-03-28 14:27:48,841 INFO  [io.quarkus] (main) Installed features: [cdi, rest, rest-jackson, security, security-oauth2]</code></pre>
 </div>
 </div>
@@ -965,7 +969,7 @@ class TokenSecuredResourceTest {
 <p>Determine if the OAuth2 extension is enabled. Enabled by default if you include the <code>elytron-security-oauth2</code> dependency, so this would be used to disable it.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-8006">QUARKUS_OAUTH2_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8006" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8313">QUARKUS_OAUTH2_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8313" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -986,7 +990,7 @@ class TokenSecuredResourceTest {
 <p>The claim that is used in the introspection endpoint response to load the roles.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-8007">QUARKUS_OAUTH2_ROLE_CLAIM</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8007" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8314">QUARKUS_OAUTH2_ROLE_CLAIM</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8314" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1007,7 +1011,7 @@ class TokenSecuredResourceTest {
 <p>The OAuth2 client id used to validate the token. Mandatory if the extension is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-8008">QUARKUS_OAUTH2_CLIENT_ID</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8008" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8315">QUARKUS_OAUTH2_CLIENT_ID</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8315" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1028,7 +1032,7 @@ class TokenSecuredResourceTest {
 <p>The OAuth2 client secret used to validate the token. Mandatory if the extension is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-8009">QUARKUS_OAUTH2_CLIENT_SECRET</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8009" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8316">QUARKUS_OAUTH2_CLIENT_SECRET</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8316" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1049,7 +1053,7 @@ class TokenSecuredResourceTest {
 <p>The OAuth2 introspection endpoint URL used to validate the token and gather the authentication claims. Mandatory if the extension is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-8010">QUARKUS_OAUTH2_INTROSPECTION_URL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8010" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8317">QUARKUS_OAUTH2_INTROSPECTION_URL</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8317" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1070,7 +1074,7 @@ class TokenSecuredResourceTest {
 <p>The OAuth2 server certificate file. <em>Warning</em>: this is not supported in native mode where the certificate must be included in the truststore used during the native image generation, see <a href="native-and-ssl.html">Using SSL With Native Executables</a>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-8011">QUARKUS_OAUTH2_CA_CERT_FILE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8011" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-8318">QUARKUS_OAUTH2_CA_CERT_FILE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8318" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1080,8 +1084,92 @@ class TokenSecuredResourceTest {
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 <td class="tableblock halign-left valign-middle"></td>
 </tr>
+<tr class="row-collapsible row-collapsed row-with-desc odd">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-elytron-security-oauth2_quarkus-oauth2-connection-timeout"></a> <span class="property-path"><a href="#quarkus-elytron-security-oauth2_quarkus-oauth2-connection-timeout"><code>quarkus.oauth2.connection-timeout</code></a></span>
+<button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.oauth2.connection-timeout' title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+<div id="conf-collapsible-desc-7" class="openblock description description-collapsed">
+<div class="content">
+<div class="paragraph">
+<p>Client connection timeout for token introspection. Infinite if not set.</p>
+</div>
+<div class="paragraph">
+<p>Environment variable: <code id="env-var-8319">QUARKUS_OAUTH2_CONNECTION_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8319" title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+</div>
+</div>
+<div class="paragraph description-decoration">
+<p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html">Duration</a> <a href="#duration-note-anchor-quarkus-elytron-security-oauth2_quarkus-oauth2"><span class="icon"><i class="fa fa-question-circle" title="More information about the Duration format"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr class="row-collapsible row-collapsed row-with-desc">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-elytron-security-oauth2_quarkus-oauth2-read-timeout"></a> <span class="property-path"><a href="#quarkus-elytron-security-oauth2_quarkus-oauth2-read-timeout"><code>quarkus.oauth2.read-timeout</code></a></span>
+<button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.oauth2.read-timeout' title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+<div id="conf-collapsible-desc-8" class="openblock description description-collapsed">
+<div class="content">
+<div class="paragraph">
+<p>Client read timeout for token introspection. Infinite if not set.</p>
+</div>
+<div class="paragraph">
+<p>Environment variable: <code id="env-var-8320">QUARKUS_OAUTH2_READ_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-8320" title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+</div>
+</div>
+<div class="paragraph description-decoration">
+<p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html">Duration</a> <a href="#duration-note-anchor-quarkus-elytron-security-oauth2_quarkus-oauth2"><span class="icon"><i class="fa fa-question-circle" title="More information about the Duration format"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
 </tbody>
 </table>
+<div id="duration-note-anchor-quarkus-elytron-security-oauth2_quarkus-oauth2" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">About the Duration format</div>
+<div class="paragraph">
+<p>To write duration values, use the standard <code>java.time.Duration</code> format.
+See the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html#parse(java.lang.CharSequence)">Duration#parse() Java API documentation</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>You can also use a simplified format, starting with a number:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the value is only a number, it represents time in seconds.</p>
+</li>
+<li>
+<p>If the value is a number followed by <code>ms</code>, it represents time in milliseconds.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In other cases, the simplified format is translated to the <code>java.time.Duration</code> format for parsing:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the value is a number followed by <code>h</code>, <code>m</code>, or <code>s</code>, it is prefixed with <code>PT</code>.</p>
+</li>
+<li>
+<p>If the value is a number followed by <code>d</code>, it is prefixed with <code>P</code>.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
     </div>
@@ -1155,6 +1243,9 @@ class TokenSecuredResourceTest {
         <li class="tutorial"><a href="/guides/security-getting-started-tutorial">Getting started with security by using Basic authentication and Jakarta Persistence</a></li>
       
         
+        <li class="tutorial"><a href="/guides/security-vertx-oidc-to-quarkus-oidc-migration">Migrate from Vert.x OIDC to Quarkus OIDC</a></li>
+      
+        
         <li class="reference"><a href="/guides/security-openid-connect-client-reference">OpenID Connect (OIDC) and OAuth2 client and filters</a></li>
       
         
@@ -1171,9 +1262,6 @@ class TokenSecuredResourceTest {
       
         
         <li class="tutorial"><a href="/guides/security-openid-connect-client">OpenID Connect client and token propagation quickstart</a></li>
-      
-        
-        <li class="concepts"><a href="/guides/security-proactive-authentication">Proactive authentication</a></li>
       </ul>
     </div>
     </div>
@@ -1188,7 +1276,7 @@ class TokenSecuredResourceTest {
     </div>
   </div>
   <div class="grid-wrapper">
-    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license.<br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
+    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license. <i class='fab fa-creative-commons'></i><i class='fab fa-creative-commons-by'></i> <a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC by 3.0</a><br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
 
     
       <div class="width-1-12 project-links">
@@ -1236,11 +1324,15 @@ class TokenSecuredResourceTest {
           
           
           
-            <li><a href="/brand" target="_blank">Brand</a></li>
+            <li><a href="https://github.com/commonhaus/artwork/tree/main/projects/quarkus" target="_blank">Brand</a></li>
           
           
           
             <li><a href="/desktopwallpapers" target="_blank">Wallpapers</a></li>
+          
+          
+          
+            <li><a href="https://www.redhat.com/en/about/privacy-policy" target="_blank">Privacy Policy</a></li>
           
           
         </ul>
@@ -1261,6 +1353,10 @@ class TokenSecuredResourceTest {
           
             <li><a rel="me" href="https://fosstodon.org/@quarkusio" target="_blank">Mastodon</a></li>
             
+          
+          
+            <li><a href="https://www.threads.com/@quarkusio" target="_blank">Threads</a></li>
+          
           
           
             <li><a href="https://www.facebook.com/quarkusio" target="_blank">Facebook</a></li>
@@ -1311,6 +1407,10 @@ class TokenSecuredResourceTest {
           
           
             <li><a href="https://groups.google.com/forum/#!forum/quarkus-dev" target="_blank">Development mailing list</a></li>
+          
+          
+          
+            <li><a href="https://stats.uptimerobot.com/ze1PfweT2p" target="_blank">Quarkus Service Status</a></li>
           
           
         </ul>
@@ -1371,17 +1471,14 @@ class TokenSecuredResourceTest {
   </div>
 </div>
 
-  <div class="content redhat-footer">
-  <div class="grid-wrapper">
-    <span class="licence">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC by 3.0</a> | <a href="https://www.redhat.com/en/about/privacy-policy">Privacy Policy</a>
-    </span>
-    <span class="redhat">
-      Sponsored by
-    </span>
-    <span class="redhat-logo">
-      <a href="https://www.redhat.com/" target="_blank"><img src="/assets/images/redhat_reversed.svg"></a>
-    </span>
+  <div class="content cf-footer">
+  <div class="flexcontainer">
+    <div class="cf-logo">
+      <a class="cf-logo" href="https://www.commonhaus.org/" target="_blank"><img src="https://raw.githubusercontent.com/commonhaus/artwork/main/foundation/brand/svg/CF_logo_horizontal_single_reverse.svg"/></a>
+    </div>
+    <div class="license">
+      Copyright © Quarkus. All rights reserved. For details on our trademarks, please visit our <a href="https://www.commonhaus.org/policies/trademark-policy/">Trademark Policy</a> and <a href="https://www.commonhaus.org/trademarks/">Trademark List</a>. Trademarks of third parties are owned by their respective holders and their mention here does not suggest any endorsement or association.
+    </div>
   </div>
 </div>
 
@@ -1397,6 +1494,8 @@ class TokenSecuredResourceTest {
   <script src="/assets/javascript/copy.js" type="text/javascript"></script>
   <script src="/assets/javascript/asciidoc-tabs.js" type="text/javascript"></script>
   <script src="/assets/javascript/future-date.js" type="text/javascript"></script>
+  <script src="/assets/javascript/randomize.js" type="text/javascript"></script>
+  <script src="/assets/javascript/time.js" type="text/javascript"></script>
 </body>
 
 </html>

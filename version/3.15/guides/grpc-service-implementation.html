@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
-  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com; 
+  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com https://ajax.googleapis.com; 
   script-src 'self' 'unsafe-inline' 'unsafe-eval'
       
       https://assets.adobedtm.com
@@ -38,6 +38,7 @@
   object-src 'none'; 
   form-action 'none'; 
   font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com;" />
+
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlight.pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
@@ -97,7 +98,7 @@
     </label>
     <ul id="menu" class="menu">
       <li class="dropdown">
-        <span href="/about/">Why<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Why<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/about" class="">WHAT IS QUARKUS?</a></li>
           <li><a href="/developer-joy" class="">DEVELOPER JOY</a></li>
@@ -105,11 +106,21 @@
           <li><a href="/kubernetes-native" class="">KUBERNETES NATIVE</a></li>
           <li><a href="/standards" class="">STANDARDS</a></li>
           <li><a href="/versatility" class="">VERSATILITY</a></li>
-          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>          
+          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>
+          <li><a href="/spring" class="">USING SPRING?</a></li>
+          <li class="tertiarydropdown">
+            <span href="#">AI<i class="fas fa-chevron-down"></i></span>
+            <ul class="tertiarymenu">
+              <li><a href="/ai" class="">AI OVERVIEW</a></li>
+              <li><a href="/java-for-ai" class="">JAVA FOR AI</a></li>
+              <li><a href="/quarkus-for-ai" class="">WHY QUARKUS FOR AI</a></li>
+              <li><a href="/ai-blueprints" class="">AI BLUEPRINTS</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/learn/">Learn<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Learn<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/get-started" class="">GET STARTED</a></li>
           <li><a href="/guides" class="active">DOCUMENTATION</a></li>
@@ -119,7 +130,7 @@
           </ul>
       </li>
       <li class="dropdown">
-        <span href="https://quarkus.io/extensions/">Extensions<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Extensions<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <!-- Note that quarkus.io is hardcoded here, because it is the only url which supports extensions -->
           <li><a href="https://quarkus.io/extensions/" class="">BROWSE EXTENSIONS</a></li>
@@ -129,7 +140,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/community/">Community<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Community<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/support/" class="">SUPPORT</a></li>
           <li><a href="/blog" class="">BLOG</a></li>
@@ -139,6 +150,7 @@
           <li><a href="/events" class="">EVENTS</a></li>
           <li><a href="/newsletter" class="">NEWSLETTER</a></li>
           <li><a href="https://github.com/orgs/quarkusio/projects/13/views/1" class="">ROADMAP</a></li>
+          <li><a href="/benefactors" class="">BENEFACTORS</a></li>
           </ul>
       </li>
       <li>
@@ -189,7 +201,11 @@
         
         
         
-        <option value="latest" >3.21.2 - Latest</option>
+        <option value="latest" >3.31.2 - Latest</option>
+        
+        
+        
+        <option value="3.27" >3.27</option>
         
         
         
@@ -202,18 +218,6 @@
         
         
         <option value="3.8" >3.8</option>
-        
-        
-        
-        <option value="3.2" >3.2</option>
-        
-        
-        
-        <option value="2.16" >2.16</option>
-        
-        
-        
-        <option value="2.13" >2.13</option>
         </select>
     </div>
   </div>
@@ -581,7 +585,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Do we use separate HTTP server to serve gRPC requests. Set this to false if you want to use new Vert.x gRPC support, which uses existing Vert.x HTTP server.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29023">QUARKUS_GRPC_SERVER_USE_SEPARATE_SERVER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29023" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29355">QUARKUS_GRPC_SERVER_USE_SEPARATE_SERVER</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29355" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -606,7 +610,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Explicitly enable use of XDS.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29024">QUARKUS_GRPC_SERVER_XDS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29024" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29356">QUARKUS_GRPC_SERVER_XDS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29356" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -626,7 +630,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Use secure credentials.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29025">QUARKUS_GRPC_SERVER_XDS_SECURE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29025" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29357">QUARKUS_GRPC_SERVER_XDS_SECURE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29357" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -646,7 +650,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Explicitly enable use of in-process.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29026">QUARKUS_GRPC_SERVER_IN_PROCESS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29026" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29358">QUARKUS_GRPC_SERVER_IN_PROCESS_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29358" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -666,7 +670,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Set in-process name.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29027">QUARKUS_GRPC_SERVER_IN_PROCESS_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29027" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29359">QUARKUS_GRPC_SERVER_IN_PROCESS_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29359" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -686,7 +690,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The gRPC Server port.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29028">QUARKUS_GRPC_SERVER_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29028" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29360">QUARKUS_GRPC_SERVER_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29360" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -706,7 +710,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The gRPC Server port used for tests.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29029">QUARKUS_GRPC_SERVER_TEST_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29029" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29361">QUARKUS_GRPC_SERVER_TEST_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29361" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -726,7 +730,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The gRPC server host.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29030">QUARKUS_GRPC_SERVER_HOST</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29030" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29362">QUARKUS_GRPC_SERVER_HOST</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29362" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -746,7 +750,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The gRPC handshake timeout.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29031">QUARKUS_GRPC_SERVER_HANDSHAKE_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29031" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29363">QUARKUS_GRPC_SERVER_HANDSHAKE_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29363" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -766,7 +770,10 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The max inbound message size in bytes.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29032">QUARKUS_GRPC_SERVER_MAX_INBOUND_MESSAGE_SIZE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29032" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>When using a single server (using <code>quarkus.grpc.server.use-separate-server=false</code>), the default value is 256KB. When using a separate server (using <code>quarkus.grpc.server.use-separate-server=true</code>), the default value is 4MB.</p>
+</div>
+<div class="paragraph">
+<p>Environment variable: <code id="env-var-29364">QUARKUS_GRPC_SERVER_MAX_INBOUND_MESSAGE_SIZE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29364" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -786,7 +793,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The max inbound metadata size in bytes</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29033">QUARKUS_GRPC_SERVER_MAX_INBOUND_METADATA_SIZE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29033" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29365">QUARKUS_GRPC_SERVER_MAX_INBOUND_METADATA_SIZE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29365" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -806,7 +813,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The classpath path or file path to a server certificate or certificate chain in PEM format.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29034">QUARKUS_GRPC_SERVER_SSL_CERTIFICATE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29034" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29366">QUARKUS_GRPC_SERVER_SSL_CERTIFICATE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29366" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -826,7 +833,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The classpath path or file path to the corresponding certificate private key file in PEM format.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29035">QUARKUS_GRPC_SERVER_SSL_KEY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29035" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29367">QUARKUS_GRPC_SERVER_SSL_KEY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29367" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -846,7 +853,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>An optional keystore that holds the certificate information instead of specifying separate files. The keystore can be either on classpath or an external file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29036">QUARKUS_GRPC_SERVER_SSL_KEY_STORE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29036" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29368">QUARKUS_GRPC_SERVER_SSL_KEY_STORE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29368" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -866,7 +873,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>An optional parameter to specify the type of the keystore file. If not given, the type is automatically detected based on the file name.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29037">QUARKUS_GRPC_SERVER_SSL_KEY_STORE_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29037" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29369">QUARKUS_GRPC_SERVER_SSL_KEY_STORE_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29369" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -886,7 +893,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>A parameter to specify the password of the keystore file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29038">QUARKUS_GRPC_SERVER_SSL_KEY_STORE_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29038" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29370">QUARKUS_GRPC_SERVER_SSL_KEY_STORE_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29370" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -906,7 +913,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>A parameter to specify the alias of the keystore file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29039">QUARKUS_GRPC_SERVER_SSL_KEY_STORE_ALIAS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29039" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29371">QUARKUS_GRPC_SERVER_SSL_KEY_STORE_ALIAS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29371" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -926,7 +933,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>A parameter to specify the alias password of the keystore file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29040">QUARKUS_GRPC_SERVER_SSL_KEY_STORE_ALIAS_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29040" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29372">QUARKUS_GRPC_SERVER_SSL_KEY_STORE_ALIAS_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29372" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -949,7 +956,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The trust store can be either on classpath or an external file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29041">QUARKUS_GRPC_SERVER_SSL_TRUST_STORE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29041" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29373">QUARKUS_GRPC_SERVER_SSL_TRUST_STORE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29373" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -969,7 +976,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>An optional parameter to specify type of the trust store file. If not given, the type is automatically detected based on the file name.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29042">QUARKUS_GRPC_SERVER_SSL_TRUST_STORE_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29042" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29374">QUARKUS_GRPC_SERVER_SSL_TRUST_STORE_TYPE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29374" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -989,7 +996,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>A parameter to specify the password of the trust store file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29043">QUARKUS_GRPC_SERVER_SSL_TRUST_STORE_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29043" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29375">QUARKUS_GRPC_SERVER_SSL_TRUST_STORE_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29375" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1009,7 +1016,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The cipher suites to use. If none is given, a reasonable default is selected.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29044">QUARKUS_GRPC_SERVER_SSL_CIPHER_SUITES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29044" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29376">QUARKUS_GRPC_SERVER_SSL_CIPHER_SUITES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29376" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1035,7 +1042,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Note that setting an empty list, and enabling SSL/TLS is invalid. You must at least have one protocol.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29045">QUARKUS_GRPC_SERVER_SSL_PROTOCOLS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29045" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29377">QUARKUS_GRPC_SERVER_SSL_PROTOCOLS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29377" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1055,7 +1062,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Configures the engine to require/request client authentication. NONE, REQUEST, REQUIRED</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29046">QUARKUS_GRPC_SERVER_SSL_CLIENT_AUTH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29046" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29378">QUARKUS_GRPC_SERVER_SSL_CLIENT_AUTH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29378" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1077,7 +1084,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Disables SSL, and uses plain text instead. If disabled, configure the ssl configuration.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29047">QUARKUS_GRPC_SERVER_PLAIN_TEXT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29047" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29379">QUARKUS_GRPC_SERVER_PLAIN_TEXT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29379" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1097,7 +1104,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Whether ALPN should be used.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29048">QUARKUS_GRPC_SERVER_ALPN</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29048" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29380">QUARKUS_GRPC_SERVER_ALPN</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29380" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1117,7 +1124,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The path to the certificate file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29049">QUARKUS_GRPC_SERVER_TRANSPORT_SECURITY_CERTIFICATE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29049" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29381">QUARKUS_GRPC_SERVER_TRANSPORT_SECURITY_CERTIFICATE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29381" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1137,7 +1144,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>The path to the private key file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29050">QUARKUS_GRPC_SERVER_TRANSPORT_SECURITY_KEY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29050" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29382">QUARKUS_GRPC_SERVER_TRANSPORT_SECURITY_KEY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29382" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1157,7 +1164,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Enables the gRPC Reflection Service. By default, the reflection service is only exposed in <code>dev</code> mode. This setting allows overriding this choice and enable the reflection service every time.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29051">QUARKUS_GRPC_SERVER_ENABLE_REFLECTION_SERVICE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29051" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29383">QUARKUS_GRPC_SERVER_ENABLE_REFLECTION_SERVICE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29383" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1177,7 +1184,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Number of gRPC server verticle instances. This is useful for scaling easily across multiple cores. The number should not exceed the amount of event loops.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29052">QUARKUS_GRPC_SERVER_INSTANCES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29052" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29384">QUARKUS_GRPC_SERVER_INSTANCES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29384" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1197,7 +1204,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Sets a custom keep-alive duration. This configures the time before sending a <code>keepalive</code> ping when there is no read activity.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29053">QUARKUS_GRPC_SERVER_NETTY_KEEP_ALIVE_TIME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29053" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29385">QUARKUS_GRPC_SERVER_NETTY_KEEP_ALIVE_TIME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29385" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1217,7 +1224,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Sets a custom permit-keep-alive duration. This configures the most aggressive keep-alive time clients are permitted to configure. The server will try to detect clients exceeding this rate and when detected will forcefully close the connection.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29054">QUARKUS_GRPC_SERVER_NETTY_PERMIT_KEEP_ALIVE_TIME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29054" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29386">QUARKUS_GRPC_SERVER_NETTY_PERMIT_KEEP_ALIVE_TIME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29386" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1237,7 +1244,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>Sets whether to allow clients to send keep-alive HTTP/2 PINGs even if there are no outstanding RPCs on the connection.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29055">QUARKUS_GRPC_SERVER_NETTY_PERMIT_KEEP_ALIVE_WITHOUT_CALLS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29055" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29387">QUARKUS_GRPC_SERVER_NETTY_PERMIT_KEEP_ALIVE_WITHOUT_CALLS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29387" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1257,7 +1264,7 @@ Quarkus exposes both the reflection service <code>v1</code> and <code>v1alpha</c
 <p>gRPC compression, e.g. "gzip"</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-29056">QUARKUS_GRPC_SERVER_COMPRESSION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29056" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-29388">QUARKUS_GRPC_SERVER_COMPRESSION</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-29388" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1984,7 +1991,7 @@ public class CustomGrpcSecurityMechanism implements GrpcSecurityMechanism {
     </div>
   </div>
   <div class="grid-wrapper">
-    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license.<br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
+    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license. <i class='fab fa-creative-commons'></i><i class='fab fa-creative-commons-by'></i> <a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC by 3.0</a><br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
 
     
       <div class="width-1-12 project-links">
@@ -2032,11 +2039,15 @@ public class CustomGrpcSecurityMechanism implements GrpcSecurityMechanism {
           
           
           
-            <li><a href="/brand" target="_blank">Brand</a></li>
+            <li><a href="https://github.com/commonhaus/artwork/tree/main/projects/quarkus" target="_blank">Brand</a></li>
           
           
           
             <li><a href="/desktopwallpapers" target="_blank">Wallpapers</a></li>
+          
+          
+          
+            <li><a href="https://www.redhat.com/en/about/privacy-policy" target="_blank">Privacy Policy</a></li>
           
           
         </ul>
@@ -2057,6 +2068,10 @@ public class CustomGrpcSecurityMechanism implements GrpcSecurityMechanism {
           
             <li><a rel="me" href="https://fosstodon.org/@quarkusio" target="_blank">Mastodon</a></li>
             
+          
+          
+            <li><a href="https://www.threads.com/@quarkusio" target="_blank">Threads</a></li>
+          
           
           
             <li><a href="https://www.facebook.com/quarkusio" target="_blank">Facebook</a></li>
@@ -2107,6 +2122,10 @@ public class CustomGrpcSecurityMechanism implements GrpcSecurityMechanism {
           
           
             <li><a href="https://groups.google.com/forum/#!forum/quarkus-dev" target="_blank">Development mailing list</a></li>
+          
+          
+          
+            <li><a href="https://stats.uptimerobot.com/ze1PfweT2p" target="_blank">Quarkus Service Status</a></li>
           
           
         </ul>
@@ -2167,17 +2186,14 @@ public class CustomGrpcSecurityMechanism implements GrpcSecurityMechanism {
   </div>
 </div>
 
-  <div class="content redhat-footer">
-  <div class="grid-wrapper">
-    <span class="licence">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC by 3.0</a> | <a href="https://www.redhat.com/en/about/privacy-policy">Privacy Policy</a>
-    </span>
-    <span class="redhat">
-      Sponsored by
-    </span>
-    <span class="redhat-logo">
-      <a href="https://www.redhat.com/" target="_blank"><img src="/assets/images/redhat_reversed.svg"></a>
-    </span>
+  <div class="content cf-footer">
+  <div class="flexcontainer">
+    <div class="cf-logo">
+      <a class="cf-logo" href="https://www.commonhaus.org/" target="_blank"><img src="https://raw.githubusercontent.com/commonhaus/artwork/main/foundation/brand/svg/CF_logo_horizontal_single_reverse.svg"/></a>
+    </div>
+    <div class="license">
+      Copyright © Quarkus. All rights reserved. For details on our trademarks, please visit our <a href="https://www.commonhaus.org/policies/trademark-policy/">Trademark Policy</a> and <a href="https://www.commonhaus.org/trademarks/">Trademark List</a>. Trademarks of third parties are owned by their respective holders and their mention here does not suggest any endorsement or association.
+    </div>
   </div>
 </div>
 
@@ -2193,6 +2209,8 @@ public class CustomGrpcSecurityMechanism implements GrpcSecurityMechanism {
   <script src="/assets/javascript/copy.js" type="text/javascript"></script>
   <script src="/assets/javascript/asciidoc-tabs.js" type="text/javascript"></script>
   <script src="/assets/javascript/future-date.js" type="text/javascript"></script>
+  <script src="/assets/javascript/randomize.js" type="text/javascript"></script>
+  <script src="/assets/javascript/time.js" type="text/javascript"></script>
 </body>
 
 </html>

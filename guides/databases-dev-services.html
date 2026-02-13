@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
-  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com; 
+  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com https://ajax.googleapis.com; 
   script-src 'self' 'unsafe-inline' 'unsafe-eval'
       
       https://assets.adobedtm.com
@@ -38,6 +38,7 @@
   object-src 'none'; 
   form-action 'none'; 
   font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com;" />
+
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlight.pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
@@ -97,7 +98,7 @@
     </label>
     <ul id="menu" class="menu">
       <li class="dropdown">
-        <span href="/about/">Why<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Why<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/about" class="">WHAT IS QUARKUS?</a></li>
           <li><a href="/developer-joy" class="">DEVELOPER JOY</a></li>
@@ -105,11 +106,21 @@
           <li><a href="/kubernetes-native" class="">KUBERNETES NATIVE</a></li>
           <li><a href="/standards" class="">STANDARDS</a></li>
           <li><a href="/versatility" class="">VERSATILITY</a></li>
-          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>          
+          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>
+          <li><a href="/spring" class="">USING SPRING?</a></li>
+          <li class="tertiarydropdown">
+            <span href="#">AI<i class="fas fa-chevron-down"></i></span>
+            <ul class="tertiarymenu">
+              <li><a href="/ai" class="">AI OVERVIEW</a></li>
+              <li><a href="/java-for-ai" class="">JAVA FOR AI</a></li>
+              <li><a href="/quarkus-for-ai" class="">WHY QUARKUS FOR AI</a></li>
+              <li><a href="/ai-blueprints" class="">AI BLUEPRINTS</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/learn/">Learn<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Learn<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/get-started" class="">GET STARTED</a></li>
           <li><a href="/guides" class="active">DOCUMENTATION</a></li>
@@ -119,7 +130,7 @@
           </ul>
       </li>
       <li class="dropdown">
-        <span href="https://quarkus.io/extensions/">Extensions<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Extensions<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <!-- Note that quarkus.io is hardcoded here, because it is the only url which supports extensions -->
           <li><a href="https://quarkus.io/extensions/" class="">BROWSE EXTENSIONS</a></li>
@@ -129,7 +140,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/community/">Community<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Community<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/support/" class="">SUPPORT</a></li>
           <li><a href="/blog" class="">BLOG</a></li>
@@ -139,6 +150,7 @@
           <li><a href="/events" class="">EVENTS</a></li>
           <li><a href="/newsletter" class="">NEWSLETTER</a></li>
           <li><a href="https://github.com/orgs/quarkusio/projects/13/views/1" class="">ROADMAP</a></li>
+          <li><a href="/benefactors" class="">BENEFACTORS</a></li>
           </ul>
       </li>
       <li>
@@ -189,7 +201,11 @@
         
         
         
-        <option value="latest" selected>3.21.2 - Latest</option>
+        <option value="latest" selected>3.31.2 - Latest</option>
+        
+        
+        
+        <option value="3.27" >3.27</option>
         
         
         
@@ -202,18 +218,6 @@
         
         
         <option value="3.8" >3.8</option>
-        
-        
-        
-        <option value="3.2" >3.2</option>
-        
-        
-        
-        <option value="2.16" >2.16</option>
-        
-        
-        
-        <option value="2.13" >2.13</option>
         </select>
     </div>
   </div>
@@ -237,9 +241,6 @@ Dev Services is supported for the following databases:</p>
 <ul>
 <li>
 <p>DB2 (container) (requires <a href="#license_acceptance">license acceptance</a>)</p>
-</li>
-<li>
-<p>Derby (in-process)</p>
 </li>
 <li>
 <p>H2 (in-process)</p>
@@ -290,7 +291,7 @@ quarkus.datasource.devservices.enabled=false</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Dev Services for databases relies on Docker to start the server (except for H2 and Derby which are run in process).
+<p>Dev Services for databases relies on Docker to start the server (except for H2 which is run in process).
 If your environment does not support Docker, you will need to start the server manually, or connect to an already running server.</p>
 </div>
 <div class="sect2">
@@ -306,8 +307,20 @@ By default, Quarkus uses the default image for the current version of Testcontai
 <div class="listingblock">
 <div class="title">src/main/resources/container-license-acceptance.txt</div>
 <div class="content">
-<pre>ibmcom/db2:11.5.0.0a
-mcr.microsoft.com/mssql/server:2022-latest</pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">icr.io/db2_community/db2:12.1.0.0
+mcr.microsoft.com/mssql/server:2022-latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, add these entries to your <code>application.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># For mssql
+quarkus.datasource.devservices.container-env.ACCEPT_EULA=Y
+
+# For db2
+quarkus.datasource.devservices.container-env.LICENSE=accept</code></pre>
 </div>
 </div>
 </div>
@@ -347,7 +360,7 @@ Quarkus will (by default) stop all database Dev Services.</p>
 <div class="sect2">
 <h3 id="reuse-across-executions"><a class="anchor" href="#reuse-across-executions"></a>Reusing Dev Service containers across runs</h3>
 <div class="paragraph">
-<p>Assuming you rely on Dev Services based on containers (unlike H2 or Derby),
+<p>Assuming you rely on Dev Services based on containers (unlike H2),
 if you want to keep Dev Service containers running <strong>after a dev mode session or test suite execution</strong>
 to reuse them in the next dev mode session or test suite execution,
 this is possible as well.
@@ -451,7 +464,7 @@ to <code>false</code>.</p>
 <pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Using a filesystem volume:
 quarkus.datasource.devservices.volumes."/path/from"=/container/to <i class="conum" data-value="1"></i><b>(1)</b>
 # Using a classpath volume:
-quarkus.datasource.devservices.volumes."classpath:./file"=/container/to <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+quarkus.datasource.devservices.volumes."classpath\:./file"=/container/to <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -463,6 +476,18 @@ quarkus.datasource.devservices.volumes."classpath:./file"=/container/to <i class
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>When using classpath volumes, the location has to start with "classpath:". The file or folder "./file" from the project&#8217;s classpath will be accessible at "/container/to" in the container.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+The colon character <code>:</code> needs to be escaped in <code>.properties</code> files as <code>\:</code>, or it will be interpreted as a key/value separator.
+</td>
 </tr>
 </table>
 </div>
@@ -510,7 +535,7 @@ quarkus.datasource.devservices.volumes."/local/test/data"=/var/lib/mysql</code><
 <td class="content">
 <div class="paragraph">
 <p>When using Dev Services with Hibernate ORM, by default Quarkus will wipe out the database on application startup, which will wipe out the database data on your Docker host&#8217;s filesystem.
-Configure <code>quarkus.hibernate-orm.database.generation=none</code> or <code>quarkus.hibernate-orm.database.generation=validate</code> to avoid this behavior.</p>
+Configure <code>quarkus.hibernate-orm.schema-management.strategy=none</code> or <code>quarkus.hibernate-orm.schema-management.strategy=validate</code> to avoid this behavior.</p>
 </div>
 <div class="paragraph">
 <p>Also, using Flyway to migrate your schema when starting the application will modify the database data on your Docker hosts&#8217;s file system.</p>
@@ -578,7 +603,7 @@ Thus, even though extra JDBC URL properties can be set in your <code>application
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Microsoft SQL Server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sa</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Quarkus123</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -637,7 +662,7 @@ For instance, when you run PostgreSQL as a Dev Service and have <code>psql</code
 # returns something like this:
 
 CONTAINER ID   IMAGE           [..]    PORTS                                         [..]
-b826e3a168c4   postgres:14.2   [..]    0.0.0.0:49174-&gt;5432/tcp, :::49174-&gt;5432/tcp   [..] <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+b826e3a168c4   docker.io/library/postgres:17   [..]    0.0.0.0:49174-&gt;5432/tcp, :::49174-&gt;5432/tcp   [..] <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -692,7 +717,7 @@ For example, to get the running container ID, the image, the labels and the port
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">CONTAINER ID   IMAGE          LABELS                                                                        PORTS
-a7034c91a392   postgres:14    org.testcontainers.sessionId=xyz,datasource=default,org.testcontainers=true   0.0.0.0:49154-&gt;5432/tcp, :::49154-&gt;5432/tcp</code></pre>
+a7034c91a392   docker.io/library/postgres:17     org.testcontainers.sessionId=xyz,datasource=default,org.testcontainers=true   0.0.0.0:49154-&gt;5432/tcp, :::49154-&gt;5432/tcp</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -702,6 +727,49 @@ Dev Services have been started.</p>
 </td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Compose"><a class="anchor" href="#Compose"></a>Compose</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Database Dev Services supports <a href="compose-dev-services">Compose Dev Services</a>.
+It relies on a <code>compose-devservices.yml</code>, such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: &lt;application name&gt;
+services:
+  postgresql:
+    image: docker.io/library/postgres:17
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_USER: quarkus
+      POSTGRES_PASSWORD: quarkus
+      POSTGRES_DB: quarkus
+  oracle:
+    image: docker.io/gvenzl/oracle-free:23-slim-faststart
+    ports:
+      - "1521"
+    environment:
+      ORACLE_PASSWORD: quarkus
+      ORACLE_DATABASE: quarkus
+      APP_USER: quarkus
+      APP_USER_PASSWORD: quarkus
+    labels:
+      io.quarkus.devservices.compose.wait_for.logs: .*DATABASE IS READY TO USE.*
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: Quarkus123
+    labels:
+      io.quarkus.devservices.compose.jdbc.parameters: trustServerCertificate=true</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -745,7 +813,7 @@ Dev Services have been started.</p>
 unless connection configuration (e.g. the JDBC URL or reactive client URL) is set explicitly.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4426">QUARKUS_DATASOURCE_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4426" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4616">QUARKUS_DATASOURCE_DEVSERVICES_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4616" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -773,7 +841,32 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>This has no effect if the provider is not a container-based database, such as H2 or Derby.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4427">QUARKUS_DATASOURCE_DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4427" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Defaults depend on the configured <code>datasource</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DB2: <code>icr.io/db2_community/db2:12.1.0.0</code></p>
+</li>
+<li>
+<p>MariaDB: <code>docker.io/library/mariadb:10.11</code></p>
+</li>
+<li>
+<p>Microsoft SQL Server: <code>mcr.microsoft.com/mssql/server:2022-latest</code></p>
+</li>
+<li>
+<p>MySQL: <code>docker.io/library/mysql:9.5</code></p>
+</li>
+<li>
+<p>Oracle Express Edition: <code>docker.io/gvenzl/oracle-free:23-slim-faststart</code></p>
+</li>
+<li>
+<p>PostgreSQL: <code>docker.io/library/postgres:17</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Environment variable: <code id="env-var-4617">QUARKUS_DATASOURCE_DEVSERVICES_IMAGE_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4617" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -798,7 +891,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>Environment variables that are passed to the container.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4428">QUARKUS_DATASOURCE_DEVSERVICES_CONTAINER_ENV__ENVIRONMENT_VARIABLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4428" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4618">QUARKUS_DATASOURCE_DEVSERVICES_CONTAINER_ENV__ENVIRONMENT_VARIABLE_NAME_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4618" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -826,7 +919,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>Properties defined here are database-specific and are interpreted specifically in each database dev service implementation.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4429">QUARKUS_DATASOURCE_DEVSERVICES_CONTAINER_PROPERTIES__PROPERTY_KEY_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4429" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4619">QUARKUS_DATASOURCE_DEVSERVICES_CONTAINER_PROPERTIES__PROPERTY_KEY_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4619" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -851,7 +944,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>Generic properties that are added to the database connection URL.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4430">QUARKUS_DATASOURCE_DEVSERVICES_PROPERTIES__PROPERTY_KEY_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4430" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4620">QUARKUS_DATASOURCE_DEVSERVICES_PROPERTIES__PROPERTY_KEY_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4620" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -879,7 +972,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>If not defined, the port will be chosen randomly.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4431">QUARKUS_DATASOURCE_DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4431" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4621">QUARKUS_DATASOURCE_DEVSERVICES_PORT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4621" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -907,7 +1000,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>This has no effect if the provider is not a container-based database, such as H2 or Derby.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4432">QUARKUS_DATASOURCE_DEVSERVICES_COMMAND</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4432" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4622">QUARKUS_DATASOURCE_DEVSERVICES_COMMAND</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4622" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -932,7 +1025,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>The database name to use if this Dev Service supports overriding it.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4433">QUARKUS_DATASOURCE_DEVSERVICES_DB_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4433" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4623">QUARKUS_DATASOURCE_DEVSERVICES_DB_NAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4623" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -957,7 +1050,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>The username to use if this Dev Service supports overriding it.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4434">QUARKUS_DATASOURCE_DEVSERVICES_USERNAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4434" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4624">QUARKUS_DATASOURCE_DEVSERVICES_USERNAME</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4624" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -982,7 +1075,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>The password to use if this Dev Service supports overriding it.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4435">QUARKUS_DATASOURCE_DEVSERVICES_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4435" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4625">QUARKUS_DATASOURCE_DEVSERVICES_PASSWORD</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4625" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1010,7 +1103,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>This has no effect if the provider is not a container-based database, such as H2 or Derby.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4436">QUARKUS_DATASOURCE_DEVSERVICES_INIT_SCRIPT_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4436" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4626">QUARKUS_DATASOURCE_DEVSERVICES_INIT_SCRIPT_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4626" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1022,6 +1115,31 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 </tr>
 <tr class="row-collapsible row-collapsed row-with-desc">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-datasource_quarkus-datasource-devservices_quarkus-datasource-devservices-init-privileged-script-path"></a> <span class="property-path"><a href="#quarkus-datasource_quarkus-datasource-devservices_quarkus-datasource-devservices-init-privileged-script-path"><code>quarkus.datasource.devservices.init-privileged-script-path</code></a></span>
+<button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.datasource.devservices.init-privileged-script-path' title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+<div class="paragraph">
+<p><code>quarkus.datasource."datasource-name".devservices.init-privileged-script-path</code>
+<button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.datasource."datasource-name".devservices.init-privileged-script-path' title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+<div id="conf-collapsible-desc-12" class="openblock description description-collapsed">
+<div class="content">
+<div class="paragraph">
+<p>The paths to SQL scripts to be loaded from the classpath and applied to the Dev Service database using the SYS privileged user. Not all databases provide a privileged user. In these cases, the property is ignored. This has no effect if the provider is not a container-based database, such as H2 or Derby.</p>
+</div>
+<div class="paragraph">
+<p>Environment variable: <code id="env-var-4627">QUARKUS_DATASOURCE_DEVSERVICES_INIT_PRIVILEGED_SCRIPT_PATH</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4627" title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+</div>
+</div>
+<div class="paragraph description-decoration">
+<p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr class="row-collapsible row-collapsed row-with-desc odd">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-datasource_quarkus-datasource-devservices_quarkus-datasource-devservices-volumes-host-path"></a> <span class="property-path"><a href="#quarkus-datasource_quarkus-datasource-devservices_quarkus-datasource-devservices-volumes-host-path"><code>quarkus.datasource.devservices.volumes."host-path"</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.datasource.devservices.volumes."host-path"' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
@@ -1029,7 +1147,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p><code>quarkus.datasource."datasource-name".devservices.volumes."host-path"</code>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.datasource."datasource-name".devservices.volumes."host-path"' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-12" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-13" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>The volumes to be mapped to the container.</p>
@@ -1044,7 +1162,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p>This has no effect if the provider is not a container-based database, such as H2 or Derby.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4437">QUARKUS_DATASOURCE_DEVSERVICES_VOLUMES__HOST_PATH_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4437" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4628">QUARKUS_DATASOURCE_DEVSERVICES_VOLUMES__HOST_PATH_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4628" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1054,7 +1172,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Map&lt;String,String&gt;</p></td>
 <td class="tableblock halign-left valign-middle"></td>
 </tr>
-<tr class="row-collapsible row-collapsed row-with-desc odd">
+<tr class="row-collapsible row-collapsed row-with-desc">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-datasource_quarkus-datasource-devservices_quarkus-datasource-devservices-reuse"></a> <span class="property-path"><a href="#quarkus-datasource_quarkus-datasource-devservices_quarkus-datasource-devservices-reuse"><code>quarkus.datasource.devservices.reuse</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.datasource.devservices.reuse' title="Copy to clipboard" do-not-collapse="true"></button></p>
@@ -1063,7 +1181,7 @@ unless connection configuration (e.g. the JDBC URL or reactive client URL) is se
 <p><code>quarkus.datasource."datasource-name".devservices.reuse</code>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.datasource."datasource-name".devservices.reuse' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-13" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-14" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>Whether to keep Dev Service containers running <strong>after a dev mode session or test suite execution</strong>
@@ -1098,7 +1216,7 @@ if you enabled it in <code>testcontainers.properties</code>
 but only want to use it for some of your Quarkus applications or datasources.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4438">QUARKUS_DATASOURCE_DEVSERVICES_REUSE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4438" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4629">QUARKUS_DATASOURCE_DEVSERVICES_REUSE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4629" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1108,7 +1226,7 @@ but only want to use it for some of your Quarkus applications or datasources.</p
 <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
 </tr>
-<tr class="row-collapsible row-collapsed row-with-desc">
+<tr class="row-collapsible row-collapsed row-with-desc odd">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-datasource_quarkus-datasource-devservices_quarkus-datasource-devservices-show-logs"></a> <span class="property-path"><a href="#quarkus-datasource_quarkus-datasource-devservices_quarkus-datasource-devservices-show-logs"><code>quarkus.datasource.devservices.show-logs</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.datasource.devservices.show-logs' title="Copy to clipboard" do-not-collapse="true"></button></p>
@@ -1117,7 +1235,7 @@ but only want to use it for some of your Quarkus applications or datasources.</p
 <p><code>quarkus.datasource."datasource-name".devservices.show-logs</code>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.datasource."datasource-name".devservices.show-logs' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-14" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-15" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>Whether the logs should be consumed by the JBoss logger.</p>
@@ -1126,7 +1244,7 @@ but only want to use it for some of your Quarkus applications or datasources.</p
 <p>This has no effect if the provider is not a container-based database, such as H2 or Derby.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-4439">QUARKUS_DATASOURCE_DEVSERVICES_SHOW_LOGS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4439" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-4630">QUARKUS_DATASOURCE_DEVSERVICES_SHOW_LOGS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-4630" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -1162,6 +1280,7 @@ but only want to use it for some of your Quarkus applications or datasources.</p
 </li>
 <li><a href="#database-vendor-specific-configuration">Database Vendor Specific Configuration</a></li>
 <li><a href="#connect-to-database-run-as-a-dev-service">Connect To Database Run as a Dev Service</a></li>
+<li><a href="#Compose">Compose</a></li>
 <li><a href="#configuration-reference">Configuration Reference</a></li>
 </ul></div>
     </div>
@@ -1191,6 +1310,9 @@ but only want to use it for some of your Quarkus applications or datasources.</p
       
         
         <li class="guide"><a href="/guides/redis-dev-services">Dev Services for Redis</a></li>
+      
+        
+        <li class="guide"><a href="/guides/compose-dev-services">Compose Dev Services</a></li>
       
         
         <li class="reference"><a href="/guides/datasource">Configure data sources in Quarkus</a></li>
@@ -1238,10 +1360,7 @@ but only want to use it for some of your Quarkus applications or datasources.</p
         <li class="guide"><a href="/guides/elasticsearch">Connecting to an Elasticsearch cluster</a></li>
       
         
-        <li class="guide"><a href="/guides/dev-ui">Dev UI for extension developers</a></li>
-      
-        
-        <li class="guide"><a href="/guides/dev-mode-differences">How dev mode differs from a production application</a></li>
+        <li class="guide"><a href="/guides/lra-dev-services">Dev Services for LRA</a></li>
       </ul>
     </div>
     </div>
@@ -1256,7 +1375,7 @@ but only want to use it for some of your Quarkus applications or datasources.</p
     </div>
   </div>
   <div class="grid-wrapper">
-    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license.<br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
+    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license. <i class='fab fa-creative-commons'></i><i class='fab fa-creative-commons-by'></i> <a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC by 3.0</a><br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
 
     
       <div class="width-1-12 project-links">
@@ -1304,11 +1423,15 @@ but only want to use it for some of your Quarkus applications or datasources.</p
           
           
           
-            <li><a href="/brand" target="_blank">Brand</a></li>
+            <li><a href="https://github.com/commonhaus/artwork/tree/main/projects/quarkus" target="_blank">Brand</a></li>
           
           
           
             <li><a href="/desktopwallpapers" target="_blank">Wallpapers</a></li>
+          
+          
+          
+            <li><a href="https://www.redhat.com/en/about/privacy-policy" target="_blank">Privacy Policy</a></li>
           
           
         </ul>
@@ -1329,6 +1452,10 @@ but only want to use it for some of your Quarkus applications or datasources.</p
           
             <li><a rel="me" href="https://fosstodon.org/@quarkusio" target="_blank">Mastodon</a></li>
             
+          
+          
+            <li><a href="https://www.threads.com/@quarkusio" target="_blank">Threads</a></li>
+          
           
           
             <li><a href="https://www.facebook.com/quarkusio" target="_blank">Facebook</a></li>
@@ -1379,6 +1506,10 @@ but only want to use it for some of your Quarkus applications or datasources.</p
           
           
             <li><a href="https://groups.google.com/forum/#!forum/quarkus-dev" target="_blank">Development mailing list</a></li>
+          
+          
+          
+            <li><a href="https://stats.uptimerobot.com/ze1PfweT2p" target="_blank">Quarkus Service Status</a></li>
           
           
         </ul>
@@ -1439,17 +1570,14 @@ but only want to use it for some of your Quarkus applications or datasources.</p
   </div>
 </div>
 
-  <div class="content redhat-footer">
-  <div class="grid-wrapper">
-    <span class="licence">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC by 3.0</a> | <a href="https://www.redhat.com/en/about/privacy-policy">Privacy Policy</a>
-    </span>
-    <span class="redhat">
-      Sponsored by
-    </span>
-    <span class="redhat-logo">
-      <a href="https://www.redhat.com/" target="_blank"><img src="/assets/images/redhat_reversed.svg"></a>
-    </span>
+  <div class="content cf-footer">
+  <div class="flexcontainer">
+    <div class="cf-logo">
+      <a class="cf-logo" href="https://www.commonhaus.org/" target="_blank"><img src="https://raw.githubusercontent.com/commonhaus/artwork/main/foundation/brand/svg/CF_logo_horizontal_single_reverse.svg"/></a>
+    </div>
+    <div class="license">
+      Copyright © Quarkus. All rights reserved. For details on our trademarks, please visit our <a href="https://www.commonhaus.org/policies/trademark-policy/">Trademark Policy</a> and <a href="https://www.commonhaus.org/trademarks/">Trademark List</a>. Trademarks of third parties are owned by their respective holders and their mention here does not suggest any endorsement or association.
+    </div>
   </div>
 </div>
 
@@ -1465,6 +1593,8 @@ but only want to use it for some of your Quarkus applications or datasources.</p
   <script src="/assets/javascript/copy.js" type="text/javascript"></script>
   <script src="/assets/javascript/asciidoc-tabs.js" type="text/javascript"></script>
   <script src="/assets/javascript/future-date.js" type="text/javascript"></script>
+  <script src="/assets/javascript/randomize.js" type="text/javascript"></script>
+  <script src="/assets/javascript/time.js" type="text/javascript"></script>
 </body>
 
 </html>

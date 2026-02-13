@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
-  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com; 
+  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com https://ajax.googleapis.com; 
   script-src 'self' 'unsafe-inline' 'unsafe-eval'
       
       https://assets.adobedtm.com
@@ -38,6 +38,7 @@
   object-src 'none'; 
   form-action 'none'; 
   font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com;" />
+
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlight.pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
@@ -97,7 +98,7 @@
     </label>
     <ul id="menu" class="menu">
       <li class="dropdown">
-        <span href="/about/">Why<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Why<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/about" class="">WHAT IS QUARKUS?</a></li>
           <li><a href="/developer-joy" class="">DEVELOPER JOY</a></li>
@@ -105,11 +106,21 @@
           <li><a href="/kubernetes-native" class="">KUBERNETES NATIVE</a></li>
           <li><a href="/standards" class="">STANDARDS</a></li>
           <li><a href="/versatility" class="">VERSATILITY</a></li>
-          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>          
+          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>
+          <li><a href="/spring" class="">USING SPRING?</a></li>
+          <li class="tertiarydropdown">
+            <span href="#">AI<i class="fas fa-chevron-down"></i></span>
+            <ul class="tertiarymenu">
+              <li><a href="/ai" class="">AI OVERVIEW</a></li>
+              <li><a href="/java-for-ai" class="">JAVA FOR AI</a></li>
+              <li><a href="/quarkus-for-ai" class="">WHY QUARKUS FOR AI</a></li>
+              <li><a href="/ai-blueprints" class="">AI BLUEPRINTS</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/learn/">Learn<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Learn<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/get-started" class="">GET STARTED</a></li>
           <li><a href="/guides" class="active">DOCUMENTATION</a></li>
@@ -119,7 +130,7 @@
           </ul>
       </li>
       <li class="dropdown">
-        <span href="https://quarkus.io/extensions/">Extensions<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Extensions<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <!-- Note that quarkus.io is hardcoded here, because it is the only url which supports extensions -->
           <li><a href="https://quarkus.io/extensions/" class="">BROWSE EXTENSIONS</a></li>
@@ -129,7 +140,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/community/">Community<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Community<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/support/" class="">SUPPORT</a></li>
           <li><a href="/blog" class="">BLOG</a></li>
@@ -139,6 +150,7 @@
           <li><a href="/events" class="">EVENTS</a></li>
           <li><a href="/newsletter" class="">NEWSLETTER</a></li>
           <li><a href="https://github.com/orgs/quarkusio/projects/13/views/1" class="">ROADMAP</a></li>
+          <li><a href="/benefactors" class="">BENEFACTORS</a></li>
           </ul>
       </li>
       <li>
@@ -189,7 +201,11 @@
         
         
         
-        <option value="latest" selected>3.21.2 - Latest</option>
+        <option value="latest" selected>3.31.2 - Latest</option>
+        
+        
+        
+        <option value="3.27" >3.27</option>
         
         
         
@@ -202,17 +218,6 @@
         
         
         <option value="3.8" >3.8</option>
-        
-        
-        
-        <option value="3.2" >3.2</option>
-        
-        
-        
-        <option value="2.16" >2.16</option>
-        
-        
-        
         </select>
     </div>
   </div>
@@ -230,10 +235,6 @@
 <div class="paragraph">
 <p>Quarkus incorporates a pluggable web security layer.
 When security is active, the system performs a permission check on all HTTP requests to determine if they should proceed.</p>
-</div>
-<div class="paragraph">
-<p>Using <code>@PermitAll</code> will not open a path if the path is restricted by the <code>quarkus.http.auth.</code> configuration.
-To ensure specific paths are accessible, appropriate configurations must be made within the Quarkus security settings.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -261,6 +262,20 @@ To customize these roles, a <code>SecurityIdentityAugmentor</code> can be create
 <div class="sectionbody">
 <div class="paragraph">
 <p>Permissions are defined in the Quarkus configuration by permission sets, each specifying a policy for access control.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When a security policy&#8217;s <code>paths</code> property contains the most specific path that matches the current request path, it takes precedence over other security policies with matching paths and is said to win.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Quarkus policies summary</caption>
@@ -519,9 +534,17 @@ Just do not implement the <code>io.quarkus.vertx.http.runtime.security.HttpSecur
 The context can be activated by users, for example with the <code>@ActivateRequestContext</code>, however authorization happens before Quarkus prepares some <code>@RequestScoped</code> beans.
 We recommend to let Quarkus activate and prepare CDI request context for you.
 For example, consider a situation where you want to inject a bean from the Jakarta REST context, such as the <code>jakarta.ws.rs.core.UriInfo</code> bean.
-In this case, you must apply the <code>HttpSecurityPolicy</code> to Jakarta REST endpoints. This can be achieved in one of the following ways:
-* Use the <code>@AuthorizationPolicy</code> security annotation.
-* Set the <code>quarkus.http.auth.permission.custom1.applies-to=jaxrs</code> configuration property.</p>
+In this case, you must apply the <code>HttpSecurityPolicy</code> to Jakarta REST endpoints. This can be achieved in one of the following ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>@AuthorizationPolicy</code> security annotation.</p>
+</li>
+<li>
+<p>Set the <code>quarkus.http.auth.permission.custom1.applies-to=jaxrs</code> configuration property.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -635,7 +658,7 @@ quarkus.http.auth.permission.public.policy=permit</code></pre>
 wildcard.</p>
 </div>
 <div class="paragraph">
-<p>This wildcard also applies in the middle of a path, representing a single path segment.
+<p>This wildcard can also be applied in the middle of a path, representing a single path segment.
 It cannot be mixed with other path segment characters; thus, path separators always enclose the <code>*</code> wildcard, as seen in the <code>/public/*/about-us</code> path.</p>
 </div>
 <div class="paragraph">
@@ -739,7 +762,7 @@ quarkus.http.auth.permission.deny1.policy=deny</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The preceding permission set shows that <code>GET /public/foo</code> matches the paths of both permission sets.However, it specifically aligns with the explicit method of the <code>permit1</code> permission set.Therefore, <code>permit1</code> is selected, and the request is accepted.</p>
+<p>The preceding permission set shows that <code>GET /public/foo</code> matches the paths of both permission sets.However, it specifically aligns with the explicit method of the <code>permit1</code> permission set. Therefore, <code>permit1</code> is selected, and the request is accepted.</p>
 </div>
 <div class="paragraph">
 <p>In contrast, <code>PUT /public/foo</code> does not match the method permissions of <code>permit1</code>. As a result, <code>deny1</code> is activated, leading to the rejection of the request.</p>
@@ -869,7 +892,7 @@ The configured URL is used as-is, and paths are not adjusted if the value of <co
 <div class="sect2">
 <h3 id="map-security-identity-roles"><a class="anchor" href="#map-security-identity-roles"></a>Map <code>SecurityIdentity</code> roles</h3>
 <div class="paragraph">
-<p>Winning role-based policy can map the <code>SecurityIdentity</code> roles to the deployment-specific roles.
+<p>The winning role-based policy that was chosen to authorize the current request can map <code>SecurityIdentity</code> roles to deployment-specific roles.
 These roles are then applicable for endpoint authorization by using the <code>@RolesAllowed</code> annotation.</p>
 </div>
 <div class="listingblock">
@@ -911,12 +934,30 @@ quarkus.http.auth.permission.roles1.policy=admin-policy1</code></pre>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>If you prefer a programmatic configuration, the same mapping can be added with the <code>io.quarkus.vertx.http.security.HttpSecurity</code> CDI event:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.http.security;
+
+import io.quarkus.vertx.http.security.HttpSecurity;
+import jakarta.enterprise.event.Observes;
+
+public class HttpSecurityConfiguration {
+
+    void configure(@Observes HttpSecurity httpSecurity) {
+        httpSecurity.rolesMapping("admin", "Admin1");
+    }
+}</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="shared-permission-checks"><a class="anchor" href="#shared-permission-checks"></a>Shared permission checks</h3>
 <div class="paragraph">
 <p>One important rule for unshared permission checks is that only one path match is applied, the most specific one.
-Naturally you can specify as many permissions with the same winning path as you want and they will all be applied.
+When a path matches as the most specific, you can specify multiple permissions for that path and they are all applied.
 However, there can be permission checks you want to apply to many paths without repeating them over and over again.
 That&#8217;s where shared permission checks come in, they are always applied when the permission path is matched.</p>
 </div>
@@ -987,6 +1028,137 @@ quarkus.http.auth.permission.roles3.policy=role-policy3</code></pre>
 </table>
 </div>
 </div>
+<div class="sect2">
+<h3 id="path-specific-authz-programmatic-set-up"><a class="anchor" href="#path-specific-authz-programmatic-set-up"></a>Set up path-specific authorization programmatically</h3>
+<div class="paragraph">
+<p>You can also configure the authorization policies presented by this guide so far programmatically.
+Consider the example mentioned earlier:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.http.auth.permission.permit1.paths=/public/*
+quarkus.http.auth.permission.permit1.policy=permit
+quarkus.http.auth.permission.permit1.methods=GET
+
+quarkus.http.auth.permission.deny1.paths=/forbidden
+quarkus.http.auth.permission.deny1.policy=deny
+
+quarkus.http.auth.permission.roles1.paths=/roles-secured/*,/other/*,/api/*
+quarkus.http.auth.permission.roles1.policy=role-policy1
+quarkus.http.auth.policy.role-policy1.roles-allowed=user,admin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The same authorization policies can be configured programmatically:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.http.security;
+
+import jakarta.enterprise.event.Observes;
+
+import io.quarkus.vertx.http.security.HttpSecurity;
+
+public class HttpSecurityConfiguration {
+
+    void configure(@Observes HttpSecurity httpSecurity) {
+        httpSecurity
+                .get("/public/*").permit()
+                .path("/roles-secured/*", "/other/*", "/api/*").roles("admin", "user")
+                .path("/forbidden").authorization().deny();
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, the <code>io.quarkus.vertx.http.security.HttpSecurity</code> CDI event can be used to configure specific authentication mechanisms and policies:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.http.security;
+
+import io.quarkus.vertx.http.security.HttpSecurity;
+import jakarta.enterprise.event.Observes;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+public class HttpSecurityConfiguration {
+
+    void configure(@Observes HttpSecurity httpSecurity, CustomHttpSecurityPolicy customHttpSecurityPolicy,
+                        @ConfigProperty(name = "secured-path") String securedPath) {
+
+        httpSecurity.path("/other/*").basic().policy(customHttpSecurityPolicy); <i class="conum" data-value="1"></i><b>(1)</b>
+
+        httpSecurity.path("/roles-secured/*").bearer().authorization()
+                .policy(identity -&gt; identity.hasRole("user") || "root".equals(identity.getPrincipal().getName()));  <i class="conum" data-value="2"></i><b>(2)</b>
+
+        httpSecurity.path("/other/administration").authorizationCodeFlow()
+                .authorization().policy((identity, routingContext) -&gt; {
+                    if (!identity.isAnonymous()) {
+                        String customAuthorization = routingContext.request().getHeader("Custom Authorization");
+                        return yourCustomAuthorizationCheck(customAuthorization);
+                    }
+                    return false;
+                });     <i class="conum" data-value="3"></i><b>(3)</b>
+
+        httpSecurity.path(securedPath).form();  <i class="conum" data-value="4"></i><b>(4)</b>
+
+        httpSecurity.path("/user-info").bearer().authorization().permissions("openid", "email", "profile"); <i class="conum" data-value="5"></i><b>(5)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use the Basic authentication and authorize the requests with a custom <code>io.quarkus.vertx.http.runtime.security.HttpSecurityPolicy</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Use the Bearer token authentication and authorize the <code>SecurityIdentity</code> with your own policy.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Use Authorization Code Flow mechanism and write your own policy based on incoming request headers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>When Quarkus fires the <code>HttpSecurity</code> CDI event, the runtime configuration is ready.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Require that all the requests to the <code>/user-info</code> path have string permissions <code>openid</code>, <code>email</code> and <code>profile</code>.
+The same authorization can be required with the <code>@PermissionsAllowed(value = { "openid", "email", "profile" }, inclusive = true)</code> annotation instance placed on an endpoint.</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="programmatic-set-up-references"><a class="anchor" href="#programmatic-set-up-references"></a>Programmatic set up references</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="security-basic-authentication#basic-auth-programmatic-set-up">Set up Basic authentication programmatically</a></p>
+</li>
+<li>
+<p><a href="security-openid-connect-multitenancy#programmatic-startup">Programmatic OIDC start-up for multitenant application</a></p>
+</li>
+<li>
+<p><a href="security-authentication-mechanisms#form-based-auth-programmatic-set-up">Set up Form-based authentication programmatically</a></p>
+</li>
+<li>
+<p><a href="security-authentication-mechanisms#mtls-programmatic-set-up">Set up the mutual TLS client authentication programmatically</a></p>
+</li>
+<li>
+<p><a href="security-cors#cors-filter-programmatic-set-up">Configuring the CORS filter programmatically</a></p>
+</li>
+<li>
+<p><a href="security-csrf-prevention#csrf-prevention-programmatic-set-up">Configuring the CSRF prevention programmatically</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -995,6 +1167,22 @@ quarkus.http.auth.permission.roles3.policy=role-policy3</code></pre>
 <div class="paragraph">
 <p>Quarkus includes built-in security to allow for <a href="https://en.wikipedia.org/wiki/Role-based_access_control">Role-Based Access Control (RBAC)</a>
 based on the common security annotations <code>@RolesAllowed</code>, <code>@DenyAll</code>, <code>@PermitAll</code> on REST endpoints and CDI beans.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Authorization checks for <code>quarkus.http.auth.</code> configurations are performed before security checks for standard security annotations.
+Therefore, <code>@PermitAll</code> only permits access to paths that are not already restricted by HTTP permissions.
+<code>@PermitAll</code> cannot override HTTP-level security configurations, only relax restrictions imposed by other standard security annotations such as <code>@RolesAllowed</code>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Quarkus annotation types summary</caption>
@@ -1131,7 +1319,9 @@ The method is still invokable internally by other methods in this class.</td>
 <i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-If you plan to use standard security annotations on the IO thread, review the information in <a href="security-proactive-authentication">Proactive Authentication</a>.
+<div class="paragraph">
+<p>If you plan to use standard security annotations on the IO thread, review the information in <a href="security-proactive-authentication">Proactive Authentication</a>.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -2185,6 +2375,7 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
 <li><a href="#permission-paths-and-http-root-path">Permission paths and HTTP root path</a></li>
 <li><a href="#map-security-identity-roles">Map <code>SecurityIdentity</code> roles</a></li>
 <li><a href="#shared-permission-checks">Shared permission checks</a></li>
+<li><a href="#path-specific-authz-programmatic-set-up">Set up path-specific authorization programmatically</a></li>
 </ul>
 </li>
 <li><a href="#standard-security-annotations">Authorization using annotations</a>
@@ -2269,6 +2460,9 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
         <li class="howto"><a href="/guides/security-keycloak-authorization">Using OpenID Connect (OIDC) and Keycloak to centralize authorization</a></li>
       
         
+        <li class="guide"><a href="/guides/proxy-registry">Using Proxy Registry</a></li>
+      
+        
         <li class="guide"><a href="/guides/security-webauthn">Using Security with WebAuthn</a></li>
       
         
@@ -2293,16 +2487,13 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
         <li class="concepts"><a href="/guides/security-identity-providers">Identity providers</a></li>
       
         
+        <li class="tutorial"><a href="/guides/security-vertx-oidc-to-quarkus-oidc-migration">Migrate from Vert.x OIDC to Quarkus OIDC</a></li>
+      
+        
         <li class="guide"><a href="/guides/rest-migration">Migrating to Quarkus REST (formerly RESTEasy Reactive)</a></li>
       
         
         <li class="reference"><a href="/guides/security-openid-connect-client-reference">OpenID Connect (OIDC) and OAuth2 client and filters</a></li>
-      
-        
-        <li class="reference"><a href="/guides/security-openid-connect-client-registration">OpenID Connect (OIDC) and OAuth2 dynamic client registration</a></li>
-      
-        
-        <li class="concepts"><a href="/guides/security-oidc-bearer-token-authentication">OpenID Connect (OIDC) Bearer token authentication</a></li>
       </ul>
     </div>
     </div>
@@ -2317,7 +2508,7 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
     </div>
   </div>
   <div class="grid-wrapper">
-    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license.<br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
+    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license. <i class='fab fa-creative-commons'></i><i class='fab fa-creative-commons-by'></i> <a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC by 3.0</a><br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
 
     
       <div class="width-1-12 project-links">
@@ -2365,11 +2556,15 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
           
           
           
-            <li><a href="/brand" target="_blank">Brand</a></li>
+            <li><a href="https://github.com/commonhaus/artwork/tree/main/projects/quarkus" target="_blank">Brand</a></li>
           
           
           
             <li><a href="/desktopwallpapers" target="_blank">Wallpapers</a></li>
+          
+          
+          
+            <li><a href="https://www.redhat.com/en/about/privacy-policy" target="_blank">Privacy Policy</a></li>
           
           
         </ul>
@@ -2390,6 +2585,10 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
           
             <li><a rel="me" href="https://fosstodon.org/@quarkusio" target="_blank">Mastodon</a></li>
             
+          
+          
+            <li><a href="https://www.threads.com/@quarkusio" target="_blank">Threads</a></li>
+          
           
           
             <li><a href="https://www.facebook.com/quarkusio" target="_blank">Facebook</a></li>
@@ -2440,6 +2639,10 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
           
           
             <li><a href="https://groups.google.com/forum/#!forum/quarkus-dev" target="_blank">Development mailing list</a></li>
+          
+          
+          
+            <li><a href="https://stats.uptimerobot.com/ze1PfweT2p" target="_blank">Quarkus Service Status</a></li>
           
           
         </ul>
@@ -2500,17 +2703,14 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
   </div>
 </div>
 
-  <div class="content redhat-footer">
-  <div class="grid-wrapper">
-    <span class="licence">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC by 3.0</a> | <a href="https://www.redhat.com/en/about/privacy-policy">Privacy Policy</a>
-    </span>
-    <span class="redhat">
-      Sponsored by
-    </span>
-    <span class="redhat-logo">
-      <a href="https://www.redhat.com/" target="_blank"><img src="/assets/images/redhat_reversed.svg"></a>
-    </span>
+  <div class="content cf-footer">
+  <div class="flexcontainer">
+    <div class="cf-logo">
+      <a class="cf-logo" href="https://www.commonhaus.org/" target="_blank"><img src="https://raw.githubusercontent.com/commonhaus/artwork/main/foundation/brand/svg/CF_logo_horizontal_single_reverse.svg"/></a>
+    </div>
+    <div class="license">
+      Copyright © Quarkus. All rights reserved. For details on our trademarks, please visit our <a href="https://www.commonhaus.org/policies/trademark-policy/">Trademark Policy</a> and <a href="https://www.commonhaus.org/trademarks/">Trademark List</a>. Trademarks of third parties are owned by their respective holders and their mention here does not suggest any endorsement or association.
+    </div>
   </div>
 </div>
 
@@ -2526,6 +2726,8 @@ Ability to reference <code>@BeanParam</code> fields with the <code>@PermissionsA
   <script src="/assets/javascript/copy.js" type="text/javascript"></script>
   <script src="/assets/javascript/asciidoc-tabs.js" type="text/javascript"></script>
   <script src="/assets/javascript/future-date.js" type="text/javascript"></script>
+  <script src="/assets/javascript/randomize.js" type="text/javascript"></script>
+  <script src="/assets/javascript/time.js" type="text/javascript"></script>
 </body>
 
 </html>

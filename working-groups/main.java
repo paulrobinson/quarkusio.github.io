@@ -1,5 +1,4 @@
 //usr/bin/env jbang "$0" "$@" ; exit $?
-//JAVA 21
 //JAVAC_OPTIONS -parameters
 //DEPS io.quarkus.platform:quarkus-bom:3.12.1@pom
 //DEPS io.quarkus:quarkus-picocli
@@ -144,8 +143,9 @@ public class main implements Callable<Integer> {
                    }
                 """, variables);
 
-        System.out.println("Response: " + response);
-        System.out.println("Errors: " + response.getErrors());
+        if (response.hasError()) {
+            System.out.println("Errors:\n" + response.getErrors());
+        }
         System.out.println("Data:\n" + response.getData());
         JsonArray array = response.getData().getJsonObject("organization").getJsonObject("projectsV2")
                 .getJsonArray("nodes");
@@ -189,7 +189,7 @@ public class main implements Callable<Integer> {
             List<Update> statusUpdates) {
 
         public enum Status {
-            INACTIVE,
+            PAUSED,
             ON_TRACK,
             AT_RISK,
             OFF_TRACK,
@@ -261,17 +261,7 @@ public class main implements Callable<Integer> {
                     .findFirst()
                     .orElse(null);
 
-            if (line != null) {
-                var content = line.substring(line.indexOf(":") + 1).trim();
-                Parser parser = Parser.builder().build();
-                Node document = parser.parse(content);
-                HtmlRenderer renderer = HtmlRenderer.builder()
-                        .omitSingleParagraphP(true)
-                        .build();
-                return renderer.render(document);
-            }
-
-            return null;
+            return extractLinkFromLine(line);
         }
 
         public String getProposal() {
@@ -280,6 +270,19 @@ public class main implements Callable<Integer> {
                     .findFirst()
                     .orElse(null);
 
+            return extractLinkFromLine(line);
+        }
+
+        public String getBackportsGithubProject() {
+            String line = longDescription().lines()
+                    .filter(s -> isMetadata("Backports", s))
+                    .findFirst()
+                    .orElse(null);
+
+            return extractLinkFromLine(line);
+        }
+
+        private String extractLinkFromLine(String line) {
             if (line != null) {
                 var content = line.substring(line.indexOf(":") + 1).trim();
                 Parser parser = Parser.builder().build();
@@ -343,7 +346,7 @@ public class main implements Callable<Integer> {
 
         public Status getStatus() {
             if (statusUpdates.isEmpty()) {
-                return Status.INACTIVE;
+                return Status.PAUSED;
             }
 
             statusUpdates.sort(Comparator.comparing(Update::updateAt).reversed());
@@ -356,7 +359,7 @@ public class main implements Callable<Integer> {
 
             // Is it inactive?
             if (update.status().equals("INACTIVE")) {
-                return Status.INACTIVE;
+                return Status.PAUSED;
             }
 
             // Is it staled?
@@ -377,14 +380,15 @@ public class main implements Callable<Integer> {
                 return Status.OFF_TRACK;
             }
 
+
             Log.warn("Unable to determine status of working group " + url + ", using INACTIVE as default");
-            return Status.INACTIVE;
+            return Status.OFF_TRACK;
 
         }
 
         public String getBadgeClass() {
             return switch (getStatus()) {
-                case INACTIVE -> "text-bg-secondary";
+                case PAUSED -> "text-bg-secondary";
                 case ON_TRACK -> "text-bg-success";
                 case AT_RISK, STALED -> "text-bg-warning";
                 case OFF_TRACK -> "text-bg-danger";

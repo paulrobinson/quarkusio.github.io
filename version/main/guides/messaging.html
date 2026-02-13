@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
-  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com; 
+  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com https://ajax.googleapis.com; 
   script-src 'self' 'unsafe-inline' 'unsafe-eval'
       
       https://assets.adobedtm.com
@@ -38,6 +38,7 @@
   object-src 'none'; 
   form-action 'none'; 
   font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com;" />
+
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlight.pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
@@ -97,7 +98,7 @@
     </label>
     <ul id="menu" class="menu">
       <li class="dropdown">
-        <span href="/about/">Why<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Why<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/about" class="">WHAT IS QUARKUS?</a></li>
           <li><a href="/developer-joy" class="">DEVELOPER JOY</a></li>
@@ -105,11 +106,21 @@
           <li><a href="/kubernetes-native" class="">KUBERNETES NATIVE</a></li>
           <li><a href="/standards" class="">STANDARDS</a></li>
           <li><a href="/versatility" class="">VERSATILITY</a></li>
-          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>          
+          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>
+          <li><a href="/spring" class="">USING SPRING?</a></li>
+          <li class="tertiarydropdown">
+            <span href="#">AI<i class="fas fa-chevron-down"></i></span>
+            <ul class="tertiarymenu">
+              <li><a href="/ai" class="">AI OVERVIEW</a></li>
+              <li><a href="/java-for-ai" class="">JAVA FOR AI</a></li>
+              <li><a href="/quarkus-for-ai" class="">WHY QUARKUS FOR AI</a></li>
+              <li><a href="/ai-blueprints" class="">AI BLUEPRINTS</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/learn/">Learn<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Learn<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/get-started" class="">GET STARTED</a></li>
           <li><a href="/guides" class="active">DOCUMENTATION</a></li>
@@ -119,7 +130,7 @@
           </ul>
       </li>
       <li class="dropdown">
-        <span href="https://quarkus.io/extensions/">Extensions<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Extensions<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <!-- Note that quarkus.io is hardcoded here, because it is the only url which supports extensions -->
           <li><a href="https://quarkus.io/extensions/" class="">BROWSE EXTENSIONS</a></li>
@@ -129,7 +140,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/community/">Community<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Community<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/support/" class="">SUPPORT</a></li>
           <li><a href="/blog" class="">BLOG</a></li>
@@ -139,6 +150,7 @@
           <li><a href="/events" class="">EVENTS</a></li>
           <li><a href="/newsletter" class="">NEWSLETTER</a></li>
           <li><a href="https://github.com/orgs/quarkusio/projects/13/views/1" class="">ROADMAP</a></li>
+          <li><a href="/benefactors" class="">BENEFACTORS</a></li>
           </ul>
       </li>
       <li>
@@ -189,7 +201,11 @@
         
         
         
-        <option value="latest" >3.21.2 - Latest</option>
+        <option value="latest" >3.31.2 - Latest</option>
+        
+        
+        
+        <option value="3.27" >3.27</option>
         
         
         
@@ -198,15 +214,6 @@
         
         
         <option value="3.15" >3.15</option>
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -274,7 +281,7 @@ This empowers developers to concentrate on crafting the core application logic, 
 <p><a href="https://camel.apache.org/camel-quarkus/3.8.x/reference/extensions/smallrye-reactive-messaging.html">Camel SmallRye Reactive Messaging</a></p>
 </li>
 <li>
-<p><a href="https://docs.quarkiverse.io/quarkus-reactive-messsaging-nats-jetstream/dev/index.html">Nats Jetstream Connector</a></p>
+<p><a href="https://docs.quarkiverse.io/quarkus-reactive-messaging-nats-jetstream/dev/index.html">Nats Jetstream Connector</a></p>
 </li>
 <li>
 <p><a href="https://solacelabs.github.io/solace-quarkus/">Solace Messaging Connector</a></p>
@@ -1053,34 +1060,23 @@ This means that context captured through Emitters won&#8217;t be propagated to t
 This behaviour can be configured using <code>quarkus.messaging.connector-context-propagation</code> configuration property, by listing the context types to propagate.
 For example <code>quarkus.messaging.connector-context-propagation=CDI</code> will only propagate the CDI context.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="context-propagation-with-emitters"><a class="anchor" href="#context-propagation-with-emitters"></a>Context Propagation with Emitters</h3>
 <div class="paragraph">
-<p><a href="#internal-channels">Internal Channels</a> however do propagate the context, as they are part of the same application and the context is not lost.</p>
+<p>When using messaging emitters, the context is not propagated by default.</p>
 </div>
 <div class="paragraph">
-<p>For example, you might want to propagate the caller context from an incoming HTTP request to the message processing stage.
-For emitters, it is recommended to use the <code>MutinyEmitter</code>, as it exposes methods such as <code>sendAndAwait</code> that makes sure to wait until a message processing is terminated.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The execution context to which the RequestScoped context is bound, in the previous example the REST call, controls the lifecycle of the context.
-This means that when the REST call is completed the RequestScoped context is destroyed.
-Therefore, you need to make sure that your processing or message dispatch is completed before the REST call completes.</p>
+<p>In some scenarios, you might want to propagate the caller context to the message processing stage, using <a href="#internal-channels">internal channels</a>.</p>
 </div>
 <div class="paragraph">
-<p>For more information check the <a href="context-propagation#context-propagation-for-cdi">Context Propagation</a> guide.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Quarkus provides <code>ContextualEmitter</code>, a drop in replacement for <code>MutinyEmitter</code> and <code>Emitter</code>, that allows you to propagate the context when sending messages.
+You can use the context propagation annotation <code>@CurrentThreadContext</code> to configure the contexts that will be propagated from an <em>emitter</em> method.
+The annotation configures the contexts that will be captured and propagated from that method,
+and needs to be present on the propagator method, i.e. the caller of the emitter, not the processing method.</p>
 </div>
 <div class="paragraph">
-<p>For example, let <code>RequestScopedBean</code> a request-scoped bean, <code>MutinyEmitter</code> can be used to dispatch messages locally through the internal channel <code>app</code>:</p>
+<p>Let <code>RequestScopedBean</code> a request-scoped bean, <code>ContextualEmitter</code> can be used to dispatch messages locally through the internal channel <code>app</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1091,19 +1087,15 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.reactive.messaging.Channel;
-import io.smallrye.reactive.messaging.MutinyEmitter;
 
 import io.quarkus.logging.Log;
-
-import io.smallrye.mutiny.Uni;
-import io.vertx.core.Context;
-import io.vertx.core.Vertx;
+import io.quarkus.smallrye.reactivemessaging.runtime.ContextualEmitter;
 
 @Path("/")
 public class Resource {
 
     @Channel("app")
-    MutinyEmitter&lt;String&gt; emitter;
+    ContextualEmitter&lt;String&gt; emitter;
 
     @Inject
     RequestScopedBean requestScopedBean;
@@ -1147,25 +1139,9 @@ public class Processor {
 }</code></pre>
 </div>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>You can use the context propagation annotation <code>@CurrentThreadContext</code> to configure the contexts that will be propagated from an <em>emitter</em> method.
-The annotation configures the contexts that will be captured and propagated from that method,
-and needs to be present on the propagator method, i.e. the caller of the emitter, not the processing method.</p>
-</div>
-<div class="paragraph">
-<p>Because Quarkus Messaging dispatches messages on <a href="https://smallrye.io/smallrye-reactive-messaging/latest/concepts/message-context">message context</a>,
-propagation plans with cleared or not propagated contexts can lead to race conditions using emitters in <a href="#internal-channels">internal channels</a>.
-It is recommended to use <code>ContextualEmitter</code> to ensure the context propagation plan is applied correctly.</p>
-</div>
-<div class="paragraph">
-<p>The following example shows how to avoid propagating any context to the message processing stage:</p>
+<p>You can also use the <code>@CurrentThreadContext</code> annotation to control which contexts are propagated.
+The following example shows how to avoid propagating any context to the message processing stage:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1203,6 +1179,21 @@ public class Resource {
 
 }</code></pre>
 </div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The execution context to which the RequestScoped context is bound, in the previous example the REST call, controls the lifecycle of the context.
+This means that when the REST call is completed the RequestScoped context is destroyed.
+Therefore, you need to make sure that your processing or message dispatch is completed before the REST call completes.</p>
+</div>
+<div class="paragraph">
+<p>For more information check the <a href="context-propagation#context-propagation-for-cdi">Context Propagation</a> guide.</p>
 </div>
 </td>
 </tr>
@@ -1619,9 +1610,6 @@ These beans are automatically discovered by Quarkus and applied by priority (fro
 <p><code>io.smallrye.reactive.messaging.providers.IncomingInterceptorDecorator</code> (500): Handles <code>IncomingInterceptor</code> beans</p>
 </li>
 <li>
-<p><code>io.smallrye.reactive.messaging.providers.metrics.MetricDecorator</code> (1000): MicroProfile Metrics support, enabled with <code>quarkus-smallrye-metrics</code> extension</p>
-</li>
-<li>
 <p><code>io.smallrye.reactive.messaging.providers.metrics.MicrometerDecorator</code> (1000): Micrometer Metrics support, enabled with <code>quarkus-micrometer</code> extension</p>
 </li>
 <li>
@@ -1692,6 +1680,7 @@ which has in-depth documentation for each of these concepts and more.</p>
 <li><a href="#context-propagation">Context Propagation</a>
 <ul class="sectlevel2">
 <li><a href="#interaction-with-mutiny-and-microprofile-context-propagation">Interaction with Mutiny and MicroProfile Context Propagation</a></li>
+<li><a href="#context-propagation-with-emitters">Context Propagation with Emitters</a></li>
 <li><a href="#request-context-activation">Request Context Activation</a></li>
 </ul>
 </li>
@@ -1793,7 +1782,7 @@ which has in-depth documentation for each of these concepts and more.</p>
     </div>
   </div>
   <div class="grid-wrapper">
-    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license.<br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
+    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license. <i class='fab fa-creative-commons'></i><i class='fab fa-creative-commons-by'></i> <a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC by 3.0</a><br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
 
     
       <div class="width-1-12 project-links">
@@ -1841,11 +1830,15 @@ which has in-depth documentation for each of these concepts and more.</p>
           
           
           
-            <li><a href="/brand" target="_blank">Brand</a></li>
+            <li><a href="https://github.com/commonhaus/artwork/tree/main/projects/quarkus" target="_blank">Brand</a></li>
           
           
           
             <li><a href="/desktopwallpapers" target="_blank">Wallpapers</a></li>
+          
+          
+          
+            <li><a href="https://www.redhat.com/en/about/privacy-policy" target="_blank">Privacy Policy</a></li>
           
           
         </ul>
@@ -1866,6 +1859,10 @@ which has in-depth documentation for each of these concepts and more.</p>
           
             <li><a rel="me" href="https://fosstodon.org/@quarkusio" target="_blank">Mastodon</a></li>
             
+          
+          
+            <li><a href="https://www.threads.com/@quarkusio" target="_blank">Threads</a></li>
+          
           
           
             <li><a href="https://www.facebook.com/quarkusio" target="_blank">Facebook</a></li>
@@ -1916,6 +1913,10 @@ which has in-depth documentation for each of these concepts and more.</p>
           
           
             <li><a href="https://groups.google.com/forum/#!forum/quarkus-dev" target="_blank">Development mailing list</a></li>
+          
+          
+          
+            <li><a href="https://stats.uptimerobot.com/ze1PfweT2p" target="_blank">Quarkus Service Status</a></li>
           
           
         </ul>
@@ -1976,17 +1977,14 @@ which has in-depth documentation for each of these concepts and more.</p>
   </div>
 </div>
 
-  <div class="content redhat-footer">
-  <div class="grid-wrapper">
-    <span class="licence">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC by 3.0</a> | <a href="https://www.redhat.com/en/about/privacy-policy">Privacy Policy</a>
-    </span>
-    <span class="redhat">
-      Sponsored by
-    </span>
-    <span class="redhat-logo">
-      <a href="https://www.redhat.com/" target="_blank"><img src="/assets/images/redhat_reversed.svg"></a>
-    </span>
+  <div class="content cf-footer">
+  <div class="flexcontainer">
+    <div class="cf-logo">
+      <a class="cf-logo" href="https://www.commonhaus.org/" target="_blank"><img src="https://raw.githubusercontent.com/commonhaus/artwork/main/foundation/brand/svg/CF_logo_horizontal_single_reverse.svg"/></a>
+    </div>
+    <div class="license">
+      Copyright © Quarkus. All rights reserved. For details on our trademarks, please visit our <a href="https://www.commonhaus.org/policies/trademark-policy/">Trademark Policy</a> and <a href="https://www.commonhaus.org/trademarks/">Trademark List</a>. Trademarks of third parties are owned by their respective holders and their mention here does not suggest any endorsement or association.
+    </div>
   </div>
 </div>
 
@@ -2002,6 +2000,8 @@ which has in-depth documentation for each of these concepts and more.</p>
   <script src="/assets/javascript/copy.js" type="text/javascript"></script>
   <script src="/assets/javascript/asciidoc-tabs.js" type="text/javascript"></script>
   <script src="/assets/javascript/future-date.js" type="text/javascript"></script>
+  <script src="/assets/javascript/randomize.js" type="text/javascript"></script>
+  <script src="/assets/javascript/time.js" type="text/javascript"></script>
 </body>
 
 </html>

@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
-  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com; 
+  connect-src 'self' https://dpm.demdex.net https://adobedc.demdex.net https://analytics.ossupstream.org/ https://search.quarkus.io https://smetrics.redhat.com https://ajax.googleapis.com; 
   script-src 'self' 'unsafe-inline' 'unsafe-eval'
       
       https://assets.adobedtm.com
@@ -38,6 +38,7 @@
   object-src 'none'; 
   form-action 'none'; 
   font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com;" />
+
   <script id="adobe_dtm" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
   <script src="/assets/javascript/highlight.pack.js" type="text/javascript"></script>
   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
@@ -97,7 +98,7 @@
     </label>
     <ul id="menu" class="menu">
       <li class="dropdown">
-        <span href="/about/">Why<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Why<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/about" class="">WHAT IS QUARKUS?</a></li>
           <li><a href="/developer-joy" class="">DEVELOPER JOY</a></li>
@@ -105,11 +106,21 @@
           <li><a href="/kubernetes-native" class="">KUBERNETES NATIVE</a></li>
           <li><a href="/standards" class="">STANDARDS</a></li>
           <li><a href="/versatility" class="">VERSATILITY</a></li>
-          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>          
+          <li><a href="/container-first" class="">CONTAINER FIRST</a></li>
+          <li><a href="/spring" class="">USING SPRING?</a></li>
+          <li class="tertiarydropdown">
+            <span href="#">AI<i class="fas fa-chevron-down"></i></span>
+            <ul class="tertiarymenu">
+              <li><a href="/ai" class="">AI OVERVIEW</a></li>
+              <li><a href="/java-for-ai" class="">JAVA FOR AI</a></li>
+              <li><a href="/quarkus-for-ai" class="">WHY QUARKUS FOR AI</a></li>
+              <li><a href="/ai-blueprints" class="">AI BLUEPRINTS</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/learn/">Learn<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Learn<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/get-started" class="">GET STARTED</a></li>
           <li><a href="/guides" class="active">DOCUMENTATION</a></li>
@@ -119,7 +130,7 @@
           </ul>
       </li>
       <li class="dropdown">
-        <span href="https://quarkus.io/extensions/">Extensions<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Extensions<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <!-- Note that quarkus.io is hardcoded here, because it is the only url which supports extensions -->
           <li><a href="https://quarkus.io/extensions/" class="">BROWSE EXTENSIONS</a></li>
@@ -129,7 +140,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <span href="/community/">Community<i class="fas fa-chevron-down"></i></span>
+        <span href="#">Community<i class="fas fa-chevron-down firsti"></i></span>
         <ul class="submenu">
           <li><a href="/support/" class="">SUPPORT</a></li>
           <li><a href="/blog" class="">BLOG</a></li>
@@ -139,6 +150,7 @@
           <li><a href="/events" class="">EVENTS</a></li>
           <li><a href="/newsletter" class="">NEWSLETTER</a></li>
           <li><a href="https://github.com/orgs/quarkusio/projects/13/views/1" class="">ROADMAP</a></li>
+          <li><a href="/benefactors" class="">BENEFACTORS</a></li>
           </ul>
       </li>
       <li>
@@ -189,7 +201,11 @@
         
         
         
-        <option value="latest" >3.21.2 - Latest</option>
+        <option value="latest" >3.31.2 - Latest</option>
+        
+        
+        
+        <option value="3.27" >3.27</option>
         
         
         
@@ -202,18 +218,6 @@
         
         
         <option value="3.8" >3.8</option>
-        
-        
-        
-        <option value="3.2" >3.2</option>
-        
-        
-        
-        <option value="2.16" >2.16</option>
-        
-        
-        
-        <option value="2.13" >2.13</option>
         </select>
     </div>
   </div>
@@ -935,31 +939,36 @@ The current context can be accessed via the implicit binding <code>this</code>.
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Elvis Operator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elvis Operator: <code>?:</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outputs the default value if the previous part cannot be resolved or resolves to <code>null</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>{person.name ?: 'John'}</code>, <code>{person.name or 'John'}</code>, <code>{person.name.or('John')}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">orEmpty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>orEmpty</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outputs an empty list if the previous part cannot be resolved or resolves to <code>null</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>{pets.orEmpty.size}</code> outputs <code>0</code> if <code>pets</code> is not resolvable or <code>null</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ternary Operator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ternary Operator: <code>condition ? ifTrue : ifFalse</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Shorthand for if-then-else statement. Unlike in <a href="#if_section">If Section</a> nested operators are not supported.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>{item.isActive ? item.name : 'Inactive item'}</code> outputs the value of <code>item.name</code> if <code>item.isActive</code> resolves to <code>true</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Logical AND Operator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logical AND Operator: <code>&amp;&amp;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outputs <code>true</code> if both parts are not <code>falsy</code> as described in the <a href="#if_section">If Section</a>.
 The parameter is only evaluated if needed.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>{person.isActive &amp;&amp; person.hasStyle}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Logical OR Operator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logical OR Operator: <code>||</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outputs <code>true</code> if any of the parts is not <code>falsy</code> as described in the <a href="#if_section">If Section</a>.
 The parameter is only evaluated if needed.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>{person.isActive || person.hasStyle}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equals Operator: <code>==</code>/<code>eq</code>/<code>is</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outputs <code>true</code> if the base object is equal to the argument.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{obj1 is obj2 ? 'Equal' : 'Inequal'}</code>, <code>{obj1 == obj2 ? 'Equal' : 'Inequal'}</code>, <code>{obj1.eq(obj2) ? 'Equal' : 'Inequal'}</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1967,14 +1976,16 @@ An enum constant is validated if the tested value has a type information availab
 <div class="sect3">
 <h4 id="let_section"><a class="anchor" href="#let_section"></a>3.5.5. Let Section</h4>
 <div class="paragraph">
-<p>This section allows you to define named local variables:</p>
+<p>This section allows you to define named local variables.</p>
 </div>
 <div class="listingblock">
+<div class="title">Let</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">{#let myParent=order.item.parent isActive=false age=10 price=(order.price + 10)} <i class="conum" data-value="1"></i><b>(1)</b><i class="conum" data-value="2"></i><b>(2)</b>
   &lt;h1&gt;{myParent.name}&lt;/h1&gt;
   Is active: {isActive}
   Age: {age}
+  Price: {price}
 {/let} <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
 </div>
@@ -1990,7 +2001,36 @@ An enum constant is validated if the tested value has a type information availab
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Keep in mind that the variable is not available outside the <code>let</code> section that defines it.</td>
+<td>Variables are not available outside the <code>let</code> section.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The variables are not available outside the defining <code>let</code> section.
+However, the end tag is optional, if missing then the section ends where the parent section ends.</p>
+</div>
+<div class="listingblock">
+<div class="title">Let with optional end tag</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;ul&gt;
+{#for item in items}
+{#let price=item.price} <i class="conum" data-value="1"></i><b>(1)</b>
+   &lt;li&gt;{price}&lt;/li&gt;
+{! a synthetic {/let} is added here automatically !}
+{/for}
+&lt;/ul&gt;
+{price} --&gt; BOOM! <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The local variable <code>price</code> is initialized with expression <code>item.price</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Variable <code>price</code> is not available outside the <code>let</code> section.</td>
 </tr>
 </table>
 </div>
@@ -2131,6 +2171,15 @@ If possible, replace it with the <code>{#let}</code> section which declares an e
 <td>It&#8217;s also possible to define optional parameters that can be used in the included template.</td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>By default, the first unnamed parameter represents the id of a template that should be included.
+And it is taken as is.
+For example, <code>{#include bar/foo /}</code> includes a template with id <code>bar/foo</code>; i.e. <code>src/main/resources/templates/bar/foo.html</code> could be matched.
+However, it is also possible to supply the template id dynamically.
+Just add the <code>_id</code> parameter to the tag.
+In this case, the argument value of the <code>_id</code> parameter represents an expression that is resolved and the result represents the template id.
+For example, <code>{#include _id=bar.foo /}</code> means that <code>bar.foo</code> is first resolved and then the resulting template id is used.</p>
 </div>
 <div class="paragraph">
 <p><em>Template inheritance</em> makes it possible to reuse template layouts.</p>
@@ -3791,9 +3840,21 @@ public class ItemResource {
 <div class="sect3">
 <h4 id="type_safe_fragments"><a class="anchor" href="#type_safe_fragments"></a>4.5.5. Type-safe Fragments</h4>
 <div class="paragraph">
-<p>You can also define a type-safe <a href="#fragments">fragment</a> in your Java code.
-A <em>native static</em> method with the name that contains a dollar sign <code>$</code> denotes a method that represents a fragment of a type-safe template.
-The name of the fragment is derived from the annotated method name.
+<p>You can also define a type-safe <a href="#fragments">fragment</a> of a type-safe template in your Java code.
+There are two ways to define a type-safe fragment:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A <em>native static</em> method annotated with <code>@CheckedTemplate</code>, with a name that contains a dollar sign <code>$</code>.</p>
+</li>
+<li>
+<p>A Java record that implements <code>io.quarkus.qute.TemplateInstance</code> and its name contains a dollar sign <code>$</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The name of the fragment is derived from the annotated member name.
 The part before the last occurrence of a dollar sign <code>$</code> is the method name of the related type-safe template.
 The part after the last occurrence of a dollar sign is the fragment identifier.
 The strategy defined by the relevant <code>CheckedTemplate#defaultName()</code> is honored when constructing the defaulted names.</p>
@@ -3812,6 +3873,9 @@ class Templates {
 
   // defines a fragment of Templates#items() with identifier "item"
   static native TemplateInstance items$item(Item item); <i class="conum" data-value="1"></i><b>(1)</b>
+
+  // type-safe fragment as a Java record - functionally equivalent to the items$item() method above
+  record items$item(Item item) implements TemplateInstance {}
 }</code></pre>
 </div>
 </div>
@@ -4091,9 +4155,9 @@ Superfluous matching conditions are ignored. The conditions sorted by priority i
 <div class="paragraph">
 <p>An extension method may declare parameters.
 If no namespace is specified then the first parameter that is not annotated with <code>@TemplateAttribute</code> is used to pass the base object, i.e. <code>org.acme.Item</code> in the first example.
-If matching any name or using a regular expression, then a string method parameter needs to be used to pass the property name.
+If matching any name or using a regular expression, then a string method parameter (not not annotated with <code>@TemplateAttribute</code>) needs to be used to pass the property name.
 Parameters annotated with <code>@TemplateAttribute</code> are obtained via <code>TemplateInstance#getAttribute()</code>.
-All other parameters are resolved when rendering the template and passed to the extension method.</p>
+All other parameters are treated as virtual method parameters and resolved when rendering the template and passed to the extension method.</p>
 </div>
 <div class="listingblock">
 <div class="title">Multiple Parameters Example</div>
@@ -4101,7 +4165,8 @@ All other parameters are resolved when rendering the template and passed to the 
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TemplateExtension
 class BigDecimalExtensions {
 
-    static BigDecimal scale(BigDecimal val, int scale, RoundingMode mode) { <i class="conum" data-value="1"></i><b>(1)</b>
+    @TemplateExtension(matchNames = {"scale", "setScale"})
+    static BigDecimal scale(BigDecimal val, String ignoredName, int scale, RoundingMode mode) { <i class="conum" data-value="1"></i><b>(1)</b>
         return val.setScale(scale, mode);
     }
 }</code></pre>
@@ -4111,7 +4176,7 @@ class BigDecimalExtensions {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This method matches an expression with base object of the type <code>BigDecimal.class</code>, with the <code>scale</code> virtual method name and two virtual method parameters.</td>
+<td>This method matches an expression with base object of the type <code>BigDecimal.class</code>, with the <code>scale()</code>/<code>setScale()</code> virtual method name and two virtual method parameters - <code>scale</code> and <code>mode</code>.</td>
 </tr>
 </table>
 </div>
@@ -5527,9 +5592,18 @@ public interface GermanAppMessages extends AppMessages {
 <p>Message bundle files must be encoded in <em>UTF-8</em>.
 The file name consists of the relevant bundle name (e.g. <code>msg</code>) and underscore followed by a language tag (IETF; e.g. <code>en-US</code>).
 The language tag may be omitted, in which case the language tag of the default bundle locale is used.
-For example, if bundle <code>msg</code> has default locale <code>en</code>, then <code>msg.properties</code> is going to be treated as <code>msg_en.properties</code>.
-If both <code>msg.properties</code> and <code>msg_en.properties</code> are detected, an exception is thrown and build fails.
-The file format is very simple: each line represents either a key/value pair with the equals sign used as a separator or a comment (line starts with <code>#</code>).
+For example, if bundle <code>msg</code> has default locale <code>en</code>, then <code>msg.properties</code> is going to be treated as <code>msg_en.properties</code>.</p>
+</div>
+<div class="paragraph">
+<p>If there are multiple files for a specific locale then Qute attempts to resolve the ambiguity.
+Localized files from the application root have higher priority and take precedence over localized files from dependencies.
+If multiple files of the same priority exist, then the build fails.
+For example, if the default bundle locale is <code>en</code> and the files <code>msg.properties</code> and <code>msg_en.properties</code> are found in the application root, then an exception is thrown and the build fails.
+Or another example - if there are two dependencies and both contain the <code>msg_en.properties</code> file, then the build fails again.
+On the other hand, if there is the <code>msg_en.properties</code> file in the application root and also the <code>msg_en.properties</code> file in a dependency, then messages from the application root take precedence and override the values from the dependency.</p>
+</div>
+<div class="paragraph">
+<p>The file format is very simple: each line represents either a key/value pair with the equals sign used as a separator or a comment (line starts with <code>#</code>).
 Blank lines are ignored.
 Keys are <em>mapped to method names</em> from the corresponding message bundle interface.
 Values represent the templates normally defined by <code>io.quarkus.qute.i18n.Message#value()</code>.
@@ -5846,7 +5920,7 @@ public interface AppMessages {
 <p>By default, <code>engine.getTemplate("foo")</code> would result in several lookups: <code>foo</code>, <code>foo.html</code>, <code>foo.txt</code>, etc.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63630">QUARKUS_QUTE_SUFFIXES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63630" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73197">QUARKUS_QUTE_SUFFIXES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73197" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -5854,7 +5928,7 @@ public interface AppMessages {
 <p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>qute.html,qute.txt,html,txt</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>qute.html</code>, <code>qute.txt</code>, <code>html</code>, <code>txt</code></p></td>
 </tr>
 <tr class="row-collapsible row-collapsed row-with-desc">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5867,7 +5941,7 @@ public interface AppMessages {
 <p>The additional map of suffixes to content types. This map is used when working with template variants. By default, the <code>java.net.URLConnection#getFileNameMap()</code> is used to determine the content type of a template file.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63631">QUARKUS_QUTE_CONTENT_TYPES__FILE_SUFFIX_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63631" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73198">QUARKUS_QUTE_CONTENT_TYPES__FILE_SUFFIX_</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73198" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -5907,7 +5981,7 @@ public interface AppMessages {
 </ul>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63632">QUARKUS_QUTE_TYPE_CHECK_EXCLUDES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63632" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73199">QUARKUS_QUTE_TYPE_CHECK_EXCLUDES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73199" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -5934,7 +6008,7 @@ public interface AppMessages {
 <p>By default, the hidden files are excluded. The name of a hidden file starts with a dot.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63633">QUARKUS_QUTE_TEMPLATE_PATH_EXCLUDE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63633" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73200">QUARKUS_QUTE_TEMPLATE_PATH_EXCLUDE</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73200" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -5942,7 +6016,7 @@ public interface AppMessages {
 <p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/regex/Pattern.html">Pattern</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>^\..<strong>|.</strong>\/\..*$</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>^\..*|.*\/\..*$</code></p></td>
 </tr>
 <tr class="row-collapsible row-collapsed row-with-desc odd">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5974,7 +6048,7 @@ public interface AppMessages {
 <p>By default, the <code>&lt;alias_&gt;</code> constant is set.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63634">QUARKUS_QUTE_ITERATION_METADATA_PREFIX</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63634" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73201">QUARKUS_QUTE_ITERATION_METADATA_PREFIX</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73201" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -5982,7 +6056,7 @@ public interface AppMessages {
 <p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>&lt;alias_&gt;</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><alias_></code></p></td>
 </tr>
 <tr class="row-collapsible row-collapsed row-with-desc">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5995,7 +6069,7 @@ public interface AppMessages {
 <p>The list of content types for which the <code>'</code>, <code>"</code>, <code>&lt;</code>, <code>&gt;</code> and <code>&amp;</code> characters are escaped if a template variant is set.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63635">QUARKUS_QUTE_ESCAPE_CONTENT_TYPES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63635" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73202">QUARKUS_QUTE_ESCAPE_CONTENT_TYPES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73202" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6003,7 +6077,7 @@ public interface AppMessages {
 <p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>text/html,text/xml,application/xml,application/xhtml+xml</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>text/html</code>, <code>text/xml</code>, <code>application/xml</code>, <code>application/xhtml+xml</code></p></td>
 </tr>
 <tr class="row-collapsible row-collapsed row-with-desc odd">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -6016,7 +6090,7 @@ public interface AppMessages {
 <p>The default charset of the templates files.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63636">QUARKUS_QUTE_DEFAULT_CHARSET</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63636" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73203">QUARKUS_QUTE_DEFAULT_CHARSET</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73203" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6028,10 +6102,33 @@ public interface AppMessages {
 </tr>
 <tr class="row-collapsible row-collapsed row-with-desc">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-qute_quarkus-qute-duplicit-templates-strategy"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-duplicit-templates-strategy"><code>quarkus.qute.duplicit-templates-strategy</code></a></span>
+<button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.duplicit-templates-strategy' title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+<div id="conf-collapsible-desc-8" class="openblock description description-collapsed">
+<div class="content">
+<div class="paragraph">
+<p>The strategy used when multiple templates with the same path are found in the application.</p>
+</div>
+<div class="paragraph">
+<p>Environment variable: <code id="env-var-73204">QUARKUS_QUTE_DUPLICIT_TEMPLATES_STRATEGY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73204" title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+</div>
+</div>
+<div class="paragraph description-decoration">
+<p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><span class="asciidoc-tooltip-wrapper"><code>prioritize</code><span class="asciidoc-tooltip">If multiple templates with the same path are found then determine the highest priority value and eliminate all templates with lowest priority. If there is exactly one template remaining then use this template. Otherwise, fail the build.  Templates from the root application archive have the priority <code>30</code>. Templates from other application archives have the priority <code>10</code>. Templates from build items can define any priority.</span></span>, <span class="asciidoc-tooltip-wrapper"><code>fail</code><span class="asciidoc-tooltip">Fail the build if multiple templates with the same path are found.</span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><span class="asciidoc-tooltip-wrapper"><code>prioritize</code><span class="asciidoc-tooltip">If multiple templates with the same path are found then determine the highest priority value and eliminate all templates with lowest priority. If there is exactly one template remaining then use this template. Otherwise, fail the build.  Templates from the root application archive have the priority {@code 30}. Templates from other application archives have the priority {@code 10}. Templates from build items can define any priority.</span></span></p></td>
+</tr>
+<tr class="row-collapsible row-collapsed row-with-desc odd">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-qute_quarkus-qute-dev-mode-no-restart-templates"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-dev-mode-no-restart-templates"><code>quarkus.qute.dev-mode.no-restart-templates</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.dev-mode.no-restart-templates' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-8" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-9" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>By default, a template modification results in an application restart that triggers build-time validations.</p>
@@ -6043,7 +6140,7 @@ public interface AppMessages {
 <p>The matched input is the template path that starts with a template root, and the <code>/</code> is used as a path separator. For example, <code>templates/foo.html</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63637">QUARKUS_QUTE_DEV_MODE_NO_RESTART_TEMPLATES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63637" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73205">QUARKUS_QUTE_DEV_MODE_NO_RESTART_TEMPLATES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73205" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6053,18 +6150,69 @@ public interface AppMessages {
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/regex/Pattern.html">Pattern</a></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 </tr>
-<tr class="row-collapsible row-collapsed row-with-desc odd">
+<tr class="row-collapsible row-collapsed row-with-desc">
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-qute_quarkus-qute-test-mode-record-rendered-results"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-test-mode-record-rendered-results"><code>quarkus.qute.test-mode.record-rendered-results</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.test-mode.record-rendered-results' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-9" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-10" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>By default, the rendering results of injected and type-safe templates are recorded in the managed <code>RenderedResults</code> which is registered as a CDI bean.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63638">QUARKUS_QUTE_TEST_MODE_RECORD_RENDERED_RESULTS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63638" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73206">QUARKUS_QUTE_TEST_MODE_RECORD_RENDERED_RESULTS</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73206" title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+</div>
+</div>
+<div class="paragraph description-decoration">
+<p><i class="fa fa-chevron-down"></i><span>Show more</span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr class="row-collapsible row-collapsed row-with-desc odd">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-qute_quarkus-qute-debug-enabled"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-debug-enabled"><code>quarkus.qute.debug.enabled</code></a></span>
+<button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.debug.enabled' title="Copy to clipboard" do-not-collapse="true"></button></p>
+</div>
+<div id="conf-collapsible-desc-11" class="openblock description description-collapsed">
+<div class="content">
+<div class="paragraph">
+<p>Enables or disables the Qute debug mode. This feature is experimental.</p>
+</div>
+<div class="paragraph">
+<p>When enabled, Qute templates can be debugged directly at runtime. This includes the ability to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set breakpoints inside templates</p>
+</li>
+<li>
+<p>Inspect the stack trace of visited template nodes during rendering</p>
+</li>
+<li>
+<p>Evaluate expressions in the current Qute context</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This mode is intended for development and troubleshooting purposes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>true</code></p>
+</div>
+<div class="paragraph">
+<p>Example configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">quarkus.qute.debug.enabled = false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Environment variable: <code id="env-var-73207">QUARKUS_QUTE_DEBUG_ENABLED</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73207" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6079,7 +6227,7 @@ public interface AppMessages {
 <p><a id="quarkus-qute_quarkus-qute-property-not-found-strategy"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-property-not-found-strategy"><code>quarkus.qute.property-not-found-strategy</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.property-not-found-strategy' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-10" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-12" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>The strategy used when a standalone expression evaluates to a "not found" value at runtime and the <code>quarkus.qute.strict-rendering</code> config property is set to <code>false</code></p>
@@ -6091,7 +6239,7 @@ public interface AppMessages {
 <p>By default, the <code>NOT_FOUND</code> constant is written to the output. However, in the development mode the <code>PropertyNotFoundStrategy#THROW_EXCEPTION</code> is used by default, i.e. when the strategy is not specified.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63639">QUARKUS_QUTE_PROPERTY_NOT_FOUND_STRATEGY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63639" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73208">QUARKUS_QUTE_PROPERTY_NOT_FOUND_STRATEGY</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73208" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6108,13 +6256,13 @@ public interface AppMessages {
 <p><a id="quarkus-qute_quarkus-qute-remove-standalone-lines"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-remove-standalone-lines"><code>quarkus.qute.remove-standalone-lines</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.remove-standalone-lines' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-11" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-13" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>Specify whether the parser should remove standalone lines from the output. A standalone line is a line that contains at least one section tag, parameter declaration, or comment but no expression and no non-whitespace character.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63640">QUARKUS_QUTE_REMOVE_STANDALONE_LINES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63640" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73209">QUARKUS_QUTE_REMOVE_STANDALONE_LINES</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73209" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6129,7 +6277,7 @@ public interface AppMessages {
 <p><a id="quarkus-qute_quarkus-qute-strict-rendering"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-strict-rendering"><code>quarkus.qute.strict-rendering</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.strict-rendering' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-12" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-14" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>If set to <code>true</code> then any expression that is evaluated to a <code>Results.NotFound</code> value will always result in a <code>TemplateException</code> and the rendering is aborted.</p>
@@ -6138,7 +6286,7 @@ public interface AppMessages {
 <p>Note that the <code>quarkus.qute.property-not-found-strategy</code> config property is completely ignored if strict rendering is enabled.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63641">QUARKUS_QUTE_STRICT_RENDERING</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63641" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73210">QUARKUS_QUTE_STRICT_RENDERING</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73210" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6153,13 +6301,13 @@ public interface AppMessages {
 <p><a id="quarkus-qute_quarkus-qute-timeout"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-timeout"><code>quarkus.qute.timeout</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.timeout' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-13" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-15" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>The global rendering timeout in milliseconds. It is used if no <code>timeout</code> template instance attribute is set.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63642">QUARKUS_QUTE_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63642" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73211">QUARKUS_QUTE_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73211" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6174,13 +6322,13 @@ public interface AppMessages {
 <p><a id="quarkus-qute_quarkus-qute-use-async-timeout"></a> <span class="property-path"><a href="#quarkus-qute_quarkus-qute-use-async-timeout"><code>quarkus.qute.use-async-timeout</code></a></span>
 <button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-text='quarkus.qute.use-async-timeout' title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
-<div id="conf-collapsible-desc-14" class="openblock description description-collapsed">
+<div id="conf-collapsible-desc-16" class="openblock description description-collapsed">
 <div class="content">
 <div class="paragraph">
 <p>If set to <code>true</code> then the timeout should also be used for asynchronous rendering methods, such as <code>TemplateInstance#createUni()</code> and <code>TemplateInstance#renderAsync()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Environment variable: <code id="env-var-63643">QUARKUS_QUTE_USE_ASYNC_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-63643" title="Copy to clipboard" do-not-collapse="true"></button></p>
+<p>Environment variable: <code id="env-var-73212">QUARKUS_QUTE_USE_ASYNC_TIMEOUT</code><button class="btn-copy fa fa-clipboard inline-btn-copy" data-clipboard-action="copy" data-clipboard-target="#env-var-73212" title="Copy to clipboard" do-not-collapse="true"></button></p>
 </div>
 </div>
 </div>
@@ -6482,7 +6630,7 @@ Keep in mind that reflection may not work correctly in some restricted environme
     </div>
   </div>
   <div class="grid-wrapper">
-    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license.<br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
+    <p class="grid__item width-3-12">Quarkus is open. All dependencies of this project are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache Software License 2.0</a> or compatible license. <i class='fab fa-creative-commons'></i><i class='fab fa-creative-commons-by'></i> <a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC by 3.0</a><br /><br />This website was built with <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a>, is hosted on <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> and is completely open source. If you want to make it better, <a href='https://github.com/quarkusio/quarkusio.github.io' target='_blank'>fork the website</a> and show us what you’ve got.</p>
 
     
       <div class="width-1-12 project-links">
@@ -6530,11 +6678,15 @@ Keep in mind that reflection may not work correctly in some restricted environme
           
           
           
-            <li><a href="/brand" target="_blank">Brand</a></li>
+            <li><a href="https://github.com/commonhaus/artwork/tree/main/projects/quarkus" target="_blank">Brand</a></li>
           
           
           
             <li><a href="/desktopwallpapers" target="_blank">Wallpapers</a></li>
+          
+          
+          
+            <li><a href="https://www.redhat.com/en/about/privacy-policy" target="_blank">Privacy Policy</a></li>
           
           
         </ul>
@@ -6555,6 +6707,10 @@ Keep in mind that reflection may not work correctly in some restricted environme
           
             <li><a rel="me" href="https://fosstodon.org/@quarkusio" target="_blank">Mastodon</a></li>
             
+          
+          
+            <li><a href="https://www.threads.com/@quarkusio" target="_blank">Threads</a></li>
+          
           
           
             <li><a href="https://www.facebook.com/quarkusio" target="_blank">Facebook</a></li>
@@ -6605,6 +6761,10 @@ Keep in mind that reflection may not work correctly in some restricted environme
           
           
             <li><a href="https://groups.google.com/forum/#!forum/quarkus-dev" target="_blank">Development mailing list</a></li>
+          
+          
+          
+            <li><a href="https://stats.uptimerobot.com/ze1PfweT2p" target="_blank">Quarkus Service Status</a></li>
           
           
         </ul>
@@ -6665,17 +6825,14 @@ Keep in mind that reflection may not work correctly in some restricted environme
   </div>
 </div>
 
-  <div class="content redhat-footer">
-  <div class="grid-wrapper">
-    <span class="licence">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC by 3.0</a> | <a href="https://www.redhat.com/en/about/privacy-policy">Privacy Policy</a>
-    </span>
-    <span class="redhat">
-      Sponsored by
-    </span>
-    <span class="redhat-logo">
-      <a href="https://www.redhat.com/" target="_blank"><img src="/assets/images/redhat_reversed.svg"></a>
-    </span>
+  <div class="content cf-footer">
+  <div class="flexcontainer">
+    <div class="cf-logo">
+      <a class="cf-logo" href="https://www.commonhaus.org/" target="_blank"><img src="https://raw.githubusercontent.com/commonhaus/artwork/main/foundation/brand/svg/CF_logo_horizontal_single_reverse.svg"/></a>
+    </div>
+    <div class="license">
+      Copyright © Quarkus. All rights reserved. For details on our trademarks, please visit our <a href="https://www.commonhaus.org/policies/trademark-policy/">Trademark Policy</a> and <a href="https://www.commonhaus.org/trademarks/">Trademark List</a>. Trademarks of third parties are owned by their respective holders and their mention here does not suggest any endorsement or association.
+    </div>
   </div>
 </div>
 
@@ -6691,6 +6848,8 @@ Keep in mind that reflection may not work correctly in some restricted environme
   <script src="/assets/javascript/copy.js" type="text/javascript"></script>
   <script src="/assets/javascript/asciidoc-tabs.js" type="text/javascript"></script>
   <script src="/assets/javascript/future-date.js" type="text/javascript"></script>
+  <script src="/assets/javascript/randomize.js" type="text/javascript"></script>
+  <script src="/assets/javascript/time.js" type="text/javascript"></script>
 </body>
 
 </html>
